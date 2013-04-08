@@ -1,0 +1,321 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2E4637EB1712AA4A00EA1888 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E4637EA1712AA4A00EA1888 /* Cocoa.framework */; };
+		2E4637F51712AA4A00EA1888 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637F31712AA4A00EA1888 /* InfoPlist.strings */; };
+		2E4637F71712AA4A00EA1888 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4637F61712AA4A00EA1888 /* main.m */; };
+		2E4637FB1712AA4A00EA1888 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637F91712AA4A00EA1888 /* Credits.rtf */; };
+		2E4637FE1712AA4A00EA1888 /* FLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4637FD1712AA4A00EA1888 /* FLDocument.m */; };
+		2E4638011712AA4A00EA1888 /* FLDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637FF1712AA4A00EA1888 /* FLDocument.xib */; };
+		2E4638041712AA4A00EA1888 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4638021712AA4A00EA1888 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2E4637E71712AA4A00EA1888 /* FLMapEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLMapEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E4637EA1712AA4A00EA1888 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		2E4637ED1712AA4A00EA1888 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		2E4637EE1712AA4A00EA1888 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2E4637EF1712AA4A00EA1888 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2E4637F21712AA4A00EA1888 /* FLMapEditor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FLMapEditor-Info.plist"; sourceTree = "<group>"; };
+		2E4637F41712AA4A00EA1888 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2E4637F61712AA4A00EA1888 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2E4637F81712AA4A00EA1888 /* FLMapEditor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FLMapEditor-Prefix.pch"; sourceTree = "<group>"; };
+		2E4637FA1712AA4A00EA1888 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2E4637FC1712AA4A00EA1888 /* FLDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLDocument.h; sourceTree = "<group>"; };
+		2E4637FD1712AA4A00EA1888 /* FLDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLDocument.m; sourceTree = "<group>"; };
+		2E4638001712AA4A00EA1888 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FLDocument.xib; sourceTree = "<group>"; };
+		2E4638031712AA4A00EA1888 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2E4637E41712AA4A00EA1888 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E4637EB1712AA4A00EA1888 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2E4637DE1712AA4A00EA1888 = {
+			isa = PBXGroup;
+			children = (
+				2E4637F01712AA4A00EA1888 /* FLMapEditor */,
+				2E4637E91712AA4A00EA1888 /* Frameworks */,
+				2E4637E81712AA4A00EA1888 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2E4637E81712AA4A00EA1888 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2E4637E71712AA4A00EA1888 /* FLMapEditor.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E4637E91712AA4A00EA1888 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E4637EA1712AA4A00EA1888 /* Cocoa.framework */,
+				2E4637EC1712AA4A00EA1888 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E4637EC1712AA4A00EA1888 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E4637ED1712AA4A00EA1888 /* AppKit.framework */,
+				2E4637EE1712AA4A00EA1888 /* CoreData.framework */,
+				2E4637EF1712AA4A00EA1888 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		2E4637F01712AA4A00EA1888 /* FLMapEditor */ = {
+			isa = PBXGroup;
+			children = (
+				2E4637FC1712AA4A00EA1888 /* FLDocument.h */,
+				2E4637FD1712AA4A00EA1888 /* FLDocument.m */,
+				2E4637FF1712AA4A00EA1888 /* FLDocument.xib */,
+				2E4638021712AA4A00EA1888 /* MainMenu.xib */,
+				2E4637F11712AA4A00EA1888 /* Supporting Files */,
+			);
+			path = FLMapEditor;
+			sourceTree = "<group>";
+		};
+		2E4637F11712AA4A00EA1888 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E4637F21712AA4A00EA1888 /* FLMapEditor-Info.plist */,
+				2E4637F31712AA4A00EA1888 /* InfoPlist.strings */,
+				2E4637F61712AA4A00EA1888 /* main.m */,
+				2E4637F81712AA4A00EA1888 /* FLMapEditor-Prefix.pch */,
+				2E4637F91712AA4A00EA1888 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2E4637E61712AA4A00EA1888 /* FLMapEditor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E4638071712AA4A00EA1888 /* Build configuration list for PBXNativeTarget "FLMapEditor" */;
+			buildPhases = (
+				2E4637E31712AA4A00EA1888 /* Sources */,
+				2E4637E41712AA4A00EA1888 /* Frameworks */,
+				2E4637E51712AA4A00EA1888 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FLMapEditor;
+			productName = FLMapEditor;
+			productReference = 2E4637E71712AA4A00EA1888 /* FLMapEditor.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2E4637DF1712AA4A00EA1888 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FL;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = cgkim;
+			};
+			buildConfigurationList = 2E4637E21712AA4A00EA1888 /* Build configuration list for PBXProject "FLMapEditor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2E4637DE1712AA4A00EA1888;
+			productRefGroup = 2E4637E81712AA4A00EA1888 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2E4637E61712AA4A00EA1888 /* FLMapEditor */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2E4637E51712AA4A00EA1888 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E4637F51712AA4A00EA1888 /* InfoPlist.strings in Resources */,
+				2E4637FB1712AA4A00EA1888 /* Credits.rtf in Resources */,
+				2E4638011712AA4A00EA1888 /* FLDocument.xib in Resources */,
+				2E4638041712AA4A00EA1888 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2E4637E31712AA4A00EA1888 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E4637F71712AA4A00EA1888 /* main.m in Sources */,
+				2E4637FE1712AA4A00EA1888 /* FLDocument.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2E4637F31712AA4A00EA1888 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E4637F41712AA4A00EA1888 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2E4637F91712AA4A00EA1888 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E4637FA1712AA4A00EA1888 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		2E4637FF1712AA4A00EA1888 /* FLDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E4638001712AA4A00EA1888 /* en */,
+			);
+			name = FLDocument.xib;
+			sourceTree = "<group>";
+		};
+		2E4638021712AA4A00EA1888 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2E4638031712AA4A00EA1888 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2E4638051712AA4A00EA1888 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2E4638061712AA4A00EA1888 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2E4638081712AA4A00EA1888 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FLMapEditor/FLMapEditor-Prefix.pch";
+				INFOPLIST_FILE = "FLMapEditor/FLMapEditor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2E4638091712AA4A00EA1888 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FLMapEditor/FLMapEditor-Prefix.pch";
+				INFOPLIST_FILE = "FLMapEditor/FLMapEditor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2E4637E21712AA4A00EA1888 /* Build configuration list for PBXProject "FLMapEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E4638051712AA4A00EA1888 /* Debug */,
+				2E4638061712AA4A00EA1888 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E4638071712AA4A00EA1888 /* Build configuration list for PBXNativeTarget "FLMapEditor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2E4638081712AA4A00EA1888 /* Debug */,
+				2E4638091712AA4A00EA1888 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2E4637DF1712AA4A00EA1888 /* Project object */;
+}
