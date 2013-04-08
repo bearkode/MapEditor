@@ -14,6 +14,10 @@
 		2E4637FE1712AA4A00EA1888 /* FLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4637FD1712AA4A00EA1888 /* FLDocument.m */; };
 		2E4638011712AA4A00EA1888 /* FLDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637FF1712AA4A00EA1888 /* FLDocument.xib */; };
 		2E4638041712AA4A00EA1888 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E4638021712AA4A00EA1888 /* MainMenu.xib */; };
+		2E46380C1712B49100EA1888 /* FLMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380B1712B49100EA1888 /* FLMap.m */; };
+		2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380E1712BCA200EA1888 /* FLMapLayer.m */; };
+		2E4638121712C17B00EA1888 /* FLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638111712C17B00EA1888 /* FLMapView.m */; };
+		2E4638161712C38000EA1888 /* FLJSONHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638151712C38000EA1888 /* FLJSONHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,14 @@
 		2E4637FD1712AA4A00EA1888 /* FLDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FLDocument.m; sourceTree = "<group>"; };
 		2E4638001712AA4A00EA1888 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FLDocument.xib; sourceTree = "<group>"; };
 		2E4638031712AA4A00EA1888 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2E46380A1712B49100EA1888 /* FLMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMap.h; sourceTree = "<group>"; };
+		2E46380B1712B49100EA1888 /* FLMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMap.m; sourceTree = "<group>"; };
+		2E46380D1712BCA200EA1888 /* FLMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapLayer.h; sourceTree = "<group>"; };
+		2E46380E1712BCA200EA1888 /* FLMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapLayer.m; sourceTree = "<group>"; };
+		2E4638101712C17B00EA1888 /* FLMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapView.h; sourceTree = "<group>"; };
+		2E4638111712C17B00EA1888 /* FLMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapView.m; sourceTree = "<group>"; };
+		2E4638141712C38000EA1888 /* FLJSONHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLJSONHelper.h; sourceTree = "<group>"; };
+		2E4638151712C38000EA1888 /* FLJSONHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLJSONHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +96,7 @@
 		2E4637F01712AA4A00EA1888 /* FLMapEditor */ = {
 			isa = PBXGroup;
 			children = (
-				2E4637FC1712AA4A00EA1888 /* FLDocument.h */,
-				2E4637FD1712AA4A00EA1888 /* FLDocument.m */,
+				2E4638131712C18500EA1888 /* Classes */,
 				2E4637FF1712AA4A00EA1888 /* FLDocument.xib */,
 				2E4638021712AA4A00EA1888 /* MainMenu.xib */,
 				2E4637F11712AA4A00EA1888 /* Supporting Files */,
@@ -103,6 +114,23 @@
 				2E4637F91712AA4A00EA1888 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E4638131712C18500EA1888 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2E4638141712C38000EA1888 /* FLJSONHelper.h */,
+				2E4638151712C38000EA1888 /* FLJSONHelper.m */,
+				2E46380A1712B49100EA1888 /* FLMap.h */,
+				2E46380B1712B49100EA1888 /* FLMap.m */,
+				2E46380D1712BCA200EA1888 /* FLMapLayer.h */,
+				2E46380E1712BCA200EA1888 /* FLMapLayer.m */,
+				2E4637FC1712AA4A00EA1888 /* FLDocument.h */,
+				2E4637FD1712AA4A00EA1888 /* FLDocument.m */,
+				2E4638101712C17B00EA1888 /* FLMapView.h */,
+				2E4638111712C17B00EA1888 /* FLMapView.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +201,10 @@
 			files = (
 				2E4637F71712AA4A00EA1888 /* main.m in Sources */,
 				2E4637FE1712AA4A00EA1888 /* FLDocument.m in Sources */,
+				2E46380C1712B49100EA1888 /* FLMap.m in Sources */,
+				2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */,
+				2E4638121712C17B00EA1888 /* FLMapView.m in Sources */,
+				2E4638161712C38000EA1888 /* FLJSONHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

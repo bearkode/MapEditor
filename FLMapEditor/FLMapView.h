@@ -1,5 +1,5 @@
 /*
- *  main.m
+ *  FLMapView.h
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 8..
@@ -10,7 +10,6 @@
 #import <Cocoa/Cocoa.h>
 
 
-int main(int argc, char *argv[])
-{
-    return NSApplicationMain(argc, (const char **)argv);
-}
+@interface FLMapView : NSView
+
+@end
