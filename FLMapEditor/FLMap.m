@@ -13,29 +13,36 @@
 
 
 NSString *const kMapSizeKey         = @"MapSize";
+NSString *const kTileSizeKey        = @"TileSize";
 NSString *const kTopographyLayerKey = @"TopographyLayer";
 NSString *const kStructureLayerKey  = @"StructureLayer";
 
 
 @implementation FLMap
 {
-    NSSize      mSize;
+    NSSize      mMapSize;
+    NSSize      mTileSize;
     
     FLMapLayer *mStructureLayer;
     FLMapLayer *mTopographyLayer;
 }
 
 
+@synthesize mapSize  = mMapSize;
+@synthesize tileSize = mTileSize;
+
+
 #pragma mark -
 
 
-- (id)initWithSize:(NSSize)aSize
+- (id)initWithMapSize:(NSSize)aMapSize tileSize:(NSSize)aTileSize
 {
     self = [super init];
     
     if (self)
     {
-        mSize            = aSize;
+        mMapSize         = aMapSize;
+        mTileSize        = aTileSize;
         mTopographyLayer = [[FLMapLayer alloc] init];
         mStructureLayer  = [[FLMapLayer alloc] init];
     }
@@ -55,7 +62,8 @@ NSString *const kStructureLayerKey  = @"StructureLayer";
         
         if (!sError)
         {
-            mSize            = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kMapSizeKey]];
+            mMapSize         = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kMapSizeKey]];
+            mTileSize        = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kTileSizeKey]];
             mTopographyLayer = [[FLMapLayer alloc] initWithJSONObject:[sJSONObject objectForKey:kTopographyLayerKey]];
             mStructureLayer  = [[FLMapLayer alloc] initWithJSONObject:[sJSONObject objectForKey:kStructureLayerKey]];
         }
@@ -80,7 +88,8 @@ NSString *const kStructureLayerKey  = @"StructureLayer";
     NSMutableDictionary *sMapDict = [NSMutableDictionary dictionary];
     NSError             *sError   = nil;
     
-    [sMapDict setObject:[FLJSONHelper dictionaryWithSize:mSize] forKey:kMapSizeKey];
+    [sMapDict setObject:[FLJSONHelper dictionaryWithSize:mMapSize] forKey:kMapSizeKey];
+    [sMapDict setObject:[FLJSONHelper dictionaryWithSize:mTileSize] forKey:kTileSizeKey];
     [sMapDict setObject:[mTopographyLayer JSONObject] forKey:kTopographyLayerKey];
     [sMapDict setObject:[mStructureLayer JSONObject] forKey:kStructureLayerKey];
     

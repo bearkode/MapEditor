@@ -13,7 +13,11 @@
 @interface FLMap : NSObject
 
 
-- (id)initWithSize:(NSSize)aSize;
+@property (nonatomic, readonly) NSSize mapSize;
+@property (nonatomic, readonly) NSSize tileSize;
+
+
+- (id)initWithMapSize:(NSSize)aMapSize tileSize:(NSSize)aTileSize;
 - (id)initWithJSONData:(NSData *)aData;
 
 - (NSData *)JSONDataRepresentation;

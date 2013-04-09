@@ -8,6 +8,7 @@
  */
 
 #import "FLDocument.h"
+#import "NSTextField+Additions.h"
 #import "FLMapView.h"
 #import "FLMap.h"
 
@@ -16,25 +17,35 @@
 {
     /*  File New  */
     NSPanel      *mFileNewPanel;
-    NSTextField  *mFileNewWidthTextField;
-    NSTextField  *mFileNewHeightTextField;
+    NSTextField  *mMapWidthTextField;
+    NSTextField  *mMapHeightTextField;
+    NSTextField  *mTileWidthTextField;
+    NSTextField  *mTileHeightTextField;
     
     /*  Edit View  */
     NSScrollView *mScrollView;
     FLMapView    *mMapView;
     
+    /*  Info View  */
+    NSTextField  *mMapSizeLabel;
+    NSTextField  *mTileSizeLabel;
     
     /*  Model  */
     FLMap        *mMap;
 }
 
 
-@synthesize fileNewPanel           = mFileNewPanel;
-@synthesize fileNewWidthTextField  = mFileNewWidthTextField;
-@synthesize fileNewHeightTextField = mFileNewHeightTextField;
+@synthesize fileNewPanel        = mFileNewPanel;
+@synthesize mapWidthTextField   = mMapWidthTextField;
+@synthesize mapHeightTextField  = mMapHeightTextField;
+@synthesize tileWidthTextField  = mTileWidthTextField;
+@synthesize tileHeightTextField = mTileHeightTextField;
 
-@synthesize scrollView             = mScrollView;
-@synthesize mapView                = mMapView;
+@synthesize scrollView          = mScrollView;
+@synthesize mapView             = mMapView;
+
+@synthesize mapSizeLabel        = mMapSizeLabel;
+@synthesize tileSizeLabel       = mTileSizeLabel;
 
 
 #pragma mark -
@@ -43,6 +54,16 @@
 - (void)openSheetInWindow:(NSWindow *)aWindow
 {
     [NSApp beginSheet:mFileNewPanel modalForWindow:aWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
+
+- (void)updateInfoView
+{
+    NSSize sMapSize  = [mMap mapSize];
+    NSSize sTileSize = [mMap tileSize];
+    
+    [mMapSizeLabel setStringValue:NSStringFromSize(sMapSize)];
+    [mTileSizeLabel setStringValue:NSStringFromSize(sTileSize)];
 }
 
 
@@ -87,7 +108,11 @@
 {
     [super windowControllerDidLoadNib:aController];
     
-    if (!mMap)
+    if (mMap)
+    {
+        [self updateInfoView];    
+    }
+    else
     {
         [self performSelector:@selector(openSheetInWindow:) withObject:[aController window] afterDelay:0.0];
     }
@@ -124,15 +149,15 @@
 
 - (IBAction)fileNewOkButtonClicked:(id)aSender
 {
-    NSString *sWidthStr  = ([[mFileNewWidthTextField stringValue] length] != 0)  ? [mFileNewWidthTextField stringValue]  : [[mFileNewWidthTextField cell] placeholderString];
-    NSString *sHeightStr = ([[mFileNewHeightTextField stringValue] length] != 0) ? [mFileNewHeightTextField stringValue] : [[mFileNewHeightTextField cell] placeholderString];
-    NSSize    sMapSize   = NSMakeSize([sWidthStr floatValue], [sHeightStr floatValue]);
-    
+    NSSize sMapSize  = NSMakeSize([mMapWidthTextField floatValue], [mMapHeightTextField floatValue]);
+    NSSize sTileSize = NSMakeSize([mTileWidthTextField floatValue], [mTileHeightTextField floatValue]);
+
     [NSApp endSheet:mFileNewPanel];
     [mFileNewPanel orderOut:aSender];
     
     [mMap autorelease];
-    mMap = [[FLMap alloc] initWithSize:sMapSize];
+    mMap = [[FLMap alloc] initWithMapSize:sMapSize tileSize:sTileSize];
+    [self updateInfoView];
 }
 
 

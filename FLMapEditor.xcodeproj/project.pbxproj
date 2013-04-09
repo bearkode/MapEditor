@@ -18,6 +18,7 @@
 		2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380E1712BCA200EA1888 /* FLMapLayer.m */; };
 		2E4638121712C17B00EA1888 /* FLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638111712C17B00EA1888 /* FLMapView.m */; };
 		2E4638161712C38000EA1888 /* FLJSONHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638151712C38000EA1888 /* FLJSONHelper.m */; };
+		2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		2E4638111712C17B00EA1888 /* FLMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapView.m; sourceTree = "<group>"; };
 		2E4638141712C38000EA1888 /* FLJSONHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLJSONHelper.h; sourceTree = "<group>"; };
 		2E4638151712C38000EA1888 /* FLJSONHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLJSONHelper.m; sourceTree = "<group>"; };
+		2E7C07E91713ABFB004BA8A0 /* NSTextField+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Additions.h"; sourceTree = "<group>"; };
+		2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,7 @@
 		2E4637F01712AA4A00EA1888 /* FLMapEditor */ = {
 			isa = PBXGroup;
 			children = (
+				2E7C07E81713ABD6004BA8A0 /* Additions */,
 				2E4638131712C18500EA1888 /* Classes */,
 				2E4637FF1712AA4A00EA1888 /* FLDocument.xib */,
 				2E4638021712AA4A00EA1888 /* MainMenu.xib */,
@@ -131,6 +135,15 @@
 				2E4638111712C17B00EA1888 /* FLMapView.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		2E7C07E81713ABD6004BA8A0 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				2E7C07E91713ABFB004BA8A0 /* NSTextField+Additions.h */,
+				2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */,
+			);
+			name = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +218,7 @@
 				2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */,
 				2E4638121712C17B00EA1888 /* FLMapView.m in Sources */,
 				2E4638161712C38000EA1888 /* FLJSONHelper.m in Sources */,
+				2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +360,7 @@
 				2E4638091712AA4A00EA1888 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
