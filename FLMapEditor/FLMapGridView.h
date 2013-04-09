@@ -13,7 +13,7 @@
 @interface FLMapGridView : NSView
 
 
-- (id)initWithMapSize:(NSSize)aMapSize tileSize:(NSSize)aTileSize;
+- (void)setMapSize:(NSSize)aMapSize tileSize:(NSSize)aTileSize;
 
 
 @end

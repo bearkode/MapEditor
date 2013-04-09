@@ -9,10 +9,13 @@
 
 #import "FLMapView.h"
 #import "FLUtils.h"
+#import "FLMapGridView.h"
 
 
 @implementation FLMapView
 {
+    FLMapGridView *mGridView;
+    
     id mDataSource;
 }
 
@@ -23,7 +26,9 @@
 
     if (self)
     {
-
+        mGridView = [[[FLMapGridView alloc] initWithFrame:NSMakeRect(0, 0, aFrame.size.width, aFrame.size.height)] autorelease];
+        [mGridView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+        [self addSubview:mGridView];
     }
     
     return self;
@@ -36,7 +41,11 @@
     
     if (self)
     {
-    
+        NSRect sFrame = [self frame];
+        
+        mGridView = [[[FLMapGridView alloc] initWithFrame:NSMakeRect(0, 0, sFrame.size.width, sFrame.size.height)] autorelease];
+        [mGridView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+        [self addSubview:mGridView];
     }
     
     return self;
@@ -75,6 +84,7 @@
     NSSize sPixelSize = FLGetPixelSizeFromMapInfo(sMapSize, sTileSize);
     
     [self setFrame:NSMakeRect(0, 0, sPixelSize.width, sPixelSize.height)];
+    [mGridView setMapSize:sMapSize tileSize:sTileSize];    
 }
 
 

@@ -26,3 +26,21 @@ NSSize FLGetPixelSizeFromMapInfo(NSSize aMapSize, NSSize aTileSize)
     
     return NSMakeSize(aTileSize.width / 2 * sGridCount, aTileSize.height / 2 * sGridCount);
 }
+
+
+NSPoint FLGetCenterPointOfGrid(NSSize aMapSize, NSSize aTileSize, NSPoint aGridPosition)
+{
+    CGFloat sXBase = aMapSize.height * aTileSize.width / 2;
+    CGFloat sYBase = aTileSize.height / 2;
+    NSPoint sPoint = NSZeroPoint;
+
+    sPoint.x += sXBase;
+    sPoint.y += sYBase;
+
+    sPoint.x += aGridPosition.x * aTileSize.width / 2;
+    sPoint.x -= aGridPosition.y * aTileSize.width / 2;
+    sPoint.y += aGridPosition.x * aTileSize.height / 2;
+    sPoint.y += aGridPosition.y * aTileSize.height / 2;
+    
+    return sPoint;
+}
