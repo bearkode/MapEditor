@@ -8,9 +8,10 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import "FLMapView.h"
 
 
-@interface FLDocument : NSDocument
+@interface FLDocument : NSDocument <FLMapViewProtocol>
 
 
 /*  New Map  */

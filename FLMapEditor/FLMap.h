@@ -8,6 +8,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "FLMapView.h"
 
 
 @interface FLMap : NSObject

@@ -11,6 +11,7 @@
 #import "NSTextField+Additions.h"
 #import "FLMapView.h"
 #import "FLMap.h"
+#import "FLUtils.h"
 
 
 @implementation FLDocument
@@ -67,6 +68,16 @@
 }
 
 
+- (void)setMap:(FLMap *)aMap
+{
+    [mMap autorelease];
+    mMap = [aMap retain];
+    
+    [self updateInfoView];
+    [mMapView reload];
+}
+
+
 #pragma mark -
 
 
@@ -107,10 +118,12 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
 {
     [super windowControllerDidLoadNib:aController];
+
+    [mMapView setDataSource:self];
     
     if (mMap)
     {
-        [self updateInfoView];    
+        [self setMap:mMap];
     }
     else
     {
@@ -137,8 +150,8 @@
 
 - (BOOL)readFromData:(NSData *)aData ofType:(NSString *)aTypeName error:(NSError **)aOutError
 {
-    [mMap autorelease];
-    mMap = [[FLMap alloc] initWithJSONData:aData];
+    FLMap *sMap = [[[FLMap alloc] initWithJSONData:aData] autorelease];
+    [self setMap:sMap];
     
     return YES;
 }
@@ -155,9 +168,8 @@
     [NSApp endSheet:mFileNewPanel];
     [mFileNewPanel orderOut:aSender];
     
-    [mMap autorelease];
-    mMap = [[FLMap alloc] initWithMapSize:sMapSize tileSize:sTileSize];
-    [self updateInfoView];
+    FLMap *sMap = [[[FLMap alloc] initWithMapSize:sMapSize tileSize:sTileSize] autorelease];
+    [self setMap:sMap];
 }
 
 
@@ -165,6 +177,21 @@
 {
     [NSApp endSheet:mFileNewPanel];
     [mFileNewPanel orderOut:aSender];
+}
+
+
+#pragma mark -
+
+
+- (NSSize)mapSizeOfMapView:(FLMapView *)aMapView
+{
+    return [mMap mapSize];
+}
+
+
+- (NSSize)tileSizeOfMapView:(FLMapView *)aMapView
+{
+    return [mMap tileSize];
 }
 
 

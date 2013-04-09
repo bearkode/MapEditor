@@ -8,9 +8,13 @@
  */
 
 #import "FLMapView.h"
+#import "FLUtils.h"
 
 
 @implementation FLMapView
+{
+    id mDataSource;
+}
 
 
 - (id)initWithFrame:(NSRect)aFrame
@@ -52,6 +56,25 @@
 {
     [[NSColor lightGrayColor] set];
     [NSBezierPath fillRect:aRect];
+}
+
+
+#pragma mark -
+
+
+- (void)setDataSource:(id<FLMapViewProtocol>)aDataSource
+{
+    mDataSource = aDataSource;
+}
+
+
+- (void)reload
+{
+    NSSize sMapSize   = [mDataSource mapSizeOfMapView:self];
+    NSSize sTileSize  = [mDataSource tileSizeOfMapView:self];
+    NSSize sPixelSize = FLGetPixelSizeFromMapInfo(sMapSize, sTileSize);
+    
+    [self setFrame:NSMakeRect(0, 0, sPixelSize.width, sPixelSize.height)];
 }
 
 
