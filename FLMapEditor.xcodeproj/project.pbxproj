@@ -22,6 +22,8 @@
 		2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */; };
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
 		2E7C07FB1713FF65004BA8A0 /* FLLayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F91713FF65004BA8A0 /* FLLayerItem.m */; };
+		2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */; };
+		2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,9 @@
 		2E7C07F11713B509004BA8A0 /* FLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUtils.m; sourceTree = "<group>"; };
 		2E7C07F81713FF64004BA8A0 /* FLLayerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLayerItem.h; sourceTree = "<group>"; };
 		2E7C07F91713FF65004BA8A0 /* FLLayerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLayerItem.m; sourceTree = "<group>"; };
+		2E7C082A17154F66004BA8A0 /* FLMapLayerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapLayerItem.h; sourceTree = "<group>"; };
+		2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapLayerItem.m; sourceTree = "<group>"; };
+		2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLMapLayerItem.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +170,9 @@
 				2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */,
 				2E7C07F81713FF64004BA8A0 /* FLLayerItem.h */,
 				2E7C07F91713FF65004BA8A0 /* FLLayerItem.m */,
+				2E7C082A17154F66004BA8A0 /* FLMapLayerItem.h */,
+				2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */,
+				2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 				2E4637FB1712AA4A00EA1888 /* Credits.rtf in Resources */,
 				2E4638011712AA4A00EA1888 /* FLDocument.xib in Resources */,
 				2E4638041712AA4A00EA1888 /* MainMenu.xib in Resources */,
+				2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +254,7 @@
 				2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */,
 				2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */,
 				2E7C07FB1713FF65004BA8A0 /* FLLayerItem.m in Sources */,
+				2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

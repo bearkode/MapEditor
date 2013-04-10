@@ -14,47 +14,49 @@
 #import "FLUtils.h"
 #import "FLMapLayer.h"
 #import "FLLayerItem.h"
+#import "FLMapLayerItem.h"
 
 
 @implementation FLDocument
 {
     /*  File New  */
-    NSPanel          *mFileNewPanel;
-    NSTextField      *mMapWidthTextField;
-    NSTextField      *mMapHeightTextField;
-    NSTextField      *mTileWidthTextField;
-    NSTextField      *mTileHeightTextField;
+    NSPanel           *mFileNewPanel;
+    NSTextField       *mMapWidthTextField;
+    NSTextField       *mMapHeightTextField;
+    NSTextField       *mTileWidthTextField;
+    NSTextField       *mTileHeightTextField;
     
     /*  Edit View  */
-    NSScrollView     *mScrollView;
-    FLMapView        *mMapView;
+    NSScrollView      *mScrollView;
+    FLMapView         *mMapView;
     
     /*  Info View  */
-    NSTextField      *mMapSizeLabel;
-    NSTextField      *mTileSizeLabel;
+    NSTextField       *mMapSizeLabel;
+    NSTextField       *mTileSizeLabel;
     
     /*  Layers  */
-    NSCollectionView *mLayerCollectionView;
-    NSMutableArray   *mLayerArray;
+    NSArrayController *mLayerArrayController;
+    NSCollectionView  *mLayerCollectionView;
     
     /*  Model  */
-    FLMap            *mMap;
+    FLMap             *mMap;
 }
 
 
-@synthesize fileNewPanel        = mFileNewPanel;
-@synthesize mapWidthTextField   = mMapWidthTextField;
-@synthesize mapHeightTextField  = mMapHeightTextField;
-@synthesize tileWidthTextField  = mTileWidthTextField;
-@synthesize tileHeightTextField = mTileHeightTextField;
+@synthesize fileNewPanel         = mFileNewPanel;
+@synthesize mapWidthTextField    = mMapWidthTextField;
+@synthesize mapHeightTextField   = mMapHeightTextField;
+@synthesize tileWidthTextField   = mTileWidthTextField;
+@synthesize tileHeightTextField  = mTileHeightTextField;
 
-@synthesize scrollView          = mScrollView;
-@synthesize mapView             = mMapView;
+@synthesize scrollView           = mScrollView;
+@synthesize mapView              = mMapView;
 
-@synthesize mapSizeLabel        = mMapSizeLabel;
-@synthesize tileSizeLabel       = mTileSizeLabel;
+@synthesize mapSizeLabel         = mMapSizeLabel;
+@synthesize tileSizeLabel        = mTileSizeLabel;
 
-@synthesize layerCollectionView = mLayerCollectionView;
+@synthesize layerArrayController = mLayerArrayController;
+@synthesize layerCollectionView  = mLayerCollectionView;
 
 
 #pragma mark -
@@ -95,7 +97,7 @@
     
     if (self)
     {
-        mLayerArray = [[NSMutableArray alloc] init];
+
     }
     
     return self;
@@ -104,8 +106,6 @@
 
 - (void)dealloc
 {
-    [mLayerArray release];
-    
     [super dealloc];
 }
 
@@ -131,6 +131,11 @@
 
     [mMapView setDataSource:self];
     
+    FLMapLayerItem *sLayerItem = [[[FLMapLayerItem alloc] init] autorelease];
+    [mLayerCollectionView setItemPrototype:sLayerItem];
+    [mLayerCollectionView setMinItemSize:NSMakeSize(330, 80)];
+    [mLayerCollectionView setMaxItemSize:NSMakeSize(330, 80)];
+    
     if (mMap)
     {
         [self setMap:mMap];
@@ -139,11 +144,6 @@
     {
         [self performSelector:@selector(openSheetInWindow:) withObject:[aController window] afterDelay:0.0];
     }
-    
-    FLLayerItem *sLayer = [[[FLLayerItem alloc] init] autorelease];
-    [sLayer setName:@"Hello"];
-
-    [self setLayerArray:[NSArray arrayWithObject:sLayer]];
 }
 
 
@@ -198,7 +198,12 @@
 
 - (IBAction)addLayer:(id)aSender
 {
-
+    NSInteger sCount = [[mLayerArrayController arrangedObjects] count];
+    
+    FLMapLayer *sLayer = [[[FLMapLayer alloc] init] autorelease];
+    [sLayer setName:[NSString stringWithFormat:@"Hello %d", (int)sCount]];
+    
+    [mLayerArrayController addObject:sLayer];
 }
 
 

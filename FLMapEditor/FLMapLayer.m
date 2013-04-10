@@ -11,6 +11,15 @@
 
 
 @implementation FLMapLayer
+{
+    NSString *mName;
+}
+
+
+@synthesize name = mName;
+
+
+#pragma mark -
 
 
 - (id)initWithJSONObject:(NSDictionary *)aDict
@@ -28,6 +37,8 @@
 
 - (void)dealloc
 {
+    [mName release];
+    
     [super dealloc];
 }
 

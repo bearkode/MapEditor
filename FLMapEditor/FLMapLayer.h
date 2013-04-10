@@ -13,6 +13,9 @@
 @interface FLMapLayer : NSObject
 
 
+@property (nonatomic, retain) NSString *name;
+
+
 - (id)initWithJSONObject:(NSDictionary *)aDict;
 
 - (NSDictionary *)JSONObject;
