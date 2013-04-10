@@ -21,6 +21,7 @@
 		2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */; };
 		2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */; };
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
+		2E7C07FB1713FF65004BA8A0 /* FLLayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F91713FF65004BA8A0 /* FLLayerItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapGridView.m; sourceTree = "<group>"; };
 		2E7C07F01713B509004BA8A0 /* FLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLUtils.h; sourceTree = "<group>"; };
 		2E7C07F11713B509004BA8A0 /* FLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLUtils.m; sourceTree = "<group>"; };
+		2E7C07F81713FF64004BA8A0 /* FLLayerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLayerItem.h; sourceTree = "<group>"; };
+		2E7C07F91713FF65004BA8A0 /* FLLayerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLayerItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				2E4638111712C17B00EA1888 /* FLMapView.m */,
 				2E7C07ED1713B300004BA8A0 /* FLMapGridView.h */,
 				2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */,
+				2E7C07F81713FF64004BA8A0 /* FLLayerItem.h */,
+				2E7C07F91713FF65004BA8A0 /* FLLayerItem.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */,
 				2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */,
 				2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */,
+				2E7C07FB1713FF65004BA8A0 /* FLLayerItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,27 +12,33 @@
 #import "FLMapView.h"
 #import "FLMap.h"
 #import "FLUtils.h"
+#import "FLMapLayer.h"
+#import "FLLayerItem.h"
 
 
 @implementation FLDocument
 {
     /*  File New  */
-    NSPanel      *mFileNewPanel;
-    NSTextField  *mMapWidthTextField;
-    NSTextField  *mMapHeightTextField;
-    NSTextField  *mTileWidthTextField;
-    NSTextField  *mTileHeightTextField;
+    NSPanel          *mFileNewPanel;
+    NSTextField      *mMapWidthTextField;
+    NSTextField      *mMapHeightTextField;
+    NSTextField      *mTileWidthTextField;
+    NSTextField      *mTileHeightTextField;
     
     /*  Edit View  */
-    NSScrollView *mScrollView;
-    FLMapView    *mMapView;
+    NSScrollView     *mScrollView;
+    FLMapView        *mMapView;
     
     /*  Info View  */
-    NSTextField  *mMapSizeLabel;
-    NSTextField  *mTileSizeLabel;
+    NSTextField      *mMapSizeLabel;
+    NSTextField      *mTileSizeLabel;
+    
+    /*  Layers  */
+    NSCollectionView *mLayerCollectionView;
+    NSMutableArray   *mLayerArray;
     
     /*  Model  */
-    FLMap        *mMap;
+    FLMap            *mMap;
 }
 
 
@@ -47,6 +53,8 @@
 
 @synthesize mapSizeLabel        = mMapSizeLabel;
 @synthesize tileSizeLabel       = mTileSizeLabel;
+
+@synthesize layerCollectionView = mLayerCollectionView;
 
 
 #pragma mark -
@@ -87,7 +95,7 @@
     
     if (self)
     {
-
+        mLayerArray = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -96,6 +104,8 @@
 
 - (void)dealloc
 {
+    [mLayerArray release];
+    
     [super dealloc];
 }
 
@@ -129,6 +139,11 @@
     {
         [self performSelector:@selector(openSheetInWindow:) withObject:[aController window] afterDelay:0.0];
     }
+    
+    FLLayerItem *sLayer = [[[FLLayerItem alloc] init] autorelease];
+    [sLayer setName:@"Hello"];
+
+    [self setLayerArray:[NSArray arrayWithObject:sLayer]];
 }
 
 
@@ -158,6 +173,7 @@
 
 
 #pragma mark -
+#pragma mark Actions
 
 
 - (IBAction)fileNewOkButtonClicked:(id)aSender
@@ -180,7 +196,20 @@
 }
 
 
+- (IBAction)addLayer:(id)aSender
+{
+
+}
+
+
+- (IBAction)removeLayer:(id)aSender
+{
+    NSLog(@"remove layer");
+}
+
+
 #pragma mark -
+#pragma mark MapViewDataSource
 
 
 - (NSSize)mapSizeOfMapView:(FLMapView *)aMapView
