@@ -28,6 +28,7 @@
 - (NSData *)JSONDataRepresentation;
 
 
+- (void)addMapLayer:(FLMapLayer *)aMapLayer;
 - (void)insertMapLayerOnTop:(FLMapLayer *)aMapLayer;
 - (void)removeMapLayer:(FLMapLayer *)aMapLayer;
 

@@ -15,6 +15,7 @@
 NSString *const kMapSizeKey         = @"MapSize";
 NSString *const kTileSizeKey        = @"TileSize";
 NSString *const kLayersKey          = @"Layers";
+
 NSString *const kTopographyLayerKey = @"TopographyLayer";
 NSString *const kStructureLayerKey  = @"StructureLayer";
 
@@ -117,7 +118,7 @@ static NSInteger const kStructureLayerIndex  = 1;
             for (id sLayerDict in sLayers)
             {
                 FLMapLayer *sMapLayer = [[[FLMapLayer alloc] initWithJSONObject:sLayerDict] autorelease];
-                [self insertMapLayerOnTop:sMapLayer];
+                [self addMapLayer:sMapLayer];
             }
         }
     }
@@ -152,6 +153,7 @@ static NSInteger const kStructureLayerIndex  = 1;
         NSDictionary *sMapLayerJSONObject = [sMapLayer JSONObject];
         [sMapLayers addObject:sMapLayerJSONObject];
     }
+    [sMapDict setObject:sMapLayers forKey:kLayersKey];
     
     sResult = [NSJSONSerialization dataWithJSONObject:sMapDict options:0 error:&sError];
     if (sError)
@@ -164,6 +166,12 @@ static NSInteger const kStructureLayerIndex  = 1;
 
 
 #pragma mark -
+
+
+- (void)addMapLayer:(FLMapLayer *)aMapLayer
+{
+    [mMapLayersController addObject:aMapLayer];
+}
 
 
 - (void)insertMapLayerOnTop:(FLMapLayer *)aMapLayer

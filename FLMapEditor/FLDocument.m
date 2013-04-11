@@ -9,6 +9,7 @@
 
 #import "FLDocument.h"
 #import "NSTextField+Additions.h"
+#import "NSScrollView+Additions.h"
 #import "FLMapView.h"
 #import "FLMap.h"
 #import "FLUtils.h"
@@ -59,6 +60,11 @@
 #pragma mark -
 
 
+-(void)scrollToCenter:(NSScrollView*)aScrollView
+{
+}
+
+
 - (void)openSheetInWindow:(NSWindow *)aWindow
 {
     [NSApp beginSheet:mFileNewPanel modalForWindow:aWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
@@ -86,6 +92,7 @@
     
     [self updateInfoView];
     [mMapView reload];
+    [mScrollView scrollToCenter];
 }
 
 

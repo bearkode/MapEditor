@@ -24,6 +24,7 @@
 		2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */; };
 		2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */; };
 		2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43C017165D5800CC376E /* FLTileSet.m */; };
+		2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,8 @@
 		2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLMapLayerItem.xib; sourceTree = "<group>"; };
 		2EFB43BF17165D5800CC376E /* FLTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTileSet.h; sourceTree = "<group>"; };
 		2EFB43C017165D5800CC376E /* FLTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTileSet.m; sourceTree = "<group>"; };
+		2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScrollView+Additions.h"; sourceTree = "<group>"; };
+		2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScrollView+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 			children = (
 				2E7C07E91713ABFB004BA8A0 /* NSTextField+Additions.h */,
 				2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */,
+				2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */,
+				2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */,
 				2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */,
 				2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */,
+				2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

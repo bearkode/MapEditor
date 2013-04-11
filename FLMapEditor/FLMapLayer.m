@@ -10,6 +10,9 @@
 #import "FLMapLayer.h"
 
 
+static NSString *const kNameKey = @"Name";
+
+
 @implementation FLMapLayer
 {
     NSString *mName;
@@ -28,7 +31,7 @@
     
     if (self)
     {
-    
+        mName = [[aDict objectForKey:kNameKey] retain];
     }
     
     return self;
@@ -49,6 +52,8 @@
 - (NSDictionary *)JSONObject
 {
     NSMutableDictionary *sResult = [NSMutableDictionary dictionary];
+    
+    [sResult setObject:mName forKey:kNameKey];
     
     return sResult;
 }
