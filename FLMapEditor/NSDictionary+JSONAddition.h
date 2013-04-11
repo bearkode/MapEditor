@@ -1,8 +1,8 @@
 /*
- *  FLJSONHelper.h
+ *  NSDictionary+JSONAddition.h
  *  FLMapEditor
  *
- *  Created by cgkim on 13. 4. 8..
+ *  Created by cgkim on 13. 4. 11..
  *  Copyright (c) 2013 cgkim. All rights reserved.
  *
  */
@@ -10,14 +10,14 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FLJSONHelper : NSObject
+@interface NSDictionary (JSONAddition)
 
 
 + (NSDictionary *)dictionaryWithSize:(NSSize)aSize;
-+ (NSSize)sizeWithDictionary:(NSDictionary *)aDict;
-
 + (NSDictionary *)dictionaryWithPoint:(NSPoint)aPoint;
-+ (NSPoint)pointWitihDictionary:(NSDictionary *)aDict;
+
+- (NSSize)sizeValue;
+- (NSPoint)pointValue;
 
 
 @end

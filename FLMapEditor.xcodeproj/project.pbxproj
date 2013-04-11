@@ -17,7 +17,6 @@
 		2E46380C1712B49100EA1888 /* FLMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380B1712B49100EA1888 /* FLMap.m */; };
 		2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380E1712BCA200EA1888 /* FLMapLayer.m */; };
 		2E4638121712C17B00EA1888 /* FLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638111712C17B00EA1888 /* FLMapView.m */; };
-		2E4638161712C38000EA1888 /* FLJSONHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638151712C38000EA1888 /* FLJSONHelper.m */; };
 		2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */; };
 		2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */; };
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
@@ -25,6 +24,7 @@
 		2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */; };
 		2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43C017165D5800CC376E /* FLTileSet.m */; };
 		2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */; };
+		2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +48,6 @@
 		2E46380E1712BCA200EA1888 /* FLMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapLayer.m; sourceTree = "<group>"; };
 		2E4638101712C17B00EA1888 /* FLMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapView.h; sourceTree = "<group>"; };
 		2E4638111712C17B00EA1888 /* FLMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapView.m; sourceTree = "<group>"; };
-		2E4638141712C38000EA1888 /* FLJSONHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLJSONHelper.h; sourceTree = "<group>"; };
-		2E4638151712C38000EA1888 /* FLJSONHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLJSONHelper.m; sourceTree = "<group>"; };
 		2E7C07E91713ABFB004BA8A0 /* NSTextField+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Additions.h"; sourceTree = "<group>"; };
 		2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Additions.m"; sourceTree = "<group>"; };
 		2E7C07ED1713B300004BA8A0 /* FLMapGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapGridView.h; sourceTree = "<group>"; };
@@ -63,6 +61,8 @@
 		2EFB43C017165D5800CC376E /* FLTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTileSet.m; sourceTree = "<group>"; };
 		2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScrollView+Additions.h"; sourceTree = "<group>"; };
 		2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScrollView+Additions.m"; sourceTree = "<group>"; };
+		2EFB43CF1716A77A00CC376E /* NSDictionary+JSONAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONAddition.h"; sourceTree = "<group>"; };
+		2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONAddition.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,9 +142,6 @@
 			children = (
 				2E7C07F01713B509004BA8A0 /* FLUtils.h */,
 				2E7C07F11713B509004BA8A0 /* FLUtils.m */,
-				2E4638141712C38000EA1888 /* FLJSONHelper.h */,
-				2E4638151712C38000EA1888 /* FLJSONHelper.m */,
-				2EFB43BE17165D2500CC376E /* TileSet */,
 				2EFB43C217165E0700CC376E /* Model */,
 				2E7C07EC1713B2DC004BA8A0 /* Views */,
 				2E4637FC1712AA4A00EA1888 /* FLDocument.h */,
@@ -160,6 +157,8 @@
 				2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */,
 				2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */,
 				2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */,
+				2EFB43CF1716A77A00CC376E /* NSDictionary+JSONAddition.h */,
+				2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -178,15 +177,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		2EFB43BE17165D2500CC376E /* TileSet */ = {
-			isa = PBXGroup;
-			children = (
-				2EFB43BF17165D5800CC376E /* FLTileSet.h */,
-				2EFB43C017165D5800CC376E /* FLTileSet.m */,
-			);
-			name = TileSet;
-			sourceTree = "<group>";
-		};
 		2EFB43C217165E0700CC376E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +184,8 @@
 				2E46380B1712B49100EA1888 /* FLMap.m */,
 				2E46380D1712BCA200EA1888 /* FLMapLayer.h */,
 				2E46380E1712BCA200EA1888 /* FLMapLayer.m */,
+				2EFB43BF17165D5800CC376E /* FLTileSet.h */,
+				2EFB43C017165D5800CC376E /* FLTileSet.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -270,13 +262,13 @@
 				2E46380C1712B49100EA1888 /* FLMap.m in Sources */,
 				2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */,
 				2E4638121712C17B00EA1888 /* FLMapView.m in Sources */,
-				2E4638161712C38000EA1888 /* FLJSONHelper.m in Sources */,
 				2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */,
 				2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */,
 				2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */,
 				2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */,
 				2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */,
 				2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */,
+				2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

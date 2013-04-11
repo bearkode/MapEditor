@@ -8,8 +8,8 @@
  */
 
 #import "FLMap.h"
+#import "NSDictionary+JSONAddition.h"
 #import "FLMapLayer.h"
-#import "FLJSONHelper.h"
 
 
 NSString *const kMapSizeKey         = @"MapSize";
@@ -107,8 +107,8 @@ static NSInteger const kStructureLayerIndex  = 1;
         
         if (!sError)
         {
-            mMapSize             = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kMapSizeKey]];
-            mTileSize            = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kTileSizeKey]];
+            mMapSize             = [[sJSONObject objectForKey:kMapSizeKey] sizeValue];
+            mTileSize            = [[sJSONObject objectForKey:kTileSizeKey] sizeValue];
             mMapLayersController = [[NSArrayController alloc] init];
 
             [self setupMapLayersController];
@@ -145,8 +145,8 @@ static NSInteger const kStructureLayerIndex  = 1;
     NSError             *sError     = nil;
     NSMutableArray      *sMapLayers = [NSMutableArray array];
     
-    [sMapDict setObject:[FLJSONHelper dictionaryWithSize:mMapSize] forKey:kMapSizeKey];
-    [sMapDict setObject:[FLJSONHelper dictionaryWithSize:mTileSize] forKey:kTileSizeKey];
+    [sMapDict setObject:[NSDictionary dictionaryWithSize:mMapSize] forKey:kMapSizeKey];
+    [sMapDict setObject:[NSDictionary dictionaryWithSize:mTileSize] forKey:kTileSizeKey];
     
     for (FLMapLayer *sMapLayer in [mMapLayersController arrangedObjects])
     {
