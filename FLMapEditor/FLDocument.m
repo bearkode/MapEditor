@@ -34,7 +34,6 @@
     NSTextField       *mTileSizeLabel;
     
     /*  Layers  */
-    NSArrayController *mLayerArrayController;
     NSCollectionView  *mLayerCollectionView;
     
     /*  Model  */
@@ -54,7 +53,6 @@
 @synthesize mapSizeLabel         = mMapSizeLabel;
 @synthesize tileSizeLabel        = mTileSizeLabel;
 
-@synthesize layerArrayController = mLayerArrayController;
 @synthesize layerCollectionView  = mLayerCollectionView;
 
 
@@ -79,8 +77,12 @@
 
 - (void)setMap:(FLMap *)aMap
 {
+    [mLayerCollectionView unbind:NSContentBinding];
     [mMap autorelease];
     mMap = [aMap retain];
+    
+    [mLayerCollectionView setContent:[[mMap arrayController] arrangedObjects]];
+    [mLayerCollectionView bind:NSContentBinding toObject:mMap withKeyPath:@"arrayController.arrangedObjects" options:NULL];
     
     [self updateInfoView];
     [mMapView reload];
@@ -129,9 +131,8 @@
     [super windowControllerDidLoadNib:aController];
 
     [mMapView setDataSource:self];
-    
-    FLMapLayerItem *sLayerItem = [[[FLMapLayerItem alloc] init] autorelease];
-    [mLayerCollectionView setItemPrototype:sLayerItem];
+
+    [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] init] autorelease]];
     [mLayerCollectionView setMinItemSize:NSMakeSize(330, 80)];
     [mLayerCollectionView setMaxItemSize:NSMakeSize(330, 80)];
     
@@ -197,18 +198,31 @@
 
 - (IBAction)addLayer:(id)aSender
 {
-    NSInteger sCount = [[mLayerArrayController arrangedObjects] count];
-    
     FLMapLayer *sLayer = [[[FLMapLayer alloc] init] autorelease];
-    [sLayer setName:[NSString stringWithFormat:@"Hello %d", (int)sCount]];
+    [sLayer setName:[NSString stringWithFormat:@"Hello"]];
     
-    [mLayerArrayController addObject:sLayer];
+    [mMap insertMapLayerOnTop:sLayer];
 }
 
 
 - (IBAction)removeLayer:(id)aSender
 {
     NSLog(@"remove layer");
+}
+
+
+- (IBAction)loadTileSetButtonClicked:(id)aSender
+{
+    NSWindowController *sWindowController = [[self windowControllers] objectAtIndex:0];
+    NSOpenPanel        *sOpenPanel        = [NSOpenPanel openPanel];
+   
+    [sOpenPanel setAllowedFileTypes:[NSArray arrayWithObject:@"png"]];
+    [sOpenPanel beginSheetModalForWindow:[sWindowController window] completionHandler:^(NSInteger aResult) {
+        if (aResult == NSFileHandlingPanelOKButton)
+        {
+            NSLog(@"urls = %@", [sOpenPanel URLs]);
+        }
+    }];
 }
 
 

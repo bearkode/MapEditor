@@ -23,6 +23,7 @@
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
 		2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */; };
 		2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */; };
+		2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43C017165D5800CC376E /* FLTileSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,8 @@
 		2E7C082A17154F66004BA8A0 /* FLMapLayerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapLayerItem.h; sourceTree = "<group>"; };
 		2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapLayerItem.m; sourceTree = "<group>"; };
 		2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLMapLayerItem.xib; sourceTree = "<group>"; };
+		2EFB43BF17165D5800CC376E /* FLTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTileSet.h; sourceTree = "<group>"; };
+		2EFB43C017165D5800CC376E /* FLTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTileSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,13 +139,11 @@
 			children = (
 				2E7C07F01713B509004BA8A0 /* FLUtils.h */,
 				2E7C07F11713B509004BA8A0 /* FLUtils.m */,
-				2E7C07EC1713B2DC004BA8A0 /* Views */,
 				2E4638141712C38000EA1888 /* FLJSONHelper.h */,
 				2E4638151712C38000EA1888 /* FLJSONHelper.m */,
-				2E46380A1712B49100EA1888 /* FLMap.h */,
-				2E46380B1712B49100EA1888 /* FLMap.m */,
-				2E46380D1712BCA200EA1888 /* FLMapLayer.h */,
-				2E46380E1712BCA200EA1888 /* FLMapLayer.m */,
+				2EFB43BE17165D2500CC376E /* TileSet */,
+				2EFB43C217165E0700CC376E /* Model */,
+				2E7C07EC1713B2DC004BA8A0 /* Views */,
 				2E4637FC1712AA4A00EA1888 /* FLDocument.h */,
 				2E4637FD1712AA4A00EA1888 /* FLDocument.m */,
 			);
@@ -170,6 +171,26 @@
 				2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		2EFB43BE17165D2500CC376E /* TileSet */ = {
+			isa = PBXGroup;
+			children = (
+				2EFB43BF17165D5800CC376E /* FLTileSet.h */,
+				2EFB43C017165D5800CC376E /* FLTileSet.m */,
+			);
+			name = TileSet;
+			sourceTree = "<group>";
+		};
+		2EFB43C217165E0700CC376E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2E46380A1712B49100EA1888 /* FLMap.h */,
+				2E46380B1712B49100EA1888 /* FLMap.m */,
+				2E46380D1712BCA200EA1888 /* FLMapLayer.h */,
+				2E46380E1712BCA200EA1888 /* FLMapLayer.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +270,7 @@
 				2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */,
 				2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */,
 				2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */,
+				2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

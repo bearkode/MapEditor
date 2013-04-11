@@ -14,22 +14,64 @@
 
 NSString *const kMapSizeKey         = @"MapSize";
 NSString *const kTileSizeKey        = @"TileSize";
+NSString *const kLayersKey          = @"Layers";
 NSString *const kTopographyLayerKey = @"TopographyLayer";
 NSString *const kStructureLayerKey  = @"StructureLayer";
 
 
+static NSInteger const kTopographyLayerIndex = 0;
+static NSInteger const kStructureLayerIndex  = 1;
+
+
 @implementation FLMap
 {
-    NSSize      mMapSize;
-    NSSize      mTileSize;
-    
-    FLMapLayer *mStructureLayer;
-    FLMapLayer *mTopographyLayer;
+    NSSize             mMapSize;
+    NSSize             mTileSize;
+    NSArrayController *mMapLayersController;
 }
 
 
 @synthesize mapSize  = mMapSize;
 @synthesize tileSize = mTileSize;
+@dynamic    arrayController;
+
+
+#pragma mark -
+#pragma mark Accessors
+
+
+- (NSArrayController *)arrayController
+{
+    return mMapLayersController;
+}
+
+
+#pragma mark -
+
+
+- (void)setupMapLayersController
+{
+    [mMapLayersController setObjectClass:[FLMapLayer class]];
+    [mMapLayersController setAvoidsEmptySelection:YES];
+    [mMapLayersController setPreservesSelection:YES];
+    [mMapLayersController setSelectsInsertedObjects:YES];
+    [mMapLayersController setClearsFilterPredicateOnInsertion:YES];
+    [mMapLayersController setEditable:YES];
+}
+
+
+- (void)setupIntitialLayers
+{
+    FLMapLayer *sMapLayer;
+    
+    sMapLayer = [[[FLMapLayer alloc] init] autorelease];
+    [sMapLayer setName:@"Topography Layer"];
+    [self insertMapLayerOnTop:sMapLayer];
+    
+    sMapLayer = [[[FLMapLayer alloc] init] autorelease];
+    [sMapLayer setName:@"Structure Layer"];
+    [self insertMapLayerOnTop:sMapLayer];
+}
 
 
 #pragma mark -
@@ -41,10 +83,12 @@ NSString *const kStructureLayerKey  = @"StructureLayer";
     
     if (self)
     {
-        mMapSize         = aMapSize;
-        mTileSize        = aTileSize;
-        mTopographyLayer = [[FLMapLayer alloc] init];
-        mStructureLayer  = [[FLMapLayer alloc] init];
+        mMapSize             = aMapSize;
+        mTileSize            = aTileSize;
+        mMapLayersController = [[NSArrayController alloc] init];
+        
+        [self setupMapLayersController];
+        [self setupIntitialLayers];
     }
     
     return self;
@@ -62,10 +106,19 @@ NSString *const kStructureLayerKey  = @"StructureLayer";
         
         if (!sError)
         {
-            mMapSize         = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kMapSizeKey]];
-            mTileSize        = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kTileSizeKey]];
-            mTopographyLayer = [[FLMapLayer alloc] initWithJSONObject:[sJSONObject objectForKey:kTopographyLayerKey]];
-            mStructureLayer  = [[FLMapLayer alloc] initWithJSONObject:[sJSONObject objectForKey:kStructureLayerKey]];
+            mMapSize             = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kMapSizeKey]];
+            mTileSize            = [FLJSONHelper sizeWithDictionary:[sJSONObject objectForKey:kTileSizeKey]];
+            mMapLayersController = [[NSArrayController alloc] init];
+
+            [self setupMapLayersController];
+            
+            NSArray *sLayers = [sJSONObject objectForKey:kLayersKey];
+            
+            for (id sLayerDict in sLayers)
+            {
+                FLMapLayer *sMapLayer = [[[FLMapLayer alloc] initWithJSONObject:sLayerDict] autorelease];
+                [self insertMapLayerOnTop:sMapLayer];
+            }
         }
     }
     
@@ -75,6 +128,8 @@ NSString *const kStructureLayerKey  = @"StructureLayer";
 
 - (void)dealloc
 {
+    [mMapLayersController release];
+    
     [super dealloc];
 }
 
@@ -84,14 +139,19 @@ NSString *const kStructureLayerKey  = @"StructureLayer";
 
 - (NSData *)JSONDataRepresentation
 {
-    NSData              *sResult  = nil;
-    NSMutableDictionary *sMapDict = [NSMutableDictionary dictionary];
-    NSError             *sError   = nil;
+    NSData              *sResult    = nil;
+    NSMutableDictionary *sMapDict   = [NSMutableDictionary dictionary];
+    NSError             *sError     = nil;
+    NSMutableArray      *sMapLayers = [NSMutableArray array];
     
     [sMapDict setObject:[FLJSONHelper dictionaryWithSize:mMapSize] forKey:kMapSizeKey];
     [sMapDict setObject:[FLJSONHelper dictionaryWithSize:mTileSize] forKey:kTileSizeKey];
-    [sMapDict setObject:[mTopographyLayer JSONObject] forKey:kTopographyLayerKey];
-    [sMapDict setObject:[mStructureLayer JSONObject] forKey:kStructureLayerKey];
+    
+    for (FLMapLayer *sMapLayer in [mMapLayersController arrangedObjects])
+    {
+        NSDictionary *sMapLayerJSONObject = [sMapLayer JSONObject];
+        [sMapLayers addObject:sMapLayerJSONObject];
+    }
     
     sResult = [NSJSONSerialization dataWithJSONObject:sMapDict options:0 error:&sError];
     if (sError)
@@ -100,6 +160,21 @@ NSString *const kStructureLayerKey  = @"StructureLayer";
     }
     
     return sResult;
+}
+
+
+#pragma mark -
+
+
+- (void)insertMapLayerOnTop:(FLMapLayer *)aMapLayer
+{
+    [mMapLayersController insertObject:aMapLayer atArrangedObjectIndex:0];
+}
+
+
+- (void)removeMapLayer:(FLMapLayer *)aMapLayer
+{
+//    [mMapLayers removeObject:aMapLayer];
 }
 
 

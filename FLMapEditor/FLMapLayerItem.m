@@ -73,7 +73,7 @@
 - (void)setRepresentedObject:(id)aObject
 {
     [super setRepresentedObject:aObject];
- 
+    
     if (aObject)
     {
         NSString *sName = [(FLMapLayer *)aObject name];
@@ -97,5 +97,6 @@
     [sBox setBorderColor:sBorderColor];
     [sBox setFillColor:sFillColor];
 }
+
 
 @end
