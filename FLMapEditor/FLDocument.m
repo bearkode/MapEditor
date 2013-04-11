@@ -13,7 +13,6 @@
 #import "FLMap.h"
 #import "FLUtils.h"
 #import "FLMapLayer.h"
-#import "FLLayerItem.h"
 #import "FLMapLayerItem.h"
 
 

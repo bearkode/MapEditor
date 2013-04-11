@@ -58,6 +58,18 @@
 #pragma mark -
 
 
+- (void)awakeFromNib
+{
+    NSBox *sBox = (NSBox *)[self view];
+    
+    [sBox setTitlePosition:NSNoTitle];
+    [sBox setBoxType:NSBoxCustom];
+    [sBox setCornerRadius:3.0];
+    [sBox setBorderType:NSLineBorder];
+    [sBox setContentViewMargins:NSMakeSize(1, 1)];
+}
+
+
 - (void)setRepresentedObject:(id)aObject
 {
     [super setRepresentedObject:aObject];
@@ -73,5 +85,17 @@
     }
 }
 
+
+- (void)setSelected:(BOOL)aSelected
+{
+    [super setSelected:aSelected];
+
+    NSBox   *sBox         = (NSBox *)[self view];
+    NSColor *sFillColor   = (aSelected) ? [NSColor selectedControlColor] : [NSColor controlBackgroundColor];
+    NSColor *sBorderColor = (aSelected) ? [NSColor blackColor] : [NSColor controlBackgroundColor];
+    
+    [sBox setBorderColor:sBorderColor];
+    [sBox setFillColor:sFillColor];
+}
 
 @end
