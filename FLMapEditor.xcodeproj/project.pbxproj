@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E37E5D91717A0510033982C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E5D81717A0510033982C /* AppDelegate.m */; };
 		2E4637EB1712AA4A00EA1888 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E4637EA1712AA4A00EA1888 /* Cocoa.framework */; };
 		2E4637F51712AA4A00EA1888 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637F31712AA4A00EA1888 /* InfoPlist.strings */; };
 		2E4637F71712AA4A00EA1888 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4637F61712AA4A00EA1888 /* main.m */; };
@@ -25,9 +26,13 @@
 		2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43C017165D5800CC376E /* FLTileSet.m */; };
 		2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */; };
 		2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */; };
+		2EFB43D41716C13B00CC376E /* FLObjectSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D31716C13B00CC376E /* FLObjectSet.m */; };
+		2EFB43D71716C16600CC376E /* FLSpriteSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D61716C16600CC376E /* FLSpriteSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E37E5D71717A0510033982C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2E37E5D81717A0510033982C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2E4637E71712AA4A00EA1888 /* FLMapEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLMapEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E4637EA1712AA4A00EA1888 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2E4637ED1712AA4A00EA1888 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -63,6 +68,10 @@
 		2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScrollView+Additions.m"; sourceTree = "<group>"; };
 		2EFB43CF1716A77A00CC376E /* NSDictionary+JSONAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONAddition.h"; sourceTree = "<group>"; };
 		2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONAddition.m"; sourceTree = "<group>"; };
+		2EFB43D21716C13B00CC376E /* FLObjectSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectSet.h; sourceTree = "<group>"; };
+		2EFB43D31716C13B00CC376E /* FLObjectSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectSet.m; sourceTree = "<group>"; };
+		2EFB43D51716C16600CC376E /* FLSpriteSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSpriteSet.h; sourceTree = "<group>"; };
+		2EFB43D61716C16600CC376E /* FLSpriteSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSpriteSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +127,8 @@
 			children = (
 				2E7C07E81713ABD6004BA8A0 /* Additions */,
 				2E4638131712C18500EA1888 /* Classes */,
-				2E4637FF1712AA4A00EA1888 /* FLDocument.xib */,
+				2E37E5D71717A0510033982C /* AppDelegate.h */,
+				2E37E5D81717A0510033982C /* AppDelegate.m */,
 				2E4638021712AA4A00EA1888 /* MainMenu.xib */,
 				2E4637F11712AA4A00EA1888 /* Supporting Files */,
 			);
@@ -146,6 +156,7 @@
 				2E7C07EC1713B2DC004BA8A0 /* Views */,
 				2E4637FC1712AA4A00EA1888 /* FLDocument.h */,
 				2E4637FD1712AA4A00EA1888 /* FLDocument.m */,
+				2E4637FF1712AA4A00EA1888 /* FLDocument.xib */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -184,8 +195,12 @@
 				2E46380B1712B49100EA1888 /* FLMap.m */,
 				2E46380D1712BCA200EA1888 /* FLMapLayer.h */,
 				2E46380E1712BCA200EA1888 /* FLMapLayer.m */,
+				2EFB43D51716C16600CC376E /* FLSpriteSet.h */,
+				2EFB43D61716C16600CC376E /* FLSpriteSet.m */,
 				2EFB43BF17165D5800CC376E /* FLTileSet.h */,
 				2EFB43C017165D5800CC376E /* FLTileSet.m */,
+				2EFB43D21716C13B00CC376E /* FLObjectSet.h */,
+				2EFB43D31716C13B00CC376E /* FLObjectSet.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -269,6 +284,9 @@
 				2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */,
 				2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */,
 				2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */,
+				2EFB43D41716C13B00CC376E /* FLObjectSet.m in Sources */,
+				2EFB43D71716C16600CC376E /* FLSpriteSet.m in Sources */,
+				2E37E5D91717A0510033982C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

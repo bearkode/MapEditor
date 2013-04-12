@@ -13,11 +13,14 @@
 
 @implementation FLMapLayerItem
 {
+    NSBox       *mBox;
     NSTextField *mNameField;
+    
     NSString    *mName;
 }
 
 
+@synthesize box       = mBox;
 @synthesize nameField = mNameField;
 
 
@@ -43,6 +46,12 @@
     
     [NSBundle loadNibNamed:@"FLMapLayerItem" owner:sResult];
     
+    NSColor *sFillColor   = [NSColor controlBackgroundColor];
+    NSColor *sBorderColor = [NSColor controlBackgroundColor];
+    
+    [mBox setBorderColor:sBorderColor];
+    [mBox setFillColor:sFillColor];
+    
     return sResult;
 }
 
@@ -60,13 +69,11 @@
 
 - (void)awakeFromNib
 {
-    NSBox *sBox = (NSBox *)[self view];
-    
-    [sBox setTitlePosition:NSNoTitle];
-    [sBox setBoxType:NSBoxCustom];
-    [sBox setCornerRadius:3.0];
-    [sBox setBorderType:NSLineBorder];
-    [sBox setContentViewMargins:NSMakeSize(1, 1)];
+    [mBox setTitlePosition:NSNoTitle];
+    [mBox setBoxType:NSBoxCustom];
+    [mBox setCornerRadius:3.0];
+    [mBox setBorderType:NSLineBorder];
+    [mBox setContentViewMargins:NSMakeSize(1, 1)];
 }
 
 
@@ -90,12 +97,11 @@
 {
     [super setSelected:aSelected];
 
-    NSBox   *sBox         = (NSBox *)[self view];
     NSColor *sFillColor   = (aSelected) ? [NSColor selectedControlColor] : [NSColor controlBackgroundColor];
-    NSColor *sBorderColor = (aSelected) ? [NSColor blackColor] : [NSColor controlBackgroundColor];
+    NSColor *sBorderColor = (aSelected) ? [NSColor grayColor] : [NSColor controlBackgroundColor];
     
-    [sBox setBorderColor:sBorderColor];
-    [sBox setFillColor:sFillColor];
+    [mBox setBorderColor:sBorderColor];
+    [mBox setFillColor:sFillColor];
 }
 
 

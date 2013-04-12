@@ -13,6 +13,7 @@
 @interface FLMapLayerItem : NSCollectionViewItem
 
 
+@property (nonatomic, assign) IBOutlet NSBox       *box;
 @property (nonatomic, assign) IBOutlet NSTextField *nameField;
 
 

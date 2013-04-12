@@ -63,8 +63,30 @@
 
 - (void)drawRect:(NSRect)aRect
 {
-    [[NSColor lightGrayColor] set];
-    [NSBezierPath fillRect:aRect];
+    NSRect sBounds   = [self bounds];
+    NSSize sGridSize = NSMakeSize(15, 15);
+    
+    BOOL sIsDark = NO;
+    for (NSInteger y = 0; y < sBounds.size.height; y += sGridSize.height)
+    {
+        sIsDark = ((y % 2) == 1) ? NO : YES;
+        
+        for (NSInteger x = 0; x < sBounds.size.width; x += sGridSize.width)
+        {
+            sIsDark = (sIsDark) ? NO : YES;
+            
+            if (sIsDark)
+            {
+                [[NSColor colorWithCalibratedRed:(214.0 / 255.0) green:(214.0 / 255.0) blue:(214.0 / 255.0) alpha:(214.0 / 255.0)] set];
+            }
+            else
+            {
+                [[NSColor whiteColor] set];
+            }
+            
+            [NSBezierPath fillRect:NSMakeRect(x, y, sGridSize.width, sGridSize.height)];
+        }
+    }
 }
 
 

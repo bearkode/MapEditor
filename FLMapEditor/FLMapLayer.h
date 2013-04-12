@@ -10,12 +10,25 @@
 #import <Foundation/Foundation.h>
 
 
+@class FLTileSet;
+
+
+typedef enum
+{
+    kFLMapLayerTileType = 0,
+    kFLMapLayerObjectType,
+} FLMapLayerType;
+
+
 @interface FLMapLayer : NSObject
 
 
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic, readonly) FLMapLayerType type;
+@property (nonatomic, retain)   NSString      *name;
+@property (nonatomic, retain)   FLTileSet     *tileSet;
 
 
+- (id)initWithType:(FLMapLayerType)aType;
 - (id)initWithJSONObject:(NSDictionary *)aDict;
 
 - (NSDictionary *)JSONObject;

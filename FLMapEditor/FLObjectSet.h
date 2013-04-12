@@ -1,5 +1,5 @@
 /*
- *  FLTileSet.h
+ *  FLObjectSet.h
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 11..
@@ -11,10 +11,7 @@
 #import "FLSpriteSet.h"
 
 
-@interface FLTileSet : FLSpriteSet
-
-
-- (id)initWithImageURL:(NSURL *)aURL;
+@interface FLObjectSet : FLSpriteSet
 
 
 @end

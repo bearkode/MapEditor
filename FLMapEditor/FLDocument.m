@@ -15,6 +15,7 @@
 #import "FLUtils.h"
 #import "FLMapLayer.h"
 #import "FLMapLayerItem.h"
+#import "FLTileSet.h"
 
 
 @implementation FLDocument
@@ -39,7 +40,12 @@
     
     /*  Model  */
     FLMap             *mMap;
+    FLMapLayer        *mCurrentLayer;
+    FLTileSet         *mCurrentTileSet;
 }
+
+
+#pragma mark - Properties
 
 
 @synthesize fileNewPanel         = mFileNewPanel;
@@ -58,11 +64,7 @@
 
 
 #pragma mark -
-
-
--(void)scrollToCenter:(NSScrollView*)aScrollView
-{
-}
+#pragma mark Privates
 
 
 - (void)openSheetInWindow:(NSWindow *)aWindow
@@ -87,8 +89,12 @@
     [mMap autorelease];
     mMap = [aMap retain];
     
-    [mLayerCollectionView setContent:[[mMap arrayController] arrangedObjects]];
+    NSArray   *sArrangedObjects = [[mMap arrayController] arrangedObjects];
+    NSUInteger sIndex           = [sArrangedObjects count] - 1;
+    [mLayerCollectionView setContent:sArrangedObjects];
     [mLayerCollectionView bind:NSContentBinding toObject:mMap withKeyPath:@"arrayController.arrangedObjects" options:NULL];
+    [mLayerCollectionView setSelectionIndexes:[NSIndexSet indexSetWithIndex:sIndex]];
+    [mLayerCollectionView scrollRectToVisible:[mLayerCollectionView frameForItemAtIndex:sIndex]];
     
     [self updateInfoView];
     [mMapView reload];
@@ -97,6 +103,7 @@
 
 
 #pragma mark -
+#pragma mark init / dealloc
 
 
 - (id)init
@@ -114,11 +121,14 @@
 
 - (void)dealloc
 {
+    [mLayerCollectionView removeObserver:self forKeyPath:@"selectionIndexes"];
+    
     [super dealloc];
 }
 
 
 #pragma mark -
+#pragma mark Inherited
 
 
 - (NSString *)windowNibName
@@ -140,8 +150,9 @@
     [mMapView setDataSource:self];
 
     [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] init] autorelease]];
-    [mLayerCollectionView setMinItemSize:NSMakeSize(330, 80)];
-    [mLayerCollectionView setMaxItemSize:NSMakeSize(330, 80)];
+    [mLayerCollectionView setMinItemSize:NSMakeSize(330, 50)];
+    [mLayerCollectionView setMaxItemSize:NSMakeSize(330, 50)];
+    [mLayerCollectionView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
     
     if (mMap)
     {
@@ -203,6 +214,9 @@
 }
 
 
+#pragma mark -
+
+
 - (IBAction)addLayer:(id)aSender
 {
     FLMapLayer *sLayer = [[[FLMapLayer alloc] init] autorelease];
@@ -218,6 +232,9 @@
 }
 
 
+#pragma mark -
+
+
 - (IBAction)loadTileSetButtonClicked:(id)aSender
 {
     NSWindowController *sWindowController = [[self windowControllers] objectAtIndex:0];
@@ -227,7 +244,9 @@
     [sOpenPanel beginSheetModalForWindow:[sWindowController window] completionHandler:^(NSInteger aResult) {
         if (aResult == NSFileHandlingPanelOKButton)
         {
-            NSLog(@"urls = %@", [sOpenPanel URLs]);
+            FLTileSet *sTileSet = [[[FLTileSet alloc] initWithImageURL:[[sOpenPanel URLs] objectAtIndex:0]] autorelease];
+            [mCurrentLayer setTileSet:sTileSet];
+            mCurrentTileSet = sTileSet;
         }
     }];
 }
@@ -246,6 +265,38 @@
 - (NSSize)tileSizeOfMapView:(FLMapView *)aMapView
 {
     return [mMap tileSize];
+}
+
+
+#pragma mark -
+#pragma mark KVO
+
+
+- (void)layerCollectionViewSelectionDidChange
+{
+    NSIndexSet *sIndexSet = [mLayerCollectionView selectionIndexes];
+    NSUInteger  sIndex    = [sIndexSet firstIndex];
+
+    mCurrentLayer   = [[[mMap arrayController] arrangedObjects] objectAtIndex:sIndex];
+    mCurrentTileSet = [mCurrentLayer tileSet];
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)aObject change:(NSDictionary *)aChange context:(void *)aContext
+{
+//    NSLog(@"observeValueForKeyPath:ofObject:change:context");
+//    NSLog(@"aKeyPath = %@", aKeyPath);
+//    NSLog(@"aObject  = %@", aObject);
+//    NSLog(@"aChange  = %@", aChange);
+//    NSLog(@"aContext = %p", aContext);
+    
+    if (aObject == mLayerCollectionView)
+    {
+        if ([aKeyPath isEqualToString:@"selectionIndexes"])
+        {
+            [self layerCollectionViewSelectionDidChange];
+        }
+    }
 }
 
 
