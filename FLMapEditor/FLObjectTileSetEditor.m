@@ -1,5 +1,5 @@
 /*
- *  FLObjectTileSetEditorWindowController.m
+ *  FLObjectTileSetEditor.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..
@@ -7,10 +7,10 @@
  *
  */
 
-#import "FLObjectTileSetEditorWindowController.h"
+#import "FLObjectTileSetEditor.h"
 
 
-@implementation FLObjectTileSetEditorWindowController
+@implementation FLObjectTileSetEditor
 
 
 - (id)initWithWindow:(NSWindow *)aWindow

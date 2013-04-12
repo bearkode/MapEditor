@@ -8,14 +8,14 @@
  */
 
 #import "AppDelegate.h"
-#import "FLTopographyTileSetEditorWindowController.h"
-#import "FLObjectTileSetEditorWindowController.h"
+#import "FLTopographyTileSetEditor.h"
+#import "FLObjectTileSetEditor.h"
 
 
 @implementation AppDelegate
 {
-    FLTopographyTileSetEditorWindowController *mTopographyTileSetEditorWindowController;
-    FLObjectTileSetEditorWindowController     *mObjectTileSetEditorWindowController;
+    FLTopographyTileSetEditor *mTopographyTileSetEditorWindowController;
+    FLObjectTileSetEditor     *mObjectTileSetEditorWindowController;
 }
 
 - (void)dealloc
@@ -38,7 +38,7 @@
 {
     if (!mTopographyTileSetEditorWindowController)
     {
-        mTopographyTileSetEditorWindowController = [[FLTopographyTileSetEditorWindowController alloc] initWithWindowNibName:@"FLTopographyTileSetEditorWindowController"];
+        mTopographyTileSetEditorWindowController = [[FLTopographyTileSetEditor alloc] initWithWindowNibName:@"FLTopographyTileSetEditor"];
     }
     
     [mTopographyTileSetEditorWindowController showWindow:self];
@@ -49,7 +49,7 @@
 {
     if (!mObjectTileSetEditorWindowController)
     {
-        mObjectTileSetEditorWindowController = [[FLObjectTileSetEditorWindowController alloc] initWithWindowNibName:@"FLObjectTileSetEditorWindowController"];
+        mObjectTileSetEditorWindowController = [[FLObjectTileSetEditor alloc] initWithWindowNibName:@"FLObjectTileSetEditor"];
     }
     
     [mObjectTileSetEditorWindowController showWindow:self];

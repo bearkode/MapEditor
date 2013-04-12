@@ -1,5 +1,5 @@
 /*
- *  FLTopographyTileSetEditorWindowController.m
+ *  FLTopographyTileSetEditor.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..
@@ -7,10 +7,10 @@
  *
  */
 
-#import "FLTopographyTileSetEditorWindowController.h"
+#import "FLTopographyTileSetEditor.h"
 
 
-@implementation FLTopographyTileSetEditorWindowController
+@implementation FLTopographyTileSetEditor
 
 
 - (id)initWithWindow:(NSWindow *)aWindow
