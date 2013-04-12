@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2E37E5D91717A0510033982C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E5D81717A0510033982C /* AppDelegate.m */; };
+		2E37E6071717A71A0033982C /* FLTopographyTileSetEditorWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6051717A71A0033982C /* FLTopographyTileSetEditorWindowController.m */; };
+		2E37E6081717A71A0033982C /* FLTopographyTileSetEditorWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E6061717A71A0033982C /* FLTopographyTileSetEditorWindowController.xib */; };
+		2E37E60D1717A89A0033982C /* FLObjectTileSetEditorWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E60B1717A89A0033982C /* FLObjectTileSetEditorWindowController.m */; };
+		2E37E60E1717A89A0033982C /* FLObjectTileSetEditorWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E60C1717A89A0033982C /* FLObjectTileSetEditorWindowController.xib */; };
 		2E4637EB1712AA4A00EA1888 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E4637EA1712AA4A00EA1888 /* Cocoa.framework */; };
 		2E4637F51712AA4A00EA1888 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637F31712AA4A00EA1888 /* InfoPlist.strings */; };
 		2E4637F71712AA4A00EA1888 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4637F61712AA4A00EA1888 /* main.m */; };
@@ -33,6 +37,12 @@
 /* Begin PBXFileReference section */
 		2E37E5D71717A0510033982C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2E37E5D81717A0510033982C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2E37E6041717A71A0033982C /* FLTopographyTileSetEditorWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTopographyTileSetEditorWindowController.h; sourceTree = "<group>"; };
+		2E37E6051717A71A0033982C /* FLTopographyTileSetEditorWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTopographyTileSetEditorWindowController.m; sourceTree = "<group>"; };
+		2E37E6061717A71A0033982C /* FLTopographyTileSetEditorWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTopographyTileSetEditorWindowController.xib; sourceTree = "<group>"; };
+		2E37E60A1717A89A0033982C /* FLObjectTileSetEditorWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectTileSetEditorWindowController.h; sourceTree = "<group>"; };
+		2E37E60B1717A89A0033982C /* FLObjectTileSetEditorWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectTileSetEditorWindowController.m; sourceTree = "<group>"; };
+		2E37E60C1717A89A0033982C /* FLObjectTileSetEditorWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLObjectTileSetEditorWindowController.xib; sourceTree = "<group>"; };
 		2E4637E71712AA4A00EA1888 /* FLMapEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLMapEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E4637EA1712AA4A00EA1888 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2E4637ED1712AA4A00EA1888 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -86,6 +96,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E37E6031717A6C60033982C /* TopographyTileSetEditor */ = {
+			isa = PBXGroup;
+			children = (
+				2E37E6041717A71A0033982C /* FLTopographyTileSetEditorWindowController.h */,
+				2E37E6051717A71A0033982C /* FLTopographyTileSetEditorWindowController.m */,
+				2E37E6061717A71A0033982C /* FLTopographyTileSetEditorWindowController.xib */,
+			);
+			name = TopographyTileSetEditor;
+			sourceTree = "<group>";
+		};
+		2E37E6091717A86E0033982C /* FLObjectTileSetEditor */ = {
+			isa = PBXGroup;
+			children = (
+				2E37E60A1717A89A0033982C /* FLObjectTileSetEditorWindowController.h */,
+				2E37E60B1717A89A0033982C /* FLObjectTileSetEditorWindowController.m */,
+				2E37E60C1717A89A0033982C /* FLObjectTileSetEditorWindowController.xib */,
+			);
+			name = FLObjectTileSetEditor;
+			sourceTree = "<group>";
+		};
 		2E4637DE1712AA4A00EA1888 = {
 			isa = PBXGroup;
 			children = (
@@ -126,7 +156,9 @@
 			isa = PBXGroup;
 			children = (
 				2E7C07E81713ABD6004BA8A0 /* Additions */,
-				2E4638131712C18500EA1888 /* Classes */,
+				2E4638131712C18500EA1888 /* MapEditor */,
+				2E37E6031717A6C60033982C /* TopographyTileSetEditor */,
+				2E37E6091717A86E0033982C /* FLObjectTileSetEditor */,
 				2E37E5D71717A0510033982C /* AppDelegate.h */,
 				2E37E5D81717A0510033982C /* AppDelegate.m */,
 				2E4638021712AA4A00EA1888 /* MainMenu.xib */,
@@ -147,7 +179,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2E4638131712C18500EA1888 /* Classes */ = {
+		2E4638131712C18500EA1888 /* MapEditor */ = {
 			isa = PBXGroup;
 			children = (
 				2E7C07F01713B509004BA8A0 /* FLUtils.h */,
@@ -158,7 +190,7 @@
 				2E4637FD1712AA4A00EA1888 /* FLDocument.m */,
 				2E4637FF1712AA4A00EA1888 /* FLDocument.xib */,
 			);
-			name = Classes;
+			name = MapEditor;
 			sourceTree = "<group>";
 		};
 		2E7C07E81713ABD6004BA8A0 /* Additions */ = {
@@ -262,6 +294,8 @@
 				2E4638011712AA4A00EA1888 /* FLDocument.xib in Resources */,
 				2E4638041712AA4A00EA1888 /* MainMenu.xib in Resources */,
 				2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */,
+				2E37E6081717A71A0033982C /* FLTopographyTileSetEditorWindowController.xib in Resources */,
+				2E37E60E1717A89A0033982C /* FLObjectTileSetEditorWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +321,8 @@
 				2EFB43D41716C13B00CC376E /* FLObjectSet.m in Sources */,
 				2EFB43D71716C16600CC376E /* FLSpriteSet.m in Sources */,
 				2E37E5D91717A0510033982C /* AppDelegate.m in Sources */,
+				2E37E6071717A71A0033982C /* FLTopographyTileSetEditorWindowController.m in Sources */,
+				2E37E60D1717A89A0033982C /* FLObjectTileSetEditorWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

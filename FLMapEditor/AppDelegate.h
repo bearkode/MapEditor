@@ -13,5 +13,12 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
+//@property (nonatomic, assign) IBOutlet NSMenuItem *topographyEditorMenuItem;
+//@property (nonatomic, assign) IBOutlet
+
+
+- (IBAction)topographyTileSetEditorSelected:(id)aSender;
+- (IBAction)objectTileSetEditorSelected:(id)aSender;
+
 
 @end
