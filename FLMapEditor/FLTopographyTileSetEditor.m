@@ -9,13 +9,19 @@
 
 #import "FLTopographyTileSetEditor.h"
 #import "FLTerrianTileSet.h"
+#import "FLTerrianTile.h"
+#import "FLTerrianTilePropertyEditor.h"
 
 
 @implementation FLTopographyTileSetEditor
 {
-    NSCollectionView *mTileView;
+    NSCollectionView            *mTileView;
     
-    FLTerrianTileSet *mTileSet;
+    /*  Property Editor  */
+    FLTerrianTilePropertyEditor *mPropertyEditor;
+    
+    /*  Model  */
+    FLTerrianTileSet            *mTileSet;
 }
 
 
@@ -59,13 +65,17 @@
 #pragma mark Actions
 
 
-- (IBAction)addImageButtonClicked:(id)aSender
+- (IBAction)addButtonClicked:(id)aSender
 {
+    NSUInteger sCount = [mTileSet count];
 
+    mPropertyEditor = [[FLTerrianTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrianTilePropertyEditor"];
+    [mPropertyEditor setIndex:sCount];
+    [NSApp runModalForWindow:[mPropertyEditor window]];
 }
 
 
-- (IBAction)editPropertyButtonClicked:(id)aSender
+- (IBAction)editButtonClicked:(id)aSender
 {
 
 }

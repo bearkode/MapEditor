@@ -13,4 +13,7 @@
 @interface FLTerrianTileSet : NSObject
 
 
+- (NSUInteger)count;
+
+
 @end

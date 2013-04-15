@@ -16,6 +16,10 @@
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, assign) BOOL      passable;
 @property (nonatomic, retain) NSImage  *image;
+@property (nonatomic, retain) NSData   *imageData;
+
+
+- (void)setImageData:(NSData *)aImageData;
 
 
 @end

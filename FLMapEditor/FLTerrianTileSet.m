@@ -94,4 +94,18 @@
 #pragma mark -
 
 
+- (NSUInteger)count
+{
+    NSEntityDescription *sEntity       = [NSEntityDescription entityForName:@"FLTerrianTile" inManagedObjectContext:mMOContext];
+    NSFetchRequest      *sFetchRequest = [[[NSFetchRequest alloc] init] autorelease];
+    
+    [sFetchRequest setEntity:sEntity];
+    
+    NSError   *sError = nil;
+    NSUInteger sCount = [mMOContext countForFetchRequest:sFetchRequest error:&sError];
+    
+    return sCount;
+}
+
+
 @end

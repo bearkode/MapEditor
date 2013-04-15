@@ -16,8 +16,8 @@
 @property (nonatomic, assign) IBOutlet NSCollectionView *tileView;
 
 
-- (IBAction)addImageButtonClicked:(id)aSender;
-- (IBAction)editPropertyButtonClicked:(id)aSender;
+- (IBAction)addButtonClicked:(id)aSender;
+- (IBAction)editButtonClicked:(id)aSender;
 - (IBAction)exportButtonClicked:(id)aSender;
 
 
