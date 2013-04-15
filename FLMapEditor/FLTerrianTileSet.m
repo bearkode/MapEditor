@@ -8,6 +8,10 @@
  */
 
 #import "FLTerrianTileSet.h"
+#import "FLTerrianTile.h"
+
+
+NSString *const kEntityName = @"FLTerrianTile";
 
 
 @implementation FLTerrianTileSet
@@ -52,7 +56,7 @@
         NSManagedObjectModel         *sMOModel     = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];
         NSPersistentStoreCoordinator *sCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:sMOModel];
 
-#if (1)
+#if (0)
         [sCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[self storeURL] options:[self storeOptions] error:&sError];
 #else
         while (sError)
@@ -96,7 +100,7 @@
 
 - (NSUInteger)count
 {
-    NSEntityDescription *sEntity       = [NSEntityDescription entityForName:@"FLTerrianTile" inManagedObjectContext:mMOContext];
+    NSEntityDescription *sEntity       = [NSEntityDescription entityForName:kEntityName inManagedObjectContext:mMOContext];
     NSFetchRequest      *sFetchRequest = [[[NSFetchRequest alloc] init] autorelease];
     
     [sFetchRequest setEntity:sEntity];
@@ -105,6 +109,35 @@
     NSUInteger sCount = [mMOContext countForFetchRequest:sFetchRequest error:&sError];
     
     return sCount;
+}
+
+
+- (FLTerrianTile *)insertNewTerrianTile
+{
+    NSUInteger     sIndex  = [self count];
+    FLTerrianTile *sResult = (FLTerrianTile *)[NSEntityDescription insertNewObjectForEntityForName:kEntityName inManagedObjectContext:mMOContext];
+
+    [sResult setIndex:(int)(sIndex + 1)];
+    
+    return sResult;
+}
+
+
+- (void)deleteTerrianTile:(FLTerrianTile *)aTerrianTile
+{
+    [mMOContext deleteObject:aTerrianTile];
+}
+
+
+- (void)save
+{
+    [mMOContext save:nil];
+}
+
+
+- (void)rollback
+{
+    [mMOContext rollback];
 }
 
 

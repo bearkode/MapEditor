@@ -10,10 +10,18 @@
 #import <Foundation/Foundation.h>
 
 
+@class FLTerrianTile;
+
+
 @interface FLTerrianTileSet : NSObject
 
 
 - (NSUInteger)count;
+- (FLTerrianTile *)insertNewTerrianTile;
+- (void)deleteTerrianTile:(FLTerrianTile *)aTerrianTile;
+
+- (void)save;
+- (void)rollback;
 
 
 @end

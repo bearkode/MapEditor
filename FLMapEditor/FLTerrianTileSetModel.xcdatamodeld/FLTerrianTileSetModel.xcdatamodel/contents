@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="FLTerrianTile" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="index" optional="YES" attributeType="Integer 32" minValueString="1" maxValueString="1000" defaultValueString="1" syncable="YES"/>
+    <entity name="FLTerrianTile" representedClassName="FLTerrianTile" syncable="YES">
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 64" minValueString="1" maxValueString="1000" defaultValueString="1" syncable="YES"/>
         <attribute name="passable" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FLTerrianTile" positionX="160" positionY="192" width="128" height="88"/>
+        <element name="FLTerrianTile" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

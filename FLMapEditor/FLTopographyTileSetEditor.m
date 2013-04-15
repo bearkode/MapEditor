@@ -67,11 +67,19 @@
 
 - (IBAction)addButtonClicked:(id)aSender
 {
-    NSUInteger sCount = [mTileSet count];
+    FLTerrianTile *sTerrianTile = [mTileSet insertNewTerrianTile];
+    
+    if (!mPropertyEditor)
+    {
+        mPropertyEditor = [[FLTerrianTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrianTilePropertyEditor"];
+    }
 
-    mPropertyEditor = [[FLTerrianTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrianTilePropertyEditor"];
-    [mPropertyEditor setIndex:sCount];
-    [NSApp runModalForWindow:[mPropertyEditor window]];
+    [mPropertyEditor setTerrianTile:sTerrianTile];
+    [mPropertyEditor showWindowWithDoneBlock:^void (id aObject) {
+        [mTileSet save];
+    } cancelBlock:^void (id aObject) {
+        [mTileSet rollback];
+    }];
 }
 
 

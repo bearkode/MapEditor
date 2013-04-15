@@ -10,6 +10,9 @@
 #import <Cocoa/Cocoa.h>
 
 
+typedef void (^FLPropertyEditorCallbackBlock)(id aObject);
+
+
 @class FLTerrianTile;
 
 
@@ -22,7 +25,7 @@
 
 
 - (void)setTerrianTile:(FLTerrianTile *)aTerrianTile;
-- (void)setIndex:(NSUInteger)aIndex;
+- (void)showWindowWithDoneBlock:(FLPropertyEditorCallbackBlock)aDoneBlock cancelBlock:(FLPropertyEditorCallbackBlock)aCancelBlock;
 
 
 @end

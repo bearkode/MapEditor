@@ -13,11 +13,13 @@
 
 @implementation FLTerrianTilePropertyEditor
 {
-    NSTextField *mIndexField;
-    NSButton    *mPassableButton;
-    NSImageView *mImageView;
+    NSTextField                  *mIndexField;
+    NSButton                     *mPassableButton;
+    NSImageView                  *mImageView;
     
-    FLTerrianTile *mTerrianTile;
+    FLTerrianTile                *mTerrianTile;
+    FLPropertyEditorCallbackBlock mDoneBlock;
+    FLPropertyEditorCallbackBlock mCancelBlock;
 }
 
 
@@ -31,7 +33,7 @@
 
 - (void)update
 {
-
+    [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrianTile index] + 1]];
 }
 
 
@@ -64,12 +66,6 @@
     [super windowDidLoad];
     
     [mIndexField setEditable:NO];
-    
-    if (!mTerrianTile)
-    {
-        mTerrianTile = [[FLTerrianTile alloc] init];
-    }
-    
     [self update];
 }
 
@@ -85,10 +81,15 @@
 }
 
 
-- (void)setIndex:(NSUInteger)aIndex
+- (void)showWindowWithDoneBlock:(FLPropertyEditorCallbackBlock)aDoneBlock cancelBlock:(FLPropertyEditorCallbackBlock)aCancelBlock
 {
-    [mTerrianTile setIndex:aIndex];
-    [self update];
+    [mDoneBlock release];
+    mDoneBlock = [aDoneBlock copy];
+    
+    [mCancelBlock release];
+    mCancelBlock = [aCancelBlock copy];
+    
+    [NSApp runModalForWindow:[self window]];
 }
 
 
@@ -99,6 +100,13 @@
 {
     [NSApp abortModal];
     [[self window] orderOut:aSender];
+    
+    [mTerrianTile setPassable:([mPassableButton state] == NSOnState)];
+
+    if (mDoneBlock)
+    {
+        mDoneBlock(mTerrianTile);
+    }
 }
 
 
@@ -106,6 +114,11 @@
 {
     [NSApp abortModal];
     [[self window] orderOut:aSender];
+    
+    if (mCancelBlock)
+    {
+        mCancelBlock(mTerrianTile);
+    }
 }
 
 
@@ -117,8 +130,11 @@
     [sOpenPanel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger aResult) {
         if (aResult == NSFileHandlingPanelOKButton)
         {
-            NSData *sData = [NSData dataWithContentsOfURL:[[sOpenPanel URLs] objectAtIndex:0]];
-            NSLog(@"sData = %@", sData);
+            NSData  *sData  = [NSData dataWithContentsOfURL:[[sOpenPanel URLs] objectAtIndex:0]];
+            NSImage *sImage = [[[NSImage alloc] initWithData:sData] autorelease];
+            
+            [mImageView setImage:sImage];
+            [mTerrianTile setImageData:sData];
         }
     }];
     
