@@ -13,4 +13,12 @@
 @interface FLTopographyTileSetEditor : NSWindowController
 
 
+@property (nonatomic, assign) IBOutlet NSCollectionView *tileView;
+
+
+- (IBAction)addImageButtonClicked:(id)aSender;
+- (IBAction)editPropertyButtonClicked:(id)aSender;
+- (IBAction)exportButtonClicked:(id)aSender;
+
+
 @end

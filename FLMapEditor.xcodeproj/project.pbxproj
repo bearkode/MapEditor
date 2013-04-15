@@ -12,6 +12,9 @@
 		2E37E6081717A71A0033982C /* FLTopographyTileSetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E6061717A71A0033982C /* FLTopographyTileSetEditor.xib */; };
 		2E37E60D1717A89A0033982C /* FLObjectTileSetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E60B1717A89A0033982C /* FLObjectTileSetEditor.m */; };
 		2E37E60E1717A89A0033982C /* FLObjectTileSetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E60C1717A89A0033982C /* FLObjectTileSetEditor.xib */; };
+		2E37E6111717B1560033982C /* FLTerrianTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6101717B1550033982C /* FLTerrianTile.m */; };
+		2E37E6141717B3EC0033982C /* FLTerrianTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6131717B3EC0033982C /* FLTerrianTileSet.m */; };
+		2E37E6181717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6161717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld */; };
 		2E4637EB1712AA4A00EA1888 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E4637EA1712AA4A00EA1888 /* Cocoa.framework */; };
 		2E4637F51712AA4A00EA1888 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637F31712AA4A00EA1888 /* InfoPlist.strings */; };
 		2E4637F71712AA4A00EA1888 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4637F61712AA4A00EA1888 /* main.m */; };
@@ -43,6 +46,11 @@
 		2E37E60A1717A89A0033982C /* FLObjectTileSetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectTileSetEditor.h; sourceTree = "<group>"; };
 		2E37E60B1717A89A0033982C /* FLObjectTileSetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectTileSetEditor.m; sourceTree = "<group>"; };
 		2E37E60C1717A89A0033982C /* FLObjectTileSetEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLObjectTileSetEditor.xib; sourceTree = "<group>"; };
+		2E37E60F1717B1550033982C /* FLTerrianTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrianTile.h; sourceTree = "<group>"; };
+		2E37E6101717B1550033982C /* FLTerrianTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrianTile.m; sourceTree = "<group>"; };
+		2E37E6121717B3EC0033982C /* FLTerrianTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrianTileSet.h; sourceTree = "<group>"; };
+		2E37E6131717B3EC0033982C /* FLTerrianTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrianTileSet.m; sourceTree = "<group>"; };
+		2E37E6171717B4E50033982C /* FLTerrianTileSetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FLTerrianTileSetModel.xcdatamodel; sourceTree = "<group>"; };
 		2E4637E71712AA4A00EA1888 /* FLMapEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLMapEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E4637EA1712AA4A00EA1888 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2E4637ED1712AA4A00EA1888 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -99,6 +107,10 @@
 		2E37E6031717A6C60033982C /* TopographyTileSetEditor */ = {
 			isa = PBXGroup;
 			children = (
+				2E37E60F1717B1550033982C /* FLTerrianTile.h */,
+				2E37E6101717B1550033982C /* FLTerrianTile.m */,
+				2E37E6121717B3EC0033982C /* FLTerrianTileSet.h */,
+				2E37E6131717B3EC0033982C /* FLTerrianTileSet.m */,
 				2E37E6041717A71A0033982C /* FLTopographyTileSetEditor.h */,
 				2E37E6051717A71A0033982C /* FLTopographyTileSetEditor.m */,
 				2E37E6061717A71A0033982C /* FLTopographyTileSetEditor.xib */,
@@ -114,6 +126,14 @@
 				2E37E60C1717A89A0033982C /* FLObjectTileSetEditor.xib */,
 			);
 			name = FLObjectTileSetEditor;
+			sourceTree = "<group>";
+		};
+		2E37E6151717B4B50033982C /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				2E37E6161717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld */,
+			);
+			name = CoreDataModel;
 			sourceTree = "<group>";
 		};
 		2E4637DE1712AA4A00EA1888 = {
@@ -155,6 +175,7 @@
 		2E4637F01712AA4A00EA1888 /* FLMapEditor */ = {
 			isa = PBXGroup;
 			children = (
+				2E37E6151717B4B50033982C /* CoreDataModel */,
 				2E7C07E81713ABD6004BA8A0 /* Additions */,
 				2E4638131712C18500EA1888 /* MapEditor */,
 				2E37E6031717A6C60033982C /* TopographyTileSetEditor */,
@@ -323,6 +344,9 @@
 				2E37E5D91717A0510033982C /* AppDelegate.m in Sources */,
 				2E37E6071717A71A0033982C /* FLTopographyTileSetEditor.m in Sources */,
 				2E37E60D1717A89A0033982C /* FLObjectTileSetEditor.m in Sources */,
+				2E37E6111717B1560033982C /* FLTerrianTile.m in Sources */,
+				2E37E6141717B3EC0033982C /* FLTerrianTileSet.m in Sources */,
+				2E37E6181717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +491,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2E37E6161717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2E37E6171717B4E50033982C /* FLTerrianTileSetModel.xcdatamodel */,
+			);
+			currentVersion = 2E37E6171717B4E50033982C /* FLTerrianTileSetModel.xcdatamodel */;
+			path = FLTerrianTileSetModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2E4637DF1712AA4A00EA1888 /* Project object */;
 }
