@@ -13,12 +13,14 @@
 
 @implementation FLTerrainTileItem
 {
+    NSBox       *mBox;
     NSImageView *mTileImageView;
     NSTextField *mIndexLabel;
     NSButton    *mPassableButton;
 }
 
 
+@synthesize box            = mBox;
 @synthesize tileImageView  = mTileImageView;
 @synthesize indexLabel     = mIndexLabel;
 @synthesize passableButton = mPassableButton;
@@ -46,12 +48,6 @@
     
     [NSBundle loadNibNamed:@"FLTerrainTileItem" owner:sResult];
     
-//    NSColor *sFillColor   = [NSColor controlBackgroundColor];
-//    NSColor *sBorderColor = [NSColor controlBackgroundColor];
-//    
-//    [mBox setBorderColor:sBorderColor];
-//    [mBox setFillColor:sFillColor];
-    
     return sResult;
 }
 
@@ -63,6 +59,18 @@
 
 
 #pragma mark -
+
+
+- (void)awakeFromNib
+{
+    [mBox setTitlePosition:NSNoTitle];
+    [mBox setBoxType:NSBoxCustom];
+    [mBox setCornerRadius:3.0];
+    [mBox setBorderType:NSLineBorder];
+    [mBox setBorderWidth:1];
+    [mBox setBorderColor:[NSColor grayColor]];
+    [mBox setContentViewMargins:NSMakeSize(1, 1)];
+}
 
 
 - (void)setRepresentedObject:(id)aObject
@@ -78,6 +86,23 @@
         [mTileImageView setImage:sImage];
         [mIndexLabel setStringValue:[NSString stringWithFormat:@"Index : %d", (int)[sTile index]]];
         [mPassableButton setState:[sTile passable]];
+    }
+}
+
+
+- (void)setSelected:(BOOL)aSelected
+{
+    [super setSelected:aSelected];
+
+    if (aSelected)
+    {
+        [mBox setBorderWidth:2];
+        [mBox setBorderColor:[NSColor redColor]];
+    }
+    else
+    {
+        [mBox setBorderWidth:1];
+        [mBox setBorderColor:[NSColor grayColor]];
     }
 }
 

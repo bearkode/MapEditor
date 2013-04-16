@@ -34,14 +34,14 @@
 
 - (void)setupTileView
 {
-    NSArray *sArrangedObjects = [[mTileSet arrayController] arrangedObjects];
-    
+    [mTileView setContent:[[mTileSet arrayController] arrangedObjects]];
     [mTileView setItemPrototype:[[[FLTerrainTileItem alloc] init] autorelease]];
     [mTileView setMinItemSize:NSMakeSize(120, 120)];
     [mTileView setMaxItemSize:NSMakeSize(120, 120)];
-    [mTileView setContent:sArrangedObjects];
     [mTileView bind:NSContentBinding toObject:mTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
-//    [mTileView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
+    [mTileView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
+    
+//    [mTileView setSelectionIndexes:[NSIndexSet indexSetWithIndex:0]];
 }
 
 
@@ -64,6 +64,7 @@
 - (void)dealloc
 {
     [mTileSet release];
+    [mTileView removeObserver:self forKeyPath:@"selectionIndexes"];
     
     [super dealloc];
 }
@@ -112,6 +113,28 @@
 {
 
 }
+
+
+#pragma mark -
+
+
+- (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)aObject change:(NSDictionary *)aChange context:(void *)aContext
+{
+    NSLog(@"observeValueForKeyPath:ofObject:change:context");
+    NSLog(@"aKeyPath = %@", aKeyPath);
+    NSLog(@"aObject  = %@", aObject);
+    NSLog(@"aChange  = %@", aChange);
+    NSLog(@"aContext = %p", aContext);
+    
+    if (aObject == mTileView)
+    {
+        if ([aKeyPath isEqualToString:@"selectionIndexes"])
+        {
+            NSLog(@"selectionIndexes");
+        }
+    }
+}
+
 
 
 @end

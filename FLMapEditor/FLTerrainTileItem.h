@@ -13,6 +13,7 @@
 @interface FLTerrainTileItem : NSCollectionViewItem
 
 
+@property (nonatomic, assign) IBOutlet NSBox       *box;
 @property (nonatomic, assign) IBOutlet NSImageView *tileImageView;
 @property (nonatomic, assign) IBOutlet NSTextField *indexLabel;
 @property (nonatomic, assign) IBOutlet NSButton    *passableButton;

@@ -87,19 +87,15 @@ NSString *const kEntityName = @"FLTerrainTile";
         [sCoordinator release];
         
         mArrayController = [[NSArrayController alloc] init];
-//        [mArrayController setObjectClass:[FLTerrainTile class]];
         [mArrayController setManagedObjectContext:mMOContext];
         [mArrayController setEntityName:@"FLTerrainTile"];
-        [mArrayController setAutomaticallyPreparesContent:YES];        
+        [mArrayController setAutomaticallyPreparesContent:YES];
         [mArrayController setAvoidsEmptySelection:YES];
         [mArrayController setPreservesSelection:YES];
         [mArrayController setSelectsInsertedObjects:YES];
         [mArrayController setClearsFilterPredicateOnInsertion:YES];
         [mArrayController setEditable:YES];
         [mArrayController fetch:self];
-        
-        NSArray *content = [mArrayController arrangedObjects];
-        NSLog(@"content = %@", content);
     }
     
     return self;
