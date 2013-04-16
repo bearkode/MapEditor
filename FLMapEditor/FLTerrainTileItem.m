@@ -76,17 +76,7 @@
 - (void)setRepresentedObject:(id)aObject
 {
     [super setRepresentedObject:aObject];
-
-    FLTerrainTile *sTile = (FLTerrainTile *)aObject;
-    
-    if (sTile)
-    {
-        NSImage *sImage = [[[NSImage alloc] initWithData:[sTile imageData]] autorelease];
-        
-        [mTileImageView setImage:sImage];
-        [mIndexLabel setStringValue:[NSString stringWithFormat:@"Index : %d", (int)[sTile index]]];
-        [mPassableButton setState:[sTile passable]];
-    }
+    [self update];
 }
 
 
@@ -103,6 +93,25 @@
     {
         [mBox setBorderWidth:1];
         [mBox setBorderColor:[NSColor grayColor]];
+    }
+}
+
+
+#pragma mark -
+
+
+- (void)update
+{
+    NSObject      *sObject = [self representedObject];
+    FLTerrainTile *sTile   = (FLTerrainTile *)sObject;
+    
+    if (sTile)
+    {
+        NSImage *sImage = [[[NSImage alloc] initWithData:[sTile imageData]] autorelease];
+        
+        [mTileImageView setImage:sImage];
+        [mIndexLabel setStringValue:[NSString stringWithFormat:@"Index : %d", (int)[sTile index]]];
+        [mPassableButton setState:[sTile passable]];
     }
 }
 

@@ -88,21 +88,27 @@
 #pragma mark Actions
 
 
-- (IBAction)addButtonClicked:(id)aSender
+- (void)showPropertyEditorWithTerrainTile:(FLTerrainTile *)aTerrainTile collectionItem:(FLTerrainTileItem *)aItem
 {
-    FLTerrainTile *sTerrainTile = [mTileSet insertNewTerrainTile];
-    
     if (!mPropertyEditor)
     {
         mPropertyEditor = [[FLTerrainTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrainTilePropertyEditor"];
     }
-
-    [mPropertyEditor setTerrainTile:sTerrainTile];
+    
+    [mPropertyEditor setTerrainTile:aTerrainTile];
     [mPropertyEditor showWindowWithDoneBlock:^void (id aObject) {
         [mTileSet save];
+        [aItem update];
     } cancelBlock:^void (id aObject) {
         [mTileSet rollback];
     }];
+}
+
+
+- (IBAction)addButtonClicked:(id)aSender
+{
+    FLTerrainTile *sTerrainTile = [mTileSet insertNewTerrainTile];
+    [self showPropertyEditorWithTerrainTile:sTerrainTile collectionItem:nil];
 }
 
 
@@ -117,7 +123,12 @@
 
 - (IBAction)editButtonClicked:(id)aSender
 {
-
+    NSIndexSet        *sIndexSet        = [mTileView selectionIndexes];
+    NSInteger          sIndex           = [sIndexSet firstIndex];
+    FLTerrainTile     *sTerrainTile     = [mTileSet terrainTileAtIndex:sIndex];
+    FLTerrainTileItem *sTerrainTileItem = (FLTerrainTileItem *)[mTileView itemAtIndex:sIndex];
+    
+    [self showPropertyEditorWithTerrainTile:sTerrainTile collectionItem:sTerrainTileItem];
 }
 
 

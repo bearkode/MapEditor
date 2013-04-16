@@ -33,7 +33,17 @@
 
 - (void)update
 {
-    [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrainTile index] + 1]];
+    NSData  *sImageData = [mTerrainTile imageData];
+    NSImage *sImage     = nil;
+    
+    if (sImageData)
+    {
+        sImage = [[[NSImage alloc] initWithData:sImageData] autorelease];
+    }
+
+    [mImageView setImage:sImage];
+    [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrainTile index]]];
+    [mPassableButton setState:([mTerrainTile passable]) ? NSOnState : NSOffState];
 }
 
 
@@ -77,6 +87,7 @@
 {
     [mTerrainTile autorelease];
     mTerrainTile = [aTerrainTile retain];
+    
     [self update];
 }
 

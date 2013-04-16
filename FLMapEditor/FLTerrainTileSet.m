@@ -128,6 +128,14 @@ NSString *const kEntityName = @"FLTerrainTile";
 }
 
 
+- (FLTerrainTile *)terrainTileAtIndex:(NSInteger)aIndex
+{
+    FLTerrainTile *sTerrainTile = [[mArrayController arrangedObjects] objectAtIndex:aIndex];
+    
+    return sTerrainTile;
+}
+
+
 - (FLTerrainTile *)insertNewTerrainTile
 {
     NSUInteger     sIndex  = [self count];

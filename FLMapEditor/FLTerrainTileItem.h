@@ -19,4 +19,7 @@
 @property (nonatomic, assign) IBOutlet NSButton    *passableButton;
 
 
+- (void)update;
+
+
 @end
