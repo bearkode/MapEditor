@@ -22,6 +22,7 @@ typedef void (^FLPropertyEditorCallbackBlock)(id aObject);
 @property (nonatomic, assign) IBOutlet NSTextField *indexField;
 @property (nonatomic, assign) IBOutlet NSButton    *passableButton;
 @property (nonatomic, assign) IBOutlet NSImageView *imageView;
+@property (nonatomic, assign) IBOutlet NSButton    *saveButton;
 
 
 - (void)setTerrainTile:(FLTerrainTile *)aTerrainTile;

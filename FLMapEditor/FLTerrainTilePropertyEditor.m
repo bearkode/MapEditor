@@ -16,6 +16,7 @@
     NSTextField                  *mIndexField;
     NSButton                     *mPassableButton;
     NSImageView                  *mImageView;
+    NSButton                     *mSaveButton;
     
     FLTerrainTile                *mTerrainTile;
     FLPropertyEditorCallbackBlock mDoneBlock;
@@ -26,6 +27,7 @@
 @synthesize indexField     = mIndexField;
 @synthesize passableButton = mPassableButton;
 @synthesize imageView      = mImageView;
+@synthesize saveButton     = mSaveButton;
 
 
 #pragma mark -
@@ -41,6 +43,7 @@
         sImage = [[[NSImage alloc] initWithData:sImageData] autorelease];
     }
 
+    [mSaveButton setEnabled:(sImage != nil)];
     [mImageView setImage:sImage];
     [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrainTile index]]];
     [mPassableButton setState:([mTerrainTile passable]) ? NSOnState : NSOffState];
@@ -141,11 +144,9 @@
     [sOpenPanel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger aResult) {
         if (aResult == NSFileHandlingPanelOKButton)
         {
-            NSData  *sData  = [NSData dataWithContentsOfURL:[[sOpenPanel URLs] objectAtIndex:0]];
-            NSImage *sImage = [[[NSImage alloc] initWithData:sData] autorelease];
-            
-            [mImageView setImage:sImage];
+            NSData *sData = [NSData dataWithContentsOfURL:[[sOpenPanel URLs] objectAtIndex:0]];
             [mTerrainTile setImageData:sData];
+            [self update];
         }
     }];
     
