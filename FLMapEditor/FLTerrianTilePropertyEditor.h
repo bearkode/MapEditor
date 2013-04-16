@@ -13,7 +13,7 @@
 typedef void (^FLPropertyEditorCallbackBlock)(id aObject);
 
 
-@class FLTerrianTile;
+@class FLTerrainTile;
 
 
 @interface FLTerrianTilePropertyEditor : NSWindowController
@@ -24,7 +24,7 @@ typedef void (^FLPropertyEditorCallbackBlock)(id aObject);
 @property (nonatomic, assign) IBOutlet NSImageView *imageView;
 
 
-- (void)setTerrianTile:(FLTerrianTile *)aTerrianTile;
+- (void)setTerrianTile:(FLTerrainTile *)aTerrianTile;
 - (void)showWindowWithDoneBlock:(FLPropertyEditorCallbackBlock)aDoneBlock cancelBlock:(FLPropertyEditorCallbackBlock)aCancelBlock;
 
 

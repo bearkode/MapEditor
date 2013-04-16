@@ -8,7 +8,7 @@
  */
 
 #import "FLTerrianTileItem.h"
-#import "FLTerrianTile.h"
+#import "FLTerrainTile.h"
 
 
 @implementation FLTerrianTileItem
@@ -69,7 +69,7 @@
 {
     [super setRepresentedObject:aObject];
 
-    FLTerrianTile *sTile = (FLTerrianTile *)aObject;
+    FLTerrainTile *sTile = (FLTerrainTile *)aObject;
     
     if (sTile)
     {

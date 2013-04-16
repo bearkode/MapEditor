@@ -9,7 +9,7 @@
 
 #import "FLTerrianTileSetEditor.h"
 #import "FLTerrianTileSet.h"
-#import "FLTerrianTile.h"
+#import "FLTerrainTile.h"
 #import "FLTerrianTileItem.h"
 #import "FLTerrianTilePropertyEditor.h"
 
@@ -86,7 +86,7 @@
 
 - (IBAction)addButtonClicked:(id)aSender
 {
-    FLTerrianTile *sTerrianTile = [mTileSet insertNewTerrianTile];
+    FLTerrainTile *sTerrianTile = [mTileSet insertNewTerrianTile];
     
     if (!mPropertyEditor)
     {

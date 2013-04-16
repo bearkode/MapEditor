@@ -8,7 +8,7 @@
  */
 
 #import "FLTerrianTilePropertyEditor.h"
-#import "FLTerrianTile.h"
+#import "FLTerrainTile.h"
 
 
 @implementation FLTerrianTilePropertyEditor
@@ -17,7 +17,7 @@
     NSButton                     *mPassableButton;
     NSImageView                  *mImageView;
     
-    FLTerrianTile                *mTerrianTile;
+    FLTerrainTile                *mTerrianTile;
     FLPropertyEditorCallbackBlock mDoneBlock;
     FLPropertyEditorCallbackBlock mCancelBlock;
 }
@@ -73,7 +73,7 @@
 #pragma mark -
 
 
-- (void)setTerrianTile:(FLTerrianTile *)aTerrianTile
+- (void)setTerrianTile:(FLTerrainTile *)aTerrianTile
 {
     [mTerrianTile autorelease];
     mTerrianTile = [aTerrianTile retain];

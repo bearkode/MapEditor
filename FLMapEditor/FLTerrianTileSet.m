@@ -8,7 +8,7 @@
  */
 
 #import "FLTerrianTileSet.h"
-#import "FLTerrianTile.h"
+#import "FLTerrainTile.h"
 
 
 NSString *const kEntityName = @"FLTerrianTile";
@@ -132,10 +132,10 @@ NSString *const kEntityName = @"FLTerrianTile";
 }
 
 
-- (FLTerrianTile *)insertNewTerrianTile
+- (FLTerrainTile *)insertNewTerrianTile
 {
     NSUInteger     sIndex  = [self count];
-    FLTerrianTile *sResult = (FLTerrianTile *)[NSEntityDescription insertNewObjectForEntityForName:kEntityName inManagedObjectContext:mMOContext];
+    FLTerrainTile *sResult = (FLTerrainTile *)[NSEntityDescription insertNewObjectForEntityForName:kEntityName inManagedObjectContext:mMOContext];
 
     [sResult setIndex:(int)(sIndex + 1)];
     
@@ -143,7 +143,7 @@ NSString *const kEntityName = @"FLTerrianTile";
 }
 
 
-- (void)deleteTerrianTile:(FLTerrianTile *)aTerrianTile
+- (void)deleteTerrianTile:(FLTerrainTile *)aTerrianTile
 {
     [mMOContext deleteObject:aTerrianTile];
 }

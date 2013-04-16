@@ -7,10 +7,10 @@
  *
  */
 
-#import "FLTerrianTile.h"
+#import "FLTerrainTile.h"
 
 
-@implementation FLTerrianTile
+@implementation FLTerrainTile
 
 
 @dynamic index;

@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FLTerrianTile : NSManagedObject
+@interface FLTerrainTile : NSManagedObject
 
 
 @property (nonatomic, assign) NSInteger index;
