@@ -17,6 +17,8 @@
 @implementation FLTerrainTileSetEditor
 {
     NSCollectionView            *mTileView;
+    NSButton                    *mDeleteButton;
+    NSButton                    *mEditButton;
     
     /*  Property Editor  */
     FLTerrainTilePropertyEditor *mPropertyEditor;
@@ -26,7 +28,9 @@
 }
 
 
-@synthesize tileView = mTileView;
+@synthesize tileView     = mTileView;
+@synthesize editButton   = mEditButton;
+@synthesize deleteButton = mDeleteButton;
 
 
 #pragma mark -
@@ -40,8 +44,6 @@
     [mTileView setMaxItemSize:NSMakeSize(120, 120)];
     [mTileView bind:NSContentBinding toObject:mTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
     [mTileView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
-    
-//    [mTileView setSelectionIndexes:[NSIndexSet indexSetWithIndex:0]];
 }
 
 
@@ -78,6 +80,7 @@
     [super windowDidLoad];
     
     [self setupTileView];
+    [self tileViewSelectionDidChange];
 }
 
 
@@ -103,6 +106,15 @@
 }
 
 
+- (IBAction)deleteButtonClicked:(id)aSender
+{
+    NSInteger sIndex = [[mTileView selectionIndexes] firstIndex];
+    
+    [mTileSet deleteTerrainTileAtIndex:sIndex];
+    [mTileSet save];
+}
+
+
 - (IBAction)editButtonClicked:(id)aSender
 {
 
@@ -118,6 +130,17 @@
 #pragma mark -
 
 
+- (void)tileViewSelectionDidChange
+{
+    NSIndexSet *sIndexSet = [mTileView selectionIndexes];
+    
+    [mDeleteButton setEnabled:([sIndexSet count] > 0)];
+    [mEditButton setEnabled:([sIndexSet count] > 0)];
+    
+    NSLog(@"selectionIndexes - %@", sIndexSet);
+}
+
+
 - (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)aObject change:(NSDictionary *)aChange context:(void *)aContext
 {
     NSLog(@"observeValueForKeyPath:ofObject:change:context");
@@ -130,7 +153,7 @@
     {
         if ([aKeyPath isEqualToString:@"selectionIndexes"])
         {
-            NSLog(@"selectionIndexes");
+            [self tileViewSelectionDidChange];
         }
     }
 }

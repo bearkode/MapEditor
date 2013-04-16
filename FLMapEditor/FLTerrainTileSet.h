@@ -22,6 +22,7 @@
 - (NSUInteger)count;
 - (FLTerrainTile *)insertNewTerrainTile;
 - (void)deleteTerrainTile:(FLTerrainTile *)aTerrainTile;
+- (void)deleteTerrainTileAtIndex:(NSInteger)aIndex;
 
 - (void)save;
 - (void)rollback;

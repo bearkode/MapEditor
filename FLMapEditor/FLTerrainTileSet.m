@@ -145,6 +145,13 @@ NSString *const kEntityName = @"FLTerrainTile";
 }
 
 
+- (void)deleteTerrainTileAtIndex:(NSInteger)aIndex
+{
+    FLTerrainTile *sTerrainTile = [[mArrayController arrangedObjects] objectAtIndex:aIndex];
+    [mMOContext deleteObject:sTerrainTile];
+}
+
+
 - (void)save
 {
     [mMOContext save:nil];

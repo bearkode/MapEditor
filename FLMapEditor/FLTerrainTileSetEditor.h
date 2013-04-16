@@ -14,9 +14,12 @@
 
 
 @property (nonatomic, assign) IBOutlet NSCollectionView *tileView;
+@property (nonatomic, assign) IBOutlet NSButton         *editButton;
+@property (nonatomic, assign) IBOutlet NSButton         *deleteButton;
 
 
 - (IBAction)addButtonClicked:(id)aSender;
+- (IBAction)deleteButtonClicked:(id)aSender;
 - (IBAction)editButtonClicked:(id)aSender;
 - (IBAction)exportButtonClicked:(id)aSender;
 
