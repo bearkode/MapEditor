@@ -27,6 +27,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     NSLog(@"applicationDidFinishLaunching");
+    
+    [self topographyTileSetEditorSelected:self];
 }
 
 

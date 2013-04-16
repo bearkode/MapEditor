@@ -10,6 +10,7 @@
 #import "FLTopographyTileSetEditor.h"
 #import "FLTerrianTileSet.h"
 #import "FLTerrianTile.h"
+#import "FLTerrianTileItem.h"
 #import "FLTerrianTilePropertyEditor.h"
 
 
@@ -26,6 +27,22 @@
 
 
 @synthesize tileView = mTileView;
+
+
+#pragma mark -
+
+
+- (void)setupTileView
+{
+    NSArray *sArrangedObjects = [[mTileSet arrayController] arrangedObjects];
+    
+    [mTileView setItemPrototype:[[[FLTerrianTileItem alloc] init] autorelease]];
+    [mTileView setMinItemSize:NSMakeSize(120, 120)];
+    [mTileView setMaxItemSize:NSMakeSize(120, 120)];
+    [mTileView setContent:sArrangedObjects];
+    [mTileView bind:NSContentBinding toObject:mTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
+//    [mTileView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
+}
 
 
 #pragma mark -
@@ -58,6 +75,8 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    
+    [self setupTileView];
 }
 
 

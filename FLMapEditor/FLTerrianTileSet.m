@@ -17,7 +17,11 @@ NSString *const kEntityName = @"FLTerrianTile";
 @implementation FLTerrianTileSet
 {
     NSManagedObjectContext *mMOContext;
+    NSArrayController      *mArrayController;
 }
+
+
+@synthesize arrayController = mArrayController;
 
 
 #pragma mark -
@@ -81,6 +85,21 @@ NSString *const kEntityName = @"FLTerrianTile";
         
         [sMOModel release];
         [sCoordinator release];
+        
+        mArrayController = [[NSArrayController alloc] init];
+//        [mArrayController setObjectClass:[FLTerrianTile class]];
+        [mArrayController setManagedObjectContext:mMOContext];
+        [mArrayController setEntityName:@"FLTerrianTile"];
+        [mArrayController setAutomaticallyPreparesContent:YES];        
+        [mArrayController setAvoidsEmptySelection:YES];
+        [mArrayController setPreservesSelection:YES];
+        [mArrayController setSelectsInsertedObjects:YES];
+        [mArrayController setClearsFilterPredicateOnInsertion:YES];
+        [mArrayController setEditable:YES];
+        [mArrayController fetch:self];
+        
+        NSArray *content = [mArrayController arrangedObjects];
+        NSLog(@"content = %@", content);
     }
     
     return self;
@@ -90,6 +109,7 @@ NSString *const kEntityName = @"FLTerrianTile";
 - (void)dealloc
 {
     [mMOContext release];
+    [mArrayController release];
     
     [super dealloc];
 }

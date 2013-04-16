@@ -16,6 +16,9 @@
 @interface FLTerrianTileSet : NSObject
 
 
+@property (nonatomic, readonly) NSArrayController *arrayController;
+
+
 - (NSUInteger)count;
 - (FLTerrianTile *)insertNewTerrianTile;
 - (void)deleteTerrianTile:(FLTerrianTile *)aTerrianTile;
