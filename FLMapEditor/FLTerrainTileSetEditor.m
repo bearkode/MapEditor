@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTileSetEditor.m
+ *  FLTerrainTileSetEditor.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..
@@ -7,22 +7,22 @@
  *
  */
 
-#import "FLTerrianTileSetEditor.h"
-#import "FLTerrianTileSet.h"
+#import "FLTerrainTileSetEditor.h"
+#import "FLTerrainTileSet.h"
 #import "FLTerrainTile.h"
-#import "FLTerrianTileItem.h"
-#import "FLTerrianTilePropertyEditor.h"
+#import "FLTerrainTileItem.h"
+#import "FLTerrainTilePropertyEditor.h"
 
 
-@implementation FLTerrianTileSetEditor
+@implementation FLTerrainTileSetEditor
 {
     NSCollectionView            *mTileView;
     
     /*  Property Editor  */
-    FLTerrianTilePropertyEditor *mPropertyEditor;
+    FLTerrainTilePropertyEditor *mPropertyEditor;
     
     /*  Model  */
-    FLTerrianTileSet            *mTileSet;
+    FLTerrainTileSet            *mTileSet;
 }
 
 
@@ -36,7 +36,7 @@
 {
     NSArray *sArrangedObjects = [[mTileSet arrayController] arrangedObjects];
     
-    [mTileView setItemPrototype:[[[FLTerrianTileItem alloc] init] autorelease]];
+    [mTileView setItemPrototype:[[[FLTerrainTileItem alloc] init] autorelease]];
     [mTileView setMinItemSize:NSMakeSize(120, 120)];
     [mTileView setMaxItemSize:NSMakeSize(120, 120)];
     [mTileView setContent:sArrangedObjects];
@@ -54,7 +54,7 @@
     
     if (self)
     {
-        mTileSet = [[FLTerrianTileSet alloc] init];
+        mTileSet = [[FLTerrainTileSet alloc] init];
     }
     
     return self;
@@ -86,14 +86,14 @@
 
 - (IBAction)addButtonClicked:(id)aSender
 {
-    FLTerrainTile *sTerrianTile = [mTileSet insertNewTerrianTile];
+    FLTerrainTile *sTerrainTile = [mTileSet insertNewTerrainTile];
     
     if (!mPropertyEditor)
     {
-        mPropertyEditor = [[FLTerrianTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrianTilePropertyEditor"];
+        mPropertyEditor = [[FLTerrainTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrainTilePropertyEditor"];
     }
 
-    [mPropertyEditor setTerrianTile:sTerrianTile];
+    [mPropertyEditor setTerrainTile:sTerrainTile];
     [mPropertyEditor showWindowWithDoneBlock:^void (id aObject) {
         [mTileSet save];
     } cancelBlock:^void (id aObject) {

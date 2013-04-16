@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTilePropertyEditor.m
+ *  FLTerrainTilePropertyEditor.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 15..
@@ -7,17 +7,17 @@
  *
  */
 
-#import "FLTerrianTilePropertyEditor.h"
+#import "FLTerrainTilePropertyEditor.h"
 #import "FLTerrainTile.h"
 
 
-@implementation FLTerrianTilePropertyEditor
+@implementation FLTerrainTilePropertyEditor
 {
     NSTextField                  *mIndexField;
     NSButton                     *mPassableButton;
     NSImageView                  *mImageView;
     
-    FLTerrainTile                *mTerrianTile;
+    FLTerrainTile                *mTerrainTile;
     FLPropertyEditorCallbackBlock mDoneBlock;
     FLPropertyEditorCallbackBlock mCancelBlock;
 }
@@ -33,7 +33,7 @@
 
 - (void)update
 {
-    [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrianTile index] + 1]];
+    [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrainTile index] + 1]];
 }
 
 
@@ -55,7 +55,7 @@
 
 - (void)dealloc
 {
-    [mTerrianTile release];
+    [mTerrainTile release];
     
     [super dealloc];
 }
@@ -73,10 +73,10 @@
 #pragma mark -
 
 
-- (void)setTerrianTile:(FLTerrainTile *)aTerrianTile
+- (void)setTerrainTile:(FLTerrainTile *)aTerrainTile
 {
-    [mTerrianTile autorelease];
-    mTerrianTile = [aTerrianTile retain];
+    [mTerrainTile autorelease];
+    mTerrainTile = [aTerrainTile retain];
     [self update];
 }
 
@@ -101,11 +101,11 @@
     [NSApp abortModal];
     [[self window] orderOut:aSender];
     
-    [mTerrianTile setPassable:([mPassableButton state] == NSOnState)];
+    [mTerrainTile setPassable:([mPassableButton state] == NSOnState)];
 
     if (mDoneBlock)
     {
-        mDoneBlock(mTerrianTile);
+        mDoneBlock(mTerrainTile);
     }
 }
 
@@ -117,7 +117,7 @@
     
     if (mCancelBlock)
     {
-        mCancelBlock(mTerrianTile);
+        mCancelBlock(mTerrainTile);
     }
 }
 
@@ -134,7 +134,7 @@
             NSImage *sImage = [[[NSImage alloc] initWithData:sData] autorelease];
             
             [mImageView setImage:sImage];
-            [mTerrianTile setImageData:sData];
+            [mTerrainTile setImageData:sData];
         }
     }];
     

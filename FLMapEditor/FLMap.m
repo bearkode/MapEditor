@@ -16,11 +16,11 @@ NSString *const kMapSizeKey      = @"MapSize";
 NSString *const kTileSizeKey     = @"TileSize";
 NSString *const kLayersKey       = @"Layers";
 
-NSString *const kTerrianLayerKey = @"TerrianLayer";
+NSString *const kTerrainLayerKey = @"TerrainLayer";
 NSString *const kObjectLayerKey  = @"ObjectLayer";
 
 
-static NSInteger const kTerrianLayerIndex = 0;
+static NSInteger const kTerrainLayerIndex = 0;
 static NSInteger const kObjectLayerIndex  = 1;
 
 
@@ -66,7 +66,7 @@ static NSInteger const kObjectLayerIndex  = 1;
     FLMapLayer *sMapLayer;
     
     sMapLayer = [[[FLMapLayer alloc] init] autorelease];
-    [sMapLayer setName:kTerrianLayerKey];
+    [sMapLayer setName:kTerrainLayerKey];
     [self insertMapLayerOnTop:sMapLayer];
     
     sMapLayer = [[[FLMapLayer alloc] init] autorelease];

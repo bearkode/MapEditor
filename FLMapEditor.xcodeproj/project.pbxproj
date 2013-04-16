@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2E37E5D91717A0510033982C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E5D81717A0510033982C /* AppDelegate.m */; };
-		2E37E6071717A71A0033982C /* FLTerrianTileSetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6051717A71A0033982C /* FLTerrianTileSetEditor.m */; };
-		2E37E6081717A71A0033982C /* FLTerrianTileSetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E6061717A71A0033982C /* FLTerrianTileSetEditor.xib */; };
+		2E37E6071717A71A0033982C /* FLTerrainTileSetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6051717A71A0033982C /* FLTerrainTileSetEditor.m */; };
+		2E37E6081717A71A0033982C /* FLTerrainTileSetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E6061717A71A0033982C /* FLTerrainTileSetEditor.xib */; };
 		2E37E60D1717A89A0033982C /* FLObjectTileSetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E60B1717A89A0033982C /* FLObjectTileSetEditor.m */; };
 		2E37E60E1717A89A0033982C /* FLObjectTileSetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E37E60C1717A89A0033982C /* FLObjectTileSetEditor.xib */; };
 		2E37E6111717B1560033982C /* FLTerrainTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6101717B1550033982C /* FLTerrainTile.m */; };
-		2E37E6141717B3EC0033982C /* FLTerrianTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6131717B3EC0033982C /* FLTerrianTileSet.m */; };
+		2E37E6141717B3EC0033982C /* FLTerrainTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6131717B3EC0033982C /* FLTerrainTileSet.m */; };
 		2E37E6181717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E37E6161717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld */; };
 		2E4637EB1712AA4A00EA1888 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E4637EA1712AA4A00EA1888 /* Cocoa.framework */; };
 		2E4637F51712AA4A00EA1888 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E4637F31712AA4A00EA1888 /* InfoPlist.strings */; };
@@ -30,10 +30,10 @@
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
 		2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */; };
 		2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */; };
-		2EA26B7C171BEC15001E9584 /* FLTerrianTilePropertyEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B7A171BEC14001E9584 /* FLTerrianTilePropertyEditor.m */; };
-		2EA26B7D171BEC15001E9584 /* FLTerrianTilePropertyEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA26B7B171BEC14001E9584 /* FLTerrianTilePropertyEditor.xib */; };
-		2EA26B84171CE700001E9584 /* FLTerrianTileItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B82171CE6FF001E9584 /* FLTerrianTileItem.m */; };
-		2EA26B85171CE700001E9584 /* FLTerrianTileItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA26B83171CE700001E9584 /* FLTerrianTileItem.xib */; };
+		2EA26B7C171BEC15001E9584 /* FLTerrainTilePropertyEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B7A171BEC14001E9584 /* FLTerrainTilePropertyEditor.m */; };
+		2EA26B7D171BEC15001E9584 /* FLTerrainTilePropertyEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA26B7B171BEC14001E9584 /* FLTerrainTilePropertyEditor.xib */; };
+		2EA26B84171CE700001E9584 /* FLTerrainTileItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B82171CE6FF001E9584 /* FLTerrainTileItem.m */; };
+		2EA26B85171CE700001E9584 /* FLTerrainTileItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA26B83171CE700001E9584 /* FLTerrainTileItem.xib */; };
 		2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43C017165D5800CC376E /* FLTileSet.m */; };
 		2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */; };
 		2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */; };
@@ -44,16 +44,16 @@
 /* Begin PBXFileReference section */
 		2E37E5D71717A0510033982C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2E37E5D81717A0510033982C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2E37E6041717A71A0033982C /* FLTerrianTileSetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrianTileSetEditor.h; sourceTree = "<group>"; };
-		2E37E6051717A71A0033982C /* FLTerrianTileSetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrianTileSetEditor.m; sourceTree = "<group>"; };
-		2E37E6061717A71A0033982C /* FLTerrianTileSetEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTerrianTileSetEditor.xib; sourceTree = "<group>"; };
+		2E37E6041717A71A0033982C /* FLTerrainTileSetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrainTileSetEditor.h; sourceTree = "<group>"; };
+		2E37E6051717A71A0033982C /* FLTerrainTileSetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrainTileSetEditor.m; sourceTree = "<group>"; };
+		2E37E6061717A71A0033982C /* FLTerrainTileSetEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTerrainTileSetEditor.xib; sourceTree = "<group>"; };
 		2E37E60A1717A89A0033982C /* FLObjectTileSetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectTileSetEditor.h; sourceTree = "<group>"; };
 		2E37E60B1717A89A0033982C /* FLObjectTileSetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectTileSetEditor.m; sourceTree = "<group>"; };
 		2E37E60C1717A89A0033982C /* FLObjectTileSetEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLObjectTileSetEditor.xib; sourceTree = "<group>"; };
 		2E37E60F1717B1550033982C /* FLTerrainTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrainTile.h; sourceTree = "<group>"; };
 		2E37E6101717B1550033982C /* FLTerrainTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrainTile.m; sourceTree = "<group>"; };
-		2E37E6121717B3EC0033982C /* FLTerrianTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrianTileSet.h; sourceTree = "<group>"; };
-		2E37E6131717B3EC0033982C /* FLTerrianTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrianTileSet.m; sourceTree = "<group>"; };
+		2E37E6121717B3EC0033982C /* FLTerrainTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrainTileSet.h; sourceTree = "<group>"; };
+		2E37E6131717B3EC0033982C /* FLTerrainTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrainTileSet.m; sourceTree = "<group>"; };
 		2E37E6171717B4E50033982C /* FLTerrianTileSetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FLTerrianTileSetModel.xcdatamodel; sourceTree = "<group>"; };
 		2E4637E71712AA4A00EA1888 /* FLMapEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLMapEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E4637EA1712AA4A00EA1888 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -84,12 +84,12 @@
 		2E7C082A17154F66004BA8A0 /* FLMapLayerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapLayerItem.h; sourceTree = "<group>"; };
 		2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapLayerItem.m; sourceTree = "<group>"; };
 		2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLMapLayerItem.xib; sourceTree = "<group>"; };
-		2EA26B79171BEC14001E9584 /* FLTerrianTilePropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrianTilePropertyEditor.h; sourceTree = "<group>"; };
-		2EA26B7A171BEC14001E9584 /* FLTerrianTilePropertyEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrianTilePropertyEditor.m; sourceTree = "<group>"; };
-		2EA26B7B171BEC14001E9584 /* FLTerrianTilePropertyEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTerrianTilePropertyEditor.xib; sourceTree = "<group>"; };
-		2EA26B81171CE6FF001E9584 /* FLTerrianTileItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrianTileItem.h; sourceTree = "<group>"; };
-		2EA26B82171CE6FF001E9584 /* FLTerrianTileItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrianTileItem.m; sourceTree = "<group>"; };
-		2EA26B83171CE700001E9584 /* FLTerrianTileItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTerrianTileItem.xib; sourceTree = "<group>"; };
+		2EA26B79171BEC14001E9584 /* FLTerrainTilePropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrainTilePropertyEditor.h; sourceTree = "<group>"; };
+		2EA26B7A171BEC14001E9584 /* FLTerrainTilePropertyEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrainTilePropertyEditor.m; sourceTree = "<group>"; };
+		2EA26B7B171BEC14001E9584 /* FLTerrainTilePropertyEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTerrainTilePropertyEditor.xib; sourceTree = "<group>"; };
+		2EA26B81171CE6FF001E9584 /* FLTerrainTileItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrainTileItem.h; sourceTree = "<group>"; };
+		2EA26B82171CE6FF001E9584 /* FLTerrainTileItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrainTileItem.m; sourceTree = "<group>"; };
+		2EA26B83171CE700001E9584 /* FLTerrainTileItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTerrainTileItem.xib; sourceTree = "<group>"; };
 		2EFB43BF17165D5800CC376E /* FLTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTileSet.h; sourceTree = "<group>"; };
 		2EFB43C017165D5800CC376E /* FLTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTileSet.m; sourceTree = "<group>"; };
 		2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScrollView+Additions.h"; sourceTree = "<group>"; };
@@ -119,17 +119,17 @@
 			children = (
 				2E37E60F1717B1550033982C /* FLTerrainTile.h */,
 				2E37E6101717B1550033982C /* FLTerrainTile.m */,
-				2EA26B81171CE6FF001E9584 /* FLTerrianTileItem.h */,
-				2EA26B82171CE6FF001E9584 /* FLTerrianTileItem.m */,
-				2EA26B83171CE700001E9584 /* FLTerrianTileItem.xib */,
-				2E37E6121717B3EC0033982C /* FLTerrianTileSet.h */,
-				2E37E6131717B3EC0033982C /* FLTerrianTileSet.m */,
-				2E37E6041717A71A0033982C /* FLTerrianTileSetEditor.h */,
-				2E37E6051717A71A0033982C /* FLTerrianTileSetEditor.m */,
-				2E37E6061717A71A0033982C /* FLTerrianTileSetEditor.xib */,
-				2EA26B79171BEC14001E9584 /* FLTerrianTilePropertyEditor.h */,
-				2EA26B7A171BEC14001E9584 /* FLTerrianTilePropertyEditor.m */,
-				2EA26B7B171BEC14001E9584 /* FLTerrianTilePropertyEditor.xib */,
+				2EA26B81171CE6FF001E9584 /* FLTerrainTileItem.h */,
+				2EA26B82171CE6FF001E9584 /* FLTerrainTileItem.m */,
+				2EA26B83171CE700001E9584 /* FLTerrainTileItem.xib */,
+				2E37E6121717B3EC0033982C /* FLTerrainTileSet.h */,
+				2E37E6131717B3EC0033982C /* FLTerrainTileSet.m */,
+				2E37E6041717A71A0033982C /* FLTerrainTileSetEditor.h */,
+				2E37E6051717A71A0033982C /* FLTerrainTileSetEditor.m */,
+				2E37E6061717A71A0033982C /* FLTerrainTileSetEditor.xib */,
+				2EA26B79171BEC14001E9584 /* FLTerrainTilePropertyEditor.h */,
+				2EA26B7A171BEC14001E9584 /* FLTerrainTilePropertyEditor.m */,
+				2EA26B7B171BEC14001E9584 /* FLTerrainTilePropertyEditor.xib */,
 			);
 			name = TopographyTileSetEditor;
 			sourceTree = "<group>";
@@ -331,10 +331,10 @@
 				2E4638011712AA4A00EA1888 /* FLDocument.xib in Resources */,
 				2E4638041712AA4A00EA1888 /* MainMenu.xib in Resources */,
 				2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */,
-				2E37E6081717A71A0033982C /* FLTerrianTileSetEditor.xib in Resources */,
+				2E37E6081717A71A0033982C /* FLTerrainTileSetEditor.xib in Resources */,
 				2E37E60E1717A89A0033982C /* FLObjectTileSetEditor.xib in Resources */,
-				2EA26B7D171BEC15001E9584 /* FLTerrianTilePropertyEditor.xib in Resources */,
-				2EA26B85171CE700001E9584 /* FLTerrianTileItem.xib in Resources */,
+				2EA26B7D171BEC15001E9584 /* FLTerrainTilePropertyEditor.xib in Resources */,
+				2EA26B85171CE700001E9584 /* FLTerrainTileItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,13 +360,13 @@
 				2EFB43D41716C13B00CC376E /* FLObjectSet.m in Sources */,
 				2EFB43D71716C16600CC376E /* FLSpriteSet.m in Sources */,
 				2E37E5D91717A0510033982C /* AppDelegate.m in Sources */,
-				2E37E6071717A71A0033982C /* FLTerrianTileSetEditor.m in Sources */,
+				2E37E6071717A71A0033982C /* FLTerrainTileSetEditor.m in Sources */,
 				2E37E60D1717A89A0033982C /* FLObjectTileSetEditor.m in Sources */,
 				2E37E6111717B1560033982C /* FLTerrainTile.m in Sources */,
-				2E37E6141717B3EC0033982C /* FLTerrianTileSet.m in Sources */,
+				2E37E6141717B3EC0033982C /* FLTerrainTileSet.m in Sources */,
 				2E37E6181717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld in Sources */,
-				2EA26B7C171BEC15001E9584 /* FLTerrianTilePropertyEditor.m in Sources */,
-				2EA26B84171CE700001E9584 /* FLTerrianTileItem.m in Sources */,
+				2EA26B7C171BEC15001E9584 /* FLTerrainTilePropertyEditor.m in Sources */,
+				2EA26B84171CE700001E9584 /* FLTerrainTileItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

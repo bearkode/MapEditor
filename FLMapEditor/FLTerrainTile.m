@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTile.m
+ *  FLTerrainTile.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..

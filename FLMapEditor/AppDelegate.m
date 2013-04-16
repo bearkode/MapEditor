@@ -8,13 +8,13 @@
  */
 
 #import "AppDelegate.h"
-#import "FLTerrianTileSetEditor.h"
+#import "FLTerrainTileSetEditor.h"
 #import "FLObjectTileSetEditor.h"
 
 
 @implementation AppDelegate
 {
-    FLTerrianTileSetEditor *mTerrianTileSetEditorWindowController;
+    FLTerrainTileSetEditor *mTerrainTileSetEditorWindowController;
     FLObjectTileSetEditor  *mObjectTileSetEditorWindowController;
 }
 
@@ -28,7 +28,7 @@
 {
     NSLog(@"applicationDidFinishLaunching");
     
-    [self terrianTileSetEditorSelected:self];
+    [self terrainTileSetEditorSelected:self];
 }
 
 
@@ -36,14 +36,14 @@
 #pragma mark MenuItem Actions
 
 
-- (IBAction)terrianTileSetEditorSelected:(id)aSender
+- (IBAction)terrainTileSetEditorSelected:(id)aSender
 {
-    if (!mTerrianTileSetEditorWindowController)
+    if (!mTerrainTileSetEditorWindowController)
     {
-        mTerrianTileSetEditorWindowController = [[FLTerrianTileSetEditor alloc] initWithWindowNibName:@"FLTerrianTileSetEditor"];
+        mTerrainTileSetEditorWindowController = [[FLTerrainTileSetEditor alloc] initWithWindowNibName:@"FLTerrainTileSetEditor"];
     }
     
-    [mTerrianTileSetEditorWindowController showWindow:self];
+    [mTerrainTileSetEditorWindowController showWindow:self];
 }
 
 

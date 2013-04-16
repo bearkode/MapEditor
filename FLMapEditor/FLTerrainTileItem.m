@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTileItem.m
+ *  FLTerrainTileItem.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 16..
@@ -7,11 +7,11 @@
  *
  */
 
-#import "FLTerrianTileItem.h"
+#import "FLTerrainTileItem.h"
 #import "FLTerrainTile.h"
 
 
-@implementation FLTerrianTileItem
+@implementation FLTerrainTileItem
 {
     NSImageView *mTileImageView;
     NSTextField *mIndexLabel;
@@ -44,7 +44,7 @@
 {
     id sResult = [super copyWithZone:aZone];
     
-    [NSBundle loadNibNamed:@"FLTerrianTileItem" owner:sResult];
+    [NSBundle loadNibNamed:@"FLTerrainTileItem" owner:sResult];
     
 //    NSColor *sFillColor   = [NSColor controlBackgroundColor];
 //    NSColor *sBorderColor = [NSColor controlBackgroundColor];

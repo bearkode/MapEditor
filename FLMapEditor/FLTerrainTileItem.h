@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTileItem.h
+ *  FLTerrainTileItem.h
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 16..
@@ -10,7 +10,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface FLTerrianTileItem : NSCollectionViewItem
+@interface FLTerrainTileItem : NSCollectionViewItem
 
 
 @property (nonatomic, assign) IBOutlet NSImageView *tileImageView;

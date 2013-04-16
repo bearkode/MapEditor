@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTileSet.m
+ *  FLTerrainTileSet.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..
@@ -7,14 +7,14 @@
  *
  */
 
-#import "FLTerrianTileSet.h"
+#import "FLTerrainTileSet.h"
 #import "FLTerrainTile.h"
 
 
-NSString *const kEntityName = @"FLTerrianTile";
+NSString *const kEntityName = @"FLTerrainTile";
 
 
-@implementation FLTerrianTileSet
+@implementation FLTerrainTileSet
 {
     NSManagedObjectContext *mMOContext;
     NSArrayController      *mArrayController;
@@ -32,7 +32,7 @@ NSString *const kEntityName = @"FLTerrianTile";
 {
     NSArray  *sDocPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *sDocPath  = ([sDocPaths count] > 0) ? [sDocPaths objectAtIndex:0] : nil;
-    NSURL    *sStoreURL = [NSURL fileURLWithPath:[sDocPath stringByAppendingPathComponent:@"TerrianTileSet.sqlite"]];
+    NSURL    *sStoreURL = [NSURL fileURLWithPath:[sDocPath stringByAppendingPathComponent:@"TerrainTileSet.sqlite"]];
     
     return sStoreURL;
 }
@@ -87,9 +87,9 @@ NSString *const kEntityName = @"FLTerrianTile";
         [sCoordinator release];
         
         mArrayController = [[NSArrayController alloc] init];
-//        [mArrayController setObjectClass:[FLTerrianTile class]];
+//        [mArrayController setObjectClass:[FLTerrainTile class]];
         [mArrayController setManagedObjectContext:mMOContext];
-        [mArrayController setEntityName:@"FLTerrianTile"];
+        [mArrayController setEntityName:@"FLTerrainTile"];
         [mArrayController setAutomaticallyPreparesContent:YES];        
         [mArrayController setAvoidsEmptySelection:YES];
         [mArrayController setPreservesSelection:YES];
@@ -132,7 +132,7 @@ NSString *const kEntityName = @"FLTerrianTile";
 }
 
 
-- (FLTerrainTile *)insertNewTerrianTile
+- (FLTerrainTile *)insertNewTerrainTile
 {
     NSUInteger     sIndex  = [self count];
     FLTerrainTile *sResult = (FLTerrainTile *)[NSEntityDescription insertNewObjectForEntityForName:kEntityName inManagedObjectContext:mMOContext];
@@ -143,9 +143,9 @@ NSString *const kEntityName = @"FLTerrianTile";
 }
 
 
-- (void)deleteTerrianTile:(FLTerrainTile *)aTerrianTile
+- (void)deleteTerrainTile:(FLTerrainTile *)aTerrainTile
 {
-    [mMOContext deleteObject:aTerrianTile];
+    [mMOContext deleteObject:aTerrainTile];
 }
 
 

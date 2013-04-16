@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTileSetEditor.h
+ *  FLTerrainTileSetEditor.h
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..
@@ -10,7 +10,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface FLTerrianTileSetEditor : NSWindowController
+@interface FLTerrainTileSetEditor : NSWindowController
 
 
 @property (nonatomic, assign) IBOutlet NSCollectionView *tileView;

@@ -13,7 +13,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 
-- (IBAction)terrianTileSetEditorSelected:(id)aSender;
+- (IBAction)terrainTileSetEditorSelected:(id)aSender;
 - (IBAction)objectTileSetEditorSelected:(id)aSender;
 
 

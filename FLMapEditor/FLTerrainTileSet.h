@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTileSet.h
+ *  FLTerrainTileSet.h
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..
@@ -13,15 +13,15 @@
 @class FLTerrainTile;
 
 
-@interface FLTerrianTileSet : NSObject
+@interface FLTerrainTileSet : NSObject
 
 
 @property (nonatomic, readonly) NSArrayController *arrayController;
 
 
 - (NSUInteger)count;
-- (FLTerrainTile *)insertNewTerrianTile;
-- (void)deleteTerrianTile:(FLTerrainTile *)aTerrianTile;
+- (FLTerrainTile *)insertNewTerrainTile;
+- (void)deleteTerrainTile:(FLTerrainTile *)aTerrainTile;
 
 - (void)save;
 - (void)rollback;

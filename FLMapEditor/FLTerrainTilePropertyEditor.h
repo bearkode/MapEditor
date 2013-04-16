@@ -1,5 +1,5 @@
 /*
- *  FLTerrianTilePropertyEditor.h
+ *  FLTerrainTilePropertyEditor.h
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 15..
@@ -16,7 +16,7 @@ typedef void (^FLPropertyEditorCallbackBlock)(id aObject);
 @class FLTerrainTile;
 
 
-@interface FLTerrianTilePropertyEditor : NSWindowController
+@interface FLTerrainTilePropertyEditor : NSWindowController
 
 
 @property (nonatomic, assign) IBOutlet NSTextField *indexField;
@@ -24,7 +24,7 @@ typedef void (^FLPropertyEditorCallbackBlock)(id aObject);
 @property (nonatomic, assign) IBOutlet NSImageView *imageView;
 
 
-- (void)setTerrianTile:(FLTerrainTile *)aTerrianTile;
+- (void)setTerrainTile:(FLTerrainTile *)aTerrainTile;
 - (void)showWindowWithDoneBlock:(FLPropertyEditorCallbackBlock)aDoneBlock cancelBlock:(FLPropertyEditorCallbackBlock)aCancelBlock;
 
 
