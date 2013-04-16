@@ -39,7 +39,11 @@
 - (void)setupTileView
 {
     [mTileView setContent:[[mTileSet arrayController] arrangedObjects]];
+#if (1)
+    [mTileView setItemPrototype:[[[FLTerrainTileItem alloc] initWithNibName:@"FLTerrainTileItem" bundle:nil] autorelease]];
+#else
     [mTileView setItemPrototype:[[[FLTerrainTileItem alloc] init] autorelease]];
+#endif
     [mTileView setMinItemSize:NSMakeSize(120, 120)];
     [mTileView setMaxItemSize:NSMakeSize(120, 120)];
     [mTileView bind:NSContentBinding toObject:mTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
@@ -78,7 +82,7 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
+
     [self setupTileView];
     [self tileViewSelectionDidChange];
 }
@@ -147,8 +151,6 @@
     
     [mDeleteButton setEnabled:([sIndexSet count] > 0)];
     [mEditButton setEnabled:([sIndexSet count] > 0)];
-    
-    NSLog(@"selectionIndexes - %@", sIndexSet);
 }
 
 

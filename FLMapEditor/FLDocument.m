@@ -8,7 +8,6 @@
  */
 
 #import "FLDocument.h"
-#import "NSTextField+Additions.h"
 #import "NSScrollView+Additions.h"
 #import "FLMapView.h"
 #import "FLMap.h"
@@ -16,51 +15,51 @@
 #import "FLMapLayer.h"
 #import "FLMapLayerItem.h"
 #import "FLTileSet.h"
+#import "FLMapInfoController.h"
 
 
 @implementation FLDocument
 {
-    /*  File New  */
-    NSPanel           *mFileNewPanel;
-    NSTextField       *mMapWidthTextField;
-    NSTextField       *mMapHeightTextField;
-    NSTextField       *mTileWidthTextField;
-    NSTextField       *mTileHeightTextField;
+    /*  MapInfo  */
+    FLMapInfoController *mMapInfoController;
     
     /*  Edit View  */
-    NSScrollView      *mScrollView;
-    FLMapView         *mMapView;
+    NSScrollView        *mScrollView;
+    FLMapView           *mMapView;
     
     /*  Info View  */
-    NSTextField       *mMapSizeLabel;
-    NSTextField       *mTileSizeLabel;
+    NSTextField         *mMapSizeLabel;
+    NSTextField         *mTileSizeLabel;
     
     /*  Layers  */
-    NSCollectionView  *mLayerCollectionView;
+    NSCollectionView    *mLayerCollectionView;
+    
+    /*  TileSet  */
+    NSCollectionView    *mTileSetCollectionView;
     
     /*  Model  */
-    FLMap             *mMap;
-    FLMapLayer        *mCurrentLayer;
-    FLTileSet         *mCurrentTileSet;
+    FLMap               *mMap;
+    FLMapLayer          *mCurrentLayer;
+    FLTileSet           *mCurrentTileSet;
 }
 
 
 #pragma mark - Properties
 
 
-@synthesize fileNewPanel         = mFileNewPanel;
-@synthesize mapWidthTextField    = mMapWidthTextField;
-@synthesize mapHeightTextField   = mMapHeightTextField;
-@synthesize tileWidthTextField   = mTileWidthTextField;
-@synthesize tileHeightTextField  = mTileHeightTextField;
+/*  Edit View  */
+@synthesize scrollView            = mScrollView;
+@synthesize mapView               = mMapView;
 
-@synthesize scrollView           = mScrollView;
-@synthesize mapView              = mMapView;
+/*  Info View  */
+@synthesize mapSizeLabel          = mMapSizeLabel;
+@synthesize tileSizeLabel         = mTileSizeLabel;
 
-@synthesize mapSizeLabel         = mMapSizeLabel;
-@synthesize tileSizeLabel        = mTileSizeLabel;
+/*  Layers  */
+@synthesize layerCollectionView   = mLayerCollectionView;
 
-@synthesize layerCollectionView  = mLayerCollectionView;
+/*  TileSet  */
+@synthesize tileSetCollectionView = mTileSetCollectionView;
 
 
 #pragma mark -
@@ -69,7 +68,37 @@
 
 - (void)openSheetInWindow:(NSWindow *)aWindow
 {
-    [NSApp beginSheet:mFileNewPanel modalForWindow:aWindow modalDelegate:self didEndSelector:nil contextInfo:nil];
+    if (!mMapInfoController)
+    {
+        mMapInfoController = [[FLMapInfoController alloc] initWithWindowNibName:@"FLMapInfoController"];
+    }
+    
+    [NSApp beginSheet:[mMapInfoController window] modalForWindow:aWindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:mMapInfoController];
+}
+
+
+- (void)sheetDidEnd:(NSWindow *)aSheet returnCode:(NSInteger)aReturnCode contextInfo:(void *)aContextInfo
+{
+    if (aContextInfo == mMapInfoController)
+    {
+        if (aReturnCode == NSOKButton)
+        {
+            NSSize sMapSize  = [mMapInfoController mapSize];
+            NSSize sTileSize = [mMapInfoController tileSize];
+            
+            NSLog(@"sMapSize = %@", NSStringFromSize(sMapSize));
+            
+            FLMap *sMap = [[[FLMap alloc] initWithMapSize:sMapSize tileSize:sTileSize] autorelease];
+            [self setMap:sMap];
+            
+        }
+        else
+        {
+            [self close];
+        }
+    }
+    
+    [aSheet orderOut:self];
 }
 
 
@@ -122,6 +151,7 @@
 - (void)dealloc
 {
     [mLayerCollectionView removeObserver:self forKeyPath:@"selectionIndexes"];
+    [mMapInfoController release];
     
     [super dealloc];
 }
@@ -149,7 +179,11 @@
 
     [mMapView setDataSource:self];
 
-    [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] init] autorelease]];
+#if (1)
+    [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] initWithNibName:@"FLMapLayerItem" bundle:nil] autorelease]];
+#else
+    [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] init] autorelease]];    
+#endif
     [mLayerCollectionView setMinItemSize:NSMakeSize(330, 50)];
     [mLayerCollectionView setMaxItemSize:NSMakeSize(330, 50)];
     [mLayerCollectionView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
@@ -192,29 +226,6 @@
 
 #pragma mark -
 #pragma mark Actions
-
-
-- (IBAction)fileNewOkButtonClicked:(id)aSender
-{
-    NSSize sMapSize  = NSMakeSize([mMapWidthTextField floatValue], [mMapHeightTextField floatValue]);
-    NSSize sTileSize = NSMakeSize([mTileWidthTextField floatValue], [mTileHeightTextField floatValue]);
-
-    [NSApp endSheet:mFileNewPanel];
-    [mFileNewPanel orderOut:aSender];
-    
-    FLMap *sMap = [[[FLMap alloc] initWithMapSize:sMapSize tileSize:sTileSize] autorelease];
-    [self setMap:sMap];
-}
-
-
-- (IBAction)fileNewCancelButtonClicked:(id)aSender
-{
-    [NSApp endSheet:mFileNewPanel];
-    [mFileNewPanel orderOut:aSender];
-}
-
-
-#pragma mark -
 
 
 - (IBAction)addLayer:(id)aSender

@@ -1996,19 +1996,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">terrianTileSetEditorSelected:</string>
-						<reference key="source" ref="750698564"/>
-						<reference key="destination" ref="198325988"/>
-					</object>
-					<int key="connectionID">542</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">objectTileSetEditorSelected:</string>
 						<reference key="source" ref="750698564"/>
 						<reference key="destination" ref="572554392"/>
 					</object>
 					<int key="connectionID">543</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">terrainTileSetEditorSelected:</string>
+						<reference key="source" ref="750698564"/>
+						<reference key="destination" ref="198325988"/>
+					</object>
+					<int key="connectionID">544</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3175,7 +3175,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">543</int>
+			<int key="maxID">544</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3184,15 +3184,15 @@
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="objectTileSetEditorSelected:">id</string>
-						<string key="terrianTileSetEditorSelected:">id</string>
+						<string key="terrainTileSetEditorSelected:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="objectTileSetEditorSelected:">
 							<string key="name">objectTileSetEditorSelected:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="terrianTileSetEditorSelected:">
-							<string key="name">terrianTileSetEditorSelected:</string>
+						<object class="IBActionInfo" key="terrainTileSetEditorSelected:">
+							<string key="name">terrainTileSetEditorSelected:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

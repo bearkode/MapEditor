@@ -14,13 +14,6 @@
 @interface FLDocument : NSDocument <FLMapViewProtocol>
 
 
-/*  New Map  */
-@property (nonatomic, assign) IBOutlet NSPanel          *fileNewPanel;
-@property (nonatomic, assign) IBOutlet NSTextField      *mapWidthTextField;
-@property (nonatomic, assign) IBOutlet NSTextField      *mapHeightTextField;
-@property (nonatomic, assign) IBOutlet NSTextField      *tileWidthTextField;
-@property (nonatomic, assign) IBOutlet NSTextField      *tileHeightTextField;
-
 /*  Edit  */
 @property (nonatomic, assign) IBOutlet NSScrollView     *scrollView;
 @property (nonatomic, assign) IBOutlet NSView           *mapView;
@@ -32,13 +25,12 @@
 /*  Layer  */
 @property (nonatomic, assign) IBOutlet NSCollectionView *layerCollectionView;
 
+/*  TileSet  */
+@property (nonatomic, assign) IBOutlet NSCollectionView *tileSetCollectionView;
+
 
 #pragma mark -
 
-
-/*  New Map  */
-- (IBAction)fileNewOkButtonClicked:(id)aSender;
-- (IBAction)fileNewCancelButtonClicked:(id)aSender;
 
 /*  Layer  */
 - (IBAction)addLayer:(id)aSender;
