@@ -32,7 +32,7 @@ NSString *const kEntityName = @"FLTerrianTile";
 {
     NSArray  *sDocPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *sDocPath  = ([sDocPaths count] > 0) ? [sDocPaths objectAtIndex:0] : nil;
-    NSURL    *sStoreURL = [NSURL fileURLWithPath:[sDocPath stringByAppendingPathComponent:@"Topography.sqlite"]];
+    NSURL    *sStoreURL = [NSURL fileURLWithPath:[sDocPath stringByAppendingPathComponent:@"TerrianTileSet.sqlite"]];
     
     return sStoreURL;
 }

@@ -8,14 +8,14 @@
  */
 
 #import "AppDelegate.h"
-#import "FLTopographyTileSetEditor.h"
+#import "FLTerrianTileSetEditor.h"
 #import "FLObjectTileSetEditor.h"
 
 
 @implementation AppDelegate
 {
-    FLTopographyTileSetEditor *mTopographyTileSetEditorWindowController;
-    FLObjectTileSetEditor     *mObjectTileSetEditorWindowController;
+    FLTerrianTileSetEditor *mTerrianTileSetEditorWindowController;
+    FLObjectTileSetEditor  *mObjectTileSetEditorWindowController;
 }
 
 - (void)dealloc
@@ -28,7 +28,7 @@
 {
     NSLog(@"applicationDidFinishLaunching");
     
-    [self topographyTileSetEditorSelected:self];
+    [self terrianTileSetEditorSelected:self];
 }
 
 
@@ -36,14 +36,14 @@
 #pragma mark MenuItem Actions
 
 
-- (IBAction)topographyTileSetEditorSelected:(id)aSender
+- (IBAction)terrianTileSetEditorSelected:(id)aSender
 {
-    if (!mTopographyTileSetEditorWindowController)
+    if (!mTerrianTileSetEditorWindowController)
     {
-        mTopographyTileSetEditorWindowController = [[FLTopographyTileSetEditor alloc] initWithWindowNibName:@"FLTopographyTileSetEditor"];
+        mTerrianTileSetEditorWindowController = [[FLTerrianTileSetEditor alloc] initWithWindowNibName:@"FLTerrianTileSetEditor"];
     }
     
-    [mTopographyTileSetEditorWindowController showWindow:self];
+    [mTerrianTileSetEditorWindowController showWindow:self];
 }
 
 

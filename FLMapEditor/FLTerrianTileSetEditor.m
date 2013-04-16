@@ -1,5 +1,5 @@
 /*
- *  FLTopographyTileSetEditor.m
+ *  FLTerrianTileSetEditor.m
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 12..
@@ -7,14 +7,14 @@
  *
  */
 
-#import "FLTopographyTileSetEditor.h"
+#import "FLTerrianTileSetEditor.h"
 #import "FLTerrianTileSet.h"
 #import "FLTerrianTile.h"
 #import "FLTerrianTileItem.h"
 #import "FLTerrianTilePropertyEditor.h"
 
 
-@implementation FLTopographyTileSetEditor
+@implementation FLTerrianTileSetEditor
 {
     NSCollectionView            *mTileView;
     

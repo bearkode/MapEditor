@@ -12,16 +12,16 @@
 #import "FLMapLayer.h"
 
 
-NSString *const kMapSizeKey         = @"MapSize";
-NSString *const kTileSizeKey        = @"TileSize";
-NSString *const kLayersKey          = @"Layers";
+NSString *const kMapSizeKey      = @"MapSize";
+NSString *const kTileSizeKey     = @"TileSize";
+NSString *const kLayersKey       = @"Layers";
 
-NSString *const kTopographyLayerKey = @"TopographyLayer";
-NSString *const kStructureLayerKey  = @"StructureLayer";
+NSString *const kTerrianLayerKey = @"TerrianLayer";
+NSString *const kObjectLayerKey  = @"ObjectLayer";
 
 
-static NSInteger const kTopographyLayerIndex = 0;
-static NSInteger const kStructureLayerIndex  = 1;
+static NSInteger const kTerrianLayerIndex = 0;
+static NSInteger const kObjectLayerIndex  = 1;
 
 
 @implementation FLMap
@@ -66,11 +66,11 @@ static NSInteger const kStructureLayerIndex  = 1;
     FLMapLayer *sMapLayer;
     
     sMapLayer = [[[FLMapLayer alloc] init] autorelease];
-    [sMapLayer setName:@"Topography Layer"];
+    [sMapLayer setName:kTerrianLayerKey];
     [self insertMapLayerOnTop:sMapLayer];
     
     sMapLayer = [[[FLMapLayer alloc] init] autorelease];
-    [sMapLayer setName:@"Structure Layer"];
+    [sMapLayer setName:kObjectLayerKey];
     [self insertMapLayerOnTop:sMapLayer];
 }
 
