@@ -32,5 +32,6 @@
 - (void)insertMapLayerOnTop:(FLMapLayer *)aMapLayer;
 - (void)removeMapLayer:(FLMapLayer *)aMapLayer;
 
+- (NSPoint)gridPositionFromViewPoint:(NSPoint)aPoint;
 
 @end

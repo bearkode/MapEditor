@@ -218,6 +218,7 @@
     [super windowControllerDidLoadNib:aController];
 
     [mMapView setDataSource:self];
+    [mMapView setDelegate:self];
 
     [mLayerView setItemPrototype:[[[FLMapLayerItem alloc] initWithNibName:@"FLMapLayerItem" bundle:nil] autorelease]];
     [mLayerView setMinItemSize:NSMakeSize(330, 50)];
@@ -319,6 +320,27 @@
 - (NSSize)tileSizeOfMapView:(FLMapView *)aMapView
 {
     return [mMap tileSize];
+}
+
+
+- (void)mapView:(FLMapView *)aMapView didMouseDownAtPoint:(NSPoint)aPoint
+{
+    NSLog(@"mouse down - %d, %d", (int)aPoint.x, (int)aPoint.y);
+    
+    NSPoint sGridPosition = [mMap gridPositionFromViewPoint:aPoint];
+    NSLog(@"grid position = %@", NSStringFromPoint(sGridPosition));
+}
+
+
+- (void)mapView:(FLMapView *)aMapView didMouseUpAtPoint:(NSPoint)aPoint
+{
+    NSLog(@"mouse up - %d, %d", (int)aPoint.x, (int)aPoint.y);
+}
+
+
+- (void)mapView:(FLMapView *)aMapView didMouseDragAtPoint:(NSPoint)aPoint
+{
+    NSLog(@"mouse drag - %d, %d", (int)aPoint.x, (int)aPoint.y);
 }
 
 

@@ -14,10 +14,16 @@
 
 @implementation FLMapView
 {
-    FLMapGridView *mGridView;
+    FLMapGridView  *mGridView;
+    NSTrackingArea *mTrackingArea;
+    BOOL            mMouseTracking;
     
-    id mDataSource;
+    id              mDelegate;
+    id              mDataSource;
 }
+
+
+#pragma mark -
 
 
 - (id)initWithFrame:(NSRect)aFrame
@@ -54,11 +60,83 @@
 
 - (void)dealloc
 {
+    [mTrackingArea release];
+    
     [super dealloc];
 }
 
 
 #pragma mark -
+
+
+- (void)mouseDown:(NSEvent *)aEvent
+{
+    NSPoint sLocation = [self convertPoint:[aEvent locationInWindow] fromView:nil];
+    
+    if ([mDelegate respondsToSelector:@selector(mapView:didMouseDownAtPoint:)])
+    {
+        [mDelegate mapView:self didMouseDownAtPoint:sLocation];
+    }
+}
+
+
+- (void)mouseDragged:(NSEvent *)aEvent
+{
+    NSPoint sLocation = [self convertPoint:[aEvent locationInWindow] fromView:nil];
+    
+    if (NSPointInRect(sLocation, [mTrackingArea rect]))
+    {
+        mMouseTracking = YES;
+    }
+    
+    if (mMouseTracking)
+    {
+        if ([mDelegate respondsToSelector:@selector(mapView:didMouseDragAtPoint:)])
+        {
+            [mDelegate mapView:self didMouseDragAtPoint:sLocation];
+        }
+    }
+}
+
+
+- (void)mouseUp:(NSEvent *)aEvent
+{
+    NSPoint sLocation = [self convertPoint:[aEvent locationInWindow] fromView:nil];
+
+    if ([mDelegate respondsToSelector:@selector(mapView:didMouseUpAtPoint:)])
+    {
+        [mDelegate mapView:self didMouseUpAtPoint:sLocation];
+    }
+}
+
+
+- (void)mouseEntered:(NSEvent *)aEvent
+{
+    mMouseTracking = YES;
+}
+
+
+- (void)mouseExited:(NSEvent *)aEvent
+{
+    mMouseTracking = NO;
+}
+
+
+- (void)updateTrackingAreas
+{
+    if (mTrackingArea)
+    {
+        [self removeTrackingArea:mTrackingArea];
+        [mTrackingArea release];
+    }
+    
+    NSRect sVisibleRect = [self visibleRect];
+    mTrackingArea = [[NSTrackingArea alloc] initWithRect:sVisibleRect
+                                                 options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways)
+                                                   owner:self
+                                                userInfo:nil];
+    [self addTrackingArea:mTrackingArea];
+}
 
 
 - (void)drawRect:(NSRect)aRect
@@ -96,6 +174,12 @@
 - (void)setDataSource:(id<FLMapViewProtocol>)aDataSource
 {
     mDataSource = aDataSource;
+}
+
+
+- (void)setDelegate:(id<FLMapViewProtocol>)aDelegate
+{
+    mDelegate = aDelegate;
 }
 
 

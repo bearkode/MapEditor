@@ -16,6 +16,7 @@
 @interface FLMapView : NSView
 
 
+- (void)setDelegate:(id<FLMapViewProtocol>)aDelegate;
 - (void)setDataSource:(id<FLMapViewProtocol>)aDataSource;
 
 - (void)reload;
@@ -30,6 +31,10 @@
 @required
 - (NSSize)mapSizeOfMapView:(FLMapView *)aMapView;
 - (NSSize)tileSizeOfMapView:(FLMapView *)aMapView;
+
+- (void)mapView:(FLMapView *)aMapView didMouseDownAtPoint:(NSPoint)aPoint;
+- (void)mapView:(FLMapView *)aMapView didMouseUpAtPoint:(NSPoint)aPoint;
+- (void)mapView:(FLMapView *)aMapView didMouseDragAtPoint:(NSPoint)aPoint;
 
 
 @end

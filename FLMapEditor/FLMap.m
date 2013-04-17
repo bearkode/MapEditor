@@ -12,6 +12,7 @@
 #import "FLMapLayer.h"
 #import "FLTerrainLayer.h"
 #import "FLObjectLayer.h"
+#import "FLUtils.h"
 
 
 NSString *const kMapSizeKey      = @"MapSize";
@@ -31,6 +32,8 @@ static NSInteger const kObjectLayerIndex  = 1;
     NSSize             mMapSize;
     NSSize             mTileSize;
     NSArrayController *mMapLayersController;
+    
+    CGAffineTransform  mTransform;
 }
 
 
@@ -77,6 +80,17 @@ static NSInteger const kObjectLayerIndex  = 1;
 }
 
 
+- (void)setupTransform
+{
+    NSSize            sSize    = FLGetPixelSizeFromMap(self);
+    CGFloat           sOffsetX = 0;
+    CGFloat           sOffsetY = -sSize.height / 2;
+    CGAffineTransform sToIso   = CGAffineTransformMake(-(mTileSize.width / 2), (mTileSize.height / 2), (mTileSize.width / 2), (mTileSize.height / 2), sOffsetX, sOffsetY);
+
+    mTransform = CGAffineTransformInvert(sToIso);
+}
+
+
 #pragma mark -
 
 
@@ -91,6 +105,7 @@ static NSInteger const kObjectLayerIndex  = 1;
         mMapLayersController = [[NSArrayController alloc] init];
         
         [self setupMapLayersController];
+        [self setupTransform];
         [self setupIntitialLayers];
     }
     
@@ -114,6 +129,7 @@ static NSInteger const kObjectLayerIndex  = 1;
             mMapLayersController = [[NSArrayController alloc] init];
 
             [self setupMapLayersController];
+            [self setupTransform];
             
             NSArray *sLayers = [sJSONObject objectForKey:kLayersKey];
             
@@ -185,6 +201,17 @@ static NSInteger const kObjectLayerIndex  = 1;
 - (void)removeMapLayer:(FLMapLayer *)aMapLayer
 {
 
+}
+
+
+- (NSPoint)gridPositionFromViewPoint:(NSPoint)aPoint
+{
+    CGPoint sResult = CGPointApplyAffineTransform(aPoint, mTransform);
+    
+    sResult.x = mMapSize.width  - (NSInteger)ceilf(sResult.x);
+    sResult.y = mMapSize.height * 2 - (NSInteger)ceilf(sResult.y);
+    
+    return NSPointFromCGPoint(sResult);
 }
 
 
