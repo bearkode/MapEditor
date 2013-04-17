@@ -189,6 +189,8 @@
 - (void)dealloc
 {
     [mLayerView removeObserver:self forKeyPath:@"selectionIndexes"];
+    [mTileSetView removeObserver:self forKeyPath:@"selectionIndexes"];
+
     [mMapInfoController release];
     
     [super dealloc];

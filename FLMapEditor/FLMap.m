@@ -10,6 +10,8 @@
 #import "FLMap.h"
 #import "NSDictionary+JSONAddition.h"
 #import "FLMapLayer.h"
+#import "FLTerrainLayer.h"
+#import "FLObjectLayer.h"
 
 
 NSString *const kMapSizeKey      = @"MapSize";
@@ -65,11 +67,11 @@ static NSInteger const kObjectLayerIndex  = 1;
 {
     FLMapLayer *sMapLayer;
     
-    sMapLayer = [[[FLMapLayer alloc] initWithType:kFLMapLayerTerrainType] autorelease];
+    sMapLayer = [[[FLTerrainLayer alloc] init] autorelease];
     [sMapLayer setName:kTerrainLayerKey];
     [self insertMapLayerOnTop:sMapLayer];
     
-    sMapLayer = [[[FLMapLayer alloc] initWithType:kFLMapLayerObjectType] autorelease];
+    sMapLayer = [[[FLObjectLayer alloc] init] autorelease];
     [sMapLayer setName:kObjectLayerKey];
     [self insertMapLayerOnTop:sMapLayer];
 }
@@ -182,7 +184,7 @@ static NSInteger const kObjectLayerIndex  = 1;
 
 - (void)removeMapLayer:(FLMapLayer *)aMapLayer
 {
-//    [mMapLayers removeObject:aMapLayer];
+
 }
 
 
