@@ -17,9 +17,6 @@
 @interface FLTerrainTileSet : FLTileSet
 
 
-@property (nonatomic, readonly) NSArrayController *arrayController;
-
-
 - (NSUInteger)count;
 - (FLTerrainTile *)terrainTileAtIndex:(NSInteger)aIndex;
 - (FLTerrainTile *)insertNewTerrainTile;

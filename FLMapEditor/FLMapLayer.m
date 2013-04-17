@@ -50,6 +50,15 @@ static NSString *const kNameKey = @"Name";
 #pragma mark -
 
 
+- (id)init
+{
+    NSAssert(NO, @"");
+    
+    return nil;
+}
+
+
+
 - (id)initWithType:(FLMapLayerType)aType
 {
     self = [super init];
@@ -57,6 +66,7 @@ static NSString *const kNameKey = @"Name";
     if (self)
     {
         mType = aType;
+        
         [self setupTileSet];
     }
     

@@ -11,6 +11,12 @@
 
 
 @interface FLTileSet : NSObject
+{
+    NSArrayController *mArrayController;
+}
+
+
+@property (nonatomic, readonly) NSArrayController *arrayController;
 
 
 @end

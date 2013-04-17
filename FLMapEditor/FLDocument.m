@@ -15,6 +15,7 @@
 #import "FLMapLayer.h"
 #import "FLMapLayerItem.h"
 #import "FLMapInfoController.h"
+#import "FLTerrainTileItem.h"
 
 
 @implementation FLDocument
@@ -38,8 +39,7 @@
     
     /*  Model  */
     FLMap               *mMap;
-    FLMapLayer          *mCurrentLayer;
-    FLTileSet           *mCurrentTileSet;
+    FLMapLayer          *mSelectedLayer;
 }
 
 
@@ -139,8 +139,12 @@
     NSIndexSet *sIndexSet = [mLayerView selectionIndexes];
     NSUInteger  sIndex    = [sIndexSet firstIndex];
     
-    mCurrentLayer   = [[[mMap arrayController] arrangedObjects] objectAtIndex:sIndex];
-    mCurrentTileSet = [mCurrentLayer tileSet];
+    mSelectedLayer = [[[mMap arrayController] arrangedObjects] objectAtIndex:sIndex];
+    
+    FLTileSet *sTileSet         = [mSelectedLayer tileSet];
+    NSArray   *sArrangedObjects = [[sTileSet arrayController] arrangedObjects];
+    [mTileSetView setContent:sArrangedObjects];
+    [mTileSetView bind:NSContentBinding toObject:sTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
 }
 
 
@@ -192,14 +196,15 @@
 
     [mMapView setDataSource:self];
 
-#if (1)
     [mLayerView setItemPrototype:[[[FLMapLayerItem alloc] initWithNibName:@"FLMapLayerItem" bundle:nil] autorelease]];
-#else
-    [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] init] autorelease]];    
-#endif
     [mLayerView setMinItemSize:NSMakeSize(330, 50)];
     [mLayerView setMaxItemSize:NSMakeSize(330, 50)];
     [mLayerView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
+    
+    [mTileSetView setItemPrototype:[[[FLTerrainTileItem alloc] initWithNibName:@"FLTerrainTileItem" bundle:nil] autorelease]];
+    [mTileSetView setMinItemSize:NSMakeSize(120, 120)];
+    [mTileSetView setMaxItemSize:NSMakeSize(120, 120)];
+    [mTileSetView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
     
     if (mMap)
     {

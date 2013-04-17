@@ -17,11 +17,7 @@ NSString *const kEntityName = @"FLTerrainTile";
 @implementation FLTerrainTileSet
 {
     NSManagedObjectContext *mMOContext;
-    NSArrayController      *mArrayController;
 }
-
-
-@synthesize arrayController = mArrayController;
 
 
 #pragma mark -
@@ -105,7 +101,6 @@ NSString *const kEntityName = @"FLTerrainTile";
 - (void)dealloc
 {
     [mMOContext release];
-    [mArrayController release];
     
     [super dealloc];
 }

@@ -65,11 +65,11 @@ static NSInteger const kObjectLayerIndex  = 1;
 {
     FLMapLayer *sMapLayer;
     
-    sMapLayer = [[[FLMapLayer alloc] init] autorelease];
+    sMapLayer = [[[FLMapLayer alloc] initWithType:kFLMapLayerTerrainType] autorelease];
     [sMapLayer setName:kTerrainLayerKey];
     [self insertMapLayerOnTop:sMapLayer];
     
-    sMapLayer = [[[FLMapLayer alloc] init] autorelease];
+    sMapLayer = [[[FLMapLayer alloc] initWithType:kFLMapLayerObjectType] autorelease];
     [sMapLayer setName:kObjectLayerKey];
     [self insertMapLayerOnTop:sMapLayer];
 }

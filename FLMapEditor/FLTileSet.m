@@ -13,4 +13,34 @@
 @implementation FLTileSet
 
 
+@synthesize arrayController = mArrayController;
+
+
+#pragma mark -
+
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+    
+    }
+    
+    return self;
+}
+
+
+- (void)dealloc
+{
+    [mArrayController release];
+    
+    [super dealloc];
+}
+
+
+#pragma mark -
+
+
 @end
