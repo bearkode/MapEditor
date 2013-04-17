@@ -25,6 +25,7 @@
 		2E46380C1712B49100EA1888 /* FLMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380B1712B49100EA1888 /* FLMap.m */; };
 		2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380E1712BCA200EA1888 /* FLMapLayer.m */; };
 		2E4638121712C17B00EA1888 /* FLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638111712C17B00EA1888 /* FLMapView.m */; };
+		2E69153B171E637B0085B797 /* FLTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E69153A171E637B0085B797 /* FLTile.m */; };
 		2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */; };
 		2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */; };
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
@@ -77,6 +78,8 @@
 		2E46380E1712BCA200EA1888 /* FLMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapLayer.m; sourceTree = "<group>"; };
 		2E4638101712C17B00EA1888 /* FLMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapView.h; sourceTree = "<group>"; };
 		2E4638111712C17B00EA1888 /* FLMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapView.m; sourceTree = "<group>"; };
+		2E691539171E637B0085B797 /* FLTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTile.h; sourceTree = "<group>"; };
+		2E69153A171E637B0085B797 /* FLTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTile.m; sourceTree = "<group>"; };
 		2E7C07E91713ABFB004BA8A0 /* NSTextField+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Additions.h"; sourceTree = "<group>"; };
 		2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Additions.m"; sourceTree = "<group>"; };
 		2E7C07ED1713B300004BA8A0 /* FLMapGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapGridView.h; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 		2EA26B8E171E3AD1001E9584 /* TileSet */ = {
 			isa = PBXGroup;
 			children = (
+				2E691539171E637B0085B797 /* FLTile.h */,
+				2E69153A171E637B0085B797 /* FLTile.m */,
 				2EA26B90171E3B7B001E9584 /* FLTileSet.h */,
 				2EA26B91171E3B7B001E9584 /* FLTileSet.m */,
 				2EA26B96171E3CDD001E9584 /* FLTileSetManager.h */,
@@ -395,6 +400,7 @@
 				2EA26B92171E3B7B001E9584 /* FLTileSet.m in Sources */,
 				2EA26B95171E3BE7001E9584 /* FLObjectTileSet.m in Sources */,
 				2EA26B98171E3CDD001E9584 /* FLTileSetManager.m in Sources */,
+				2E69153B171E637B0085B797 /* FLTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

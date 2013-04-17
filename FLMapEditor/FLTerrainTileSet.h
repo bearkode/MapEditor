@@ -18,7 +18,7 @@
 
 
 - (NSUInteger)count;
-- (FLTerrainTile *)terrainTileAtIndex:(NSInteger)aIndex;
+//- (FLTerrainTile *)terrainTileAtIndex:(NSInteger)aIndex;
 - (FLTerrainTile *)insertNewTerrainTile;
 - (void)deleteTerrainTile:(FLTerrainTile *)aTerrainTile;
 - (void)deleteTerrainTileAtIndex:(NSInteger)aIndex;

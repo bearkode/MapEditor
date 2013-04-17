@@ -25,7 +25,7 @@ typedef enum
 
 @property (nonatomic, readonly) FLMapLayerType type;
 @property (nonatomic, retain)   NSString      *name;
-@property (nonatomic, retain)   FLTileSet     *tileSet;
+@property (nonatomic, readonly) FLTileSet     *tileSet;
 
 
 - (id)initWithType:(FLMapLayerType)aType;

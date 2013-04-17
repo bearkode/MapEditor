@@ -130,7 +130,7 @@
 {
     NSIndexSet        *sIndexSet        = [mTileView selectionIndexes];
     NSInteger          sIndex           = [sIndexSet firstIndex];
-    FLTerrainTile     *sTerrainTile     = [mTileSet terrainTileAtIndex:sIndex];
+    FLTerrainTile     *sTerrainTile     = (FLTerrainTile *)[mTileSet tileAtIndex:sIndex];
     FLTerrainTileItem *sTerrainTileItem = (FLTerrainTileItem *)[mTileView itemAtIndex:sIndex];
     
     [self showPropertyEditorWithTerrainTile:sTerrainTile collectionItem:sTerrainTileItem];

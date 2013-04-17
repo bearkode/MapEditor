@@ -10,6 +10,9 @@
 #import <Foundation/Foundation.h>
 
 
+@class FLTile;
+
+
 @interface FLTileSet : NSObject
 {
     NSArrayController *mArrayController;
@@ -17,6 +20,9 @@
 
 
 @property (nonatomic, readonly) NSArrayController *arrayController;
+
+
+- (FLTile *)tileAtIndex:(NSInteger)aIndex;
 
 
 @end

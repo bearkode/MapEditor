@@ -16,6 +16,8 @@
 #import "FLMapLayerItem.h"
 #import "FLMapInfoController.h"
 #import "FLTerrainTileItem.h"
+#import "FLTile.h"
+#import "FLTileSet.h"
 
 
 @implementation FLDocument
@@ -40,6 +42,7 @@
     /*  Model  */
     FLMap               *mMap;
     FLMapLayer          *mSelectedLayer;
+    FLTile              *mSelectedTile;
 }
 
 
@@ -89,7 +92,8 @@
             NSSize sMapSize  = [mMapInfoController mapSize];
             NSSize sTileSize = [mMapInfoController tileSize];
             
-            NSLog(@"sMapSize = %@", NSStringFromSize(sMapSize));
+            NSLog(@"sMapSize  = %@", NSStringFromSize(sMapSize));
+            NSLog(@"sTileSize = %@", NSStringFromSize(sTileSize));
             
             FLMap *sMap = [[[FLMap alloc] initWithMapSize:sMapSize tileSize:sTileSize] autorelease];
             [self setMap:sMap];
@@ -145,6 +149,23 @@
     NSArray   *sArrangedObjects = [[sTileSet arrayController] arrangedObjects];
     [mTileSetView setContent:sArrangedObjects];
     [mTileSetView bind:NSContentBinding toObject:sTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
+    [mTileSetView setSelectionIndexes:[NSIndexSet indexSet]];
+}
+
+
+- (void)tileSetViewSelectionDidChange
+{
+    NSIndexSet *sIndexSet = [mTileSetView selectionIndexes];
+    NSUInteger  sIndex    = [sIndexSet firstIndex];
+    
+    if (sIndex != NSNotFound)
+    {
+        mSelectedTile = [[mSelectedLayer tileSet] tileAtIndex:sIndex];
+    }
+    else
+    {
+        mSelectedTile = nil;
+    }
 }
 
 
@@ -248,7 +269,7 @@
 
 - (IBAction)addLayer:(id)aSender
 {
-    FLMapLayer *sLayer = [[[FLMapLayer alloc] init] autorelease];
+    FLMapLayer *sLayer = [[[FLMapLayer alloc] initWithType:kFLMapLayerObjectType] autorelease];
     [sLayer setName:[NSString stringWithFormat:@"Hello"]];
     
     [mMap insertMapLayerOnTop:sLayer];
@@ -294,6 +315,13 @@
         if ([aKeyPath isEqualToString:@"selectionIndexes"])
         {
             [self layerViewSelectionDidChange];
+        }
+    }
+    else if (aObject == mTileSetView)
+    {
+        if ([aKeyPath isEqualToString:@"selectionIndexes"])
+        {
+            [self tileSetViewSelectionDidChange];
         }
     }
 }

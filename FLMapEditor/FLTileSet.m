@@ -43,4 +43,12 @@
 #pragma mark -
 
 
+- (FLTile *)tileAtIndex:(NSInteger)aIndex
+{
+    FLTile *sTile = [[mArrayController arrangedObjects] objectAtIndex:aIndex];
+    
+    return sTile;
+}
+
+
 @end

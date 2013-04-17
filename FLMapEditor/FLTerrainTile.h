@@ -8,9 +8,10 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "FLTile.h"
 
 
-@interface FLTerrainTile : NSManagedObject
+@interface FLTerrainTile : FLTile
 
 
 @property (nonatomic, assign) NSInteger index;
