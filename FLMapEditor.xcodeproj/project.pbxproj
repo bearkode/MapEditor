@@ -36,11 +36,8 @@
 		2EA26B85171CE700001E9584 /* FLTerrainTileItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA26B83171CE700001E9584 /* FLTerrainTileItem.xib */; };
 		2EA26B8B171D39D1001E9584 /* FLMapInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B89171D39D1001E9584 /* FLMapInfoController.m */; };
 		2EA26B8C171D39D1001E9584 /* FLMapInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA26B8A171D39D1001E9584 /* FLMapInfoController.xib */; };
-		2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43C017165D5800CC376E /* FLTileSet.m */; };
 		2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */; };
 		2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */; };
-		2EFB43D41716C13B00CC376E /* FLObjectSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D31716C13B00CC376E /* FLObjectSet.m */; };
-		2EFB43D71716C16600CC376E /* FLSpriteSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D61716C16600CC376E /* FLSpriteSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,16 +92,10 @@
 		2EA26B88171D39D1001E9584 /* FLMapInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapInfoController.h; sourceTree = "<group>"; };
 		2EA26B89171D39D1001E9584 /* FLMapInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapInfoController.m; sourceTree = "<group>"; };
 		2EA26B8A171D39D1001E9584 /* FLMapInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLMapInfoController.xib; sourceTree = "<group>"; };
-		2EFB43BF17165D5800CC376E /* FLTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTileSet.h; sourceTree = "<group>"; };
-		2EFB43C017165D5800CC376E /* FLTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTileSet.m; sourceTree = "<group>"; };
 		2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScrollView+Additions.h"; sourceTree = "<group>"; };
 		2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScrollView+Additions.m"; sourceTree = "<group>"; };
 		2EFB43CF1716A77A00CC376E /* NSDictionary+JSONAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONAddition.h"; sourceTree = "<group>"; };
 		2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONAddition.m"; sourceTree = "<group>"; };
-		2EFB43D21716C13B00CC376E /* FLObjectSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectSet.h; sourceTree = "<group>"; };
-		2EFB43D31716C13B00CC376E /* FLObjectSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectSet.m; sourceTree = "<group>"; };
-		2EFB43D51716C16600CC376E /* FLSpriteSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLSpriteSet.h; sourceTree = "<group>"; };
-		2EFB43D61716C16600CC376E /* FLSpriteSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLSpriteSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +110,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E37E6031717A6C60033982C /* TerrainTileSetEditor */ = {
+		2E37E6031717A6C60033982C /* TerrainTileSet */ = {
 			isa = PBXGroup;
 			children = (
 				2E37E60F1717B1550033982C /* FLTerrainTile.h */,
@@ -136,17 +127,17 @@
 				2EA26B7A171BEC14001E9584 /* FLTerrainTilePropertyEditor.m */,
 				2EA26B7B171BEC14001E9584 /* FLTerrainTilePropertyEditor.xib */,
 			);
-			name = TerrainTileSetEditor;
+			name = TerrainTileSet;
 			sourceTree = "<group>";
 		};
-		2E37E6091717A86E0033982C /* FLObjectTileSetEditor */ = {
+		2E37E6091717A86E0033982C /* FLObjectTileSet */ = {
 			isa = PBXGroup;
 			children = (
 				2E37E60A1717A89A0033982C /* FLObjectTileSetEditor.h */,
 				2E37E60B1717A89A0033982C /* FLObjectTileSetEditor.m */,
 				2E37E60C1717A89A0033982C /* FLObjectTileSetEditor.xib */,
 			);
-			name = FLObjectTileSetEditor;
+			name = FLObjectTileSet;
 			sourceTree = "<group>";
 		};
 		2E37E6151717B4B50033982C /* CoreDataModel */ = {
@@ -200,8 +191,8 @@
 				2E7C07E81713ABD6004BA8A0 /* Additions */,
 				2EA26B87171D3997001E9584 /* MapInfoPanel */,
 				2E4638131712C18500EA1888 /* MapEditor */,
-				2E37E6031717A6C60033982C /* TerrainTileSetEditor */,
-				2E37E6091717A86E0033982C /* FLObjectTileSetEditor */,
+				2E37E6031717A6C60033982C /* TerrainTileSet */,
+				2E37E6091717A86E0033982C /* FLObjectTileSet */,
 				2E37E5D71717A0510033982C /* AppDelegate.h */,
 				2E37E5D81717A0510033982C /* AppDelegate.m */,
 				2E4638021712AA4A00EA1888 /* MainMenu.xib */,
@@ -280,12 +271,6 @@
 				2E46380B1712B49100EA1888 /* FLMap.m */,
 				2E46380D1712BCA200EA1888 /* FLMapLayer.h */,
 				2E46380E1712BCA200EA1888 /* FLMapLayer.m */,
-				2EFB43D51716C16600CC376E /* FLSpriteSet.h */,
-				2EFB43D61716C16600CC376E /* FLSpriteSet.m */,
-				2EFB43BF17165D5800CC376E /* FLTileSet.h */,
-				2EFB43C017165D5800CC376E /* FLTileSet.m */,
-				2EFB43D21716C13B00CC376E /* FLObjectSet.h */,
-				2EFB43D31716C13B00CC376E /* FLObjectSet.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,11 +356,8 @@
 				2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */,
 				2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */,
 				2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */,
-				2EFB43C117165D5800CC376E /* FLTileSet.m in Sources */,
 				2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */,
 				2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */,
-				2EFB43D41716C13B00CC376E /* FLObjectSet.m in Sources */,
-				2EFB43D71716C16600CC376E /* FLSpriteSet.m in Sources */,
 				2E37E5D91717A0510033982C /* AppDelegate.m in Sources */,
 				2E37E6071717A71A0033982C /* FLTerrainTileSetEditor.m in Sources */,
 				2E37E60D1717A89A0033982C /* FLObjectTileSetEditor.m in Sources */,

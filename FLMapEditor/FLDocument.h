@@ -23,10 +23,10 @@
 @property (nonatomic, assign) IBOutlet NSTextField      *tileSizeLabel;
 
 /*  Layer  */
-@property (nonatomic, assign) IBOutlet NSCollectionView *layerCollectionView;
+@property (nonatomic, assign) IBOutlet NSCollectionView *layerView;
 
 /*  TileSet  */
-@property (nonatomic, assign) IBOutlet NSCollectionView *tileSetCollectionView;
+@property (nonatomic, assign) IBOutlet NSCollectionView *tileSetView;
 
 
 #pragma mark -
@@ -35,9 +35,6 @@
 /*  Layer  */
 - (IBAction)addLayer:(id)aSender;
 - (IBAction)removeLayer:(id)aSender;
-
-/*  Tile Set  */
-- (IBAction)loadTileSetButtonClicked:(id)aSender;
 
 
 @end

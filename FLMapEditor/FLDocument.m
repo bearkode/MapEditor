@@ -14,7 +14,6 @@
 #import "FLUtils.h"
 #import "FLMapLayer.h"
 #import "FLMapLayerItem.h"
-#import "FLTileSet.h"
 #import "FLMapInfoController.h"
 
 
@@ -32,10 +31,10 @@
     NSTextField         *mTileSizeLabel;
     
     /*  Layers  */
-    NSCollectionView    *mLayerCollectionView;
+    NSCollectionView    *mLayerView;
     
     /*  TileSet  */
-    NSCollectionView    *mTileSetCollectionView;
+    NSCollectionView    *mTileSetView;
     
     /*  Model  */
     FLMap               *mMap;
@@ -48,18 +47,18 @@
 
 
 /*  Edit View  */
-@synthesize scrollView            = mScrollView;
-@synthesize mapView               = mMapView;
+@synthesize scrollView    = mScrollView;
+@synthesize mapView       = mMapView;
 
 /*  Info View  */
-@synthesize mapSizeLabel          = mMapSizeLabel;
-@synthesize tileSizeLabel         = mTileSizeLabel;
+@synthesize mapSizeLabel  = mMapSizeLabel;
+@synthesize tileSizeLabel = mTileSizeLabel;
 
 /*  Layers  */
-@synthesize layerCollectionView   = mLayerCollectionView;
+@synthesize layerView     = mLayerView;
 
 /*  TileSet  */
-@synthesize tileSetCollectionView = mTileSetCollectionView;
+@synthesize tileSetView   = mTileSetView;
 
 
 #pragma mark -
@@ -73,7 +72,11 @@
         mMapInfoController = [[FLMapInfoController alloc] initWithWindowNibName:@"FLMapInfoController"];
     }
     
-    [NSApp beginSheet:[mMapInfoController window] modalForWindow:aWindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:mMapInfoController];
+    [NSApp beginSheet:[mMapInfoController window]
+       modalForWindow:aWindow
+        modalDelegate:self
+       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
+          contextInfo:mMapInfoController];
 }
 
 
@@ -114,20 +117,30 @@
 
 - (void)setMap:(FLMap *)aMap
 {
-    [mLayerCollectionView unbind:NSContentBinding];
+    [mLayerView unbind:NSContentBinding];
     [mMap autorelease];
     mMap = [aMap retain];
     
     NSArray   *sArrangedObjects = [[mMap arrayController] arrangedObjects];
     NSUInteger sIndex           = [sArrangedObjects count] - 1;
-    [mLayerCollectionView setContent:sArrangedObjects];
-    [mLayerCollectionView bind:NSContentBinding toObject:mMap withKeyPath:@"arrayController.arrangedObjects" options:NULL];
-    [mLayerCollectionView setSelectionIndexes:[NSIndexSet indexSetWithIndex:sIndex]];
-    [mLayerCollectionView scrollRectToVisible:[mLayerCollectionView frameForItemAtIndex:sIndex]];
+    [mLayerView setContent:sArrangedObjects];
+    [mLayerView bind:NSContentBinding toObject:mMap withKeyPath:@"arrayController.arrangedObjects" options:NULL];
+    [mLayerView setSelectionIndexes:[NSIndexSet indexSetWithIndex:sIndex]];
+    [mLayerView scrollRectToVisible:[mLayerView frameForItemAtIndex:sIndex]];
     
     [self updateInfoView];
     [mMapView reload];
     [mScrollView scrollToCenter];
+}
+
+
+- (void)layerViewSelectionDidChange
+{
+    NSIndexSet *sIndexSet = [mLayerView selectionIndexes];
+    NSUInteger  sIndex    = [sIndexSet firstIndex];
+    
+    mCurrentLayer   = [[[mMap arrayController] arrangedObjects] objectAtIndex:sIndex];
+    mCurrentTileSet = [mCurrentLayer tileSet];
 }
 
 
@@ -150,7 +163,7 @@
 
 - (void)dealloc
 {
-    [mLayerCollectionView removeObserver:self forKeyPath:@"selectionIndexes"];
+    [mLayerView removeObserver:self forKeyPath:@"selectionIndexes"];
     [mMapInfoController release];
     
     [super dealloc];
@@ -180,13 +193,13 @@
     [mMapView setDataSource:self];
 
 #if (1)
-    [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] initWithNibName:@"FLMapLayerItem" bundle:nil] autorelease]];
+    [mLayerView setItemPrototype:[[[FLMapLayerItem alloc] initWithNibName:@"FLMapLayerItem" bundle:nil] autorelease]];
 #else
     [mLayerCollectionView setItemPrototype:[[[FLMapLayerItem alloc] init] autorelease]];    
 #endif
-    [mLayerCollectionView setMinItemSize:NSMakeSize(330, 50)];
-    [mLayerCollectionView setMaxItemSize:NSMakeSize(330, 50)];
-    [mLayerCollectionView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
+    [mLayerView setMinItemSize:NSMakeSize(330, 50)];
+    [mLayerView setMaxItemSize:NSMakeSize(330, 50)];
+    [mLayerView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
     
     if (mMap)
     {
@@ -244,26 +257,6 @@
 
 
 #pragma mark -
-
-
-- (IBAction)loadTileSetButtonClicked:(id)aSender
-{
-    NSWindowController *sWindowController = [[self windowControllers] objectAtIndex:0];
-    NSOpenPanel        *sOpenPanel        = [NSOpenPanel openPanel];
-   
-    [sOpenPanel setAllowedFileTypes:[NSArray arrayWithObject:@"png"]];
-    [sOpenPanel beginSheetModalForWindow:[sWindowController window] completionHandler:^(NSInteger aResult) {
-        if (aResult == NSFileHandlingPanelOKButton)
-        {
-            FLTileSet *sTileSet = [[[FLTileSet alloc] initWithImageURL:[[sOpenPanel URLs] objectAtIndex:0]] autorelease];
-            [mCurrentLayer setTileSet:sTileSet];
-            mCurrentTileSet = sTileSet;
-        }
-    }];
-}
-
-
-#pragma mark -
 #pragma mark MapViewDataSource
 
 
@@ -283,16 +276,6 @@
 #pragma mark KVO
 
 
-- (void)layerCollectionViewSelectionDidChange
-{
-    NSIndexSet *sIndexSet = [mLayerCollectionView selectionIndexes];
-    NSUInteger  sIndex    = [sIndexSet firstIndex];
-
-    mCurrentLayer   = [[[mMap arrayController] arrangedObjects] objectAtIndex:sIndex];
-    mCurrentTileSet = [mCurrentLayer tileSet];
-}
-
-
 - (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)aObject change:(NSDictionary *)aChange context:(void *)aContext
 {
 //    NSLog(@"observeValueForKeyPath:ofObject:change:context");
@@ -301,11 +284,11 @@
 //    NSLog(@"aChange  = %@", aChange);
 //    NSLog(@"aContext = %p", aContext);
     
-    if (aObject == mLayerCollectionView)
+    if (aObject == mLayerView)
     {
         if ([aKeyPath isEqualToString:@"selectionIndexes"])
         {
-            [self layerCollectionViewSelectionDidChange];
+            [self layerViewSelectionDidChange];
         }
     }
 }
