@@ -32,6 +32,12 @@
 #pragma mark -
 
 
+/*  Toolbar  */
+- (IBAction)saveButtonClicked:(id)aSender;
+- (IBAction)fillButtonClicked:(id)aSender;
+- (IBAction)brushButtonClicked:(id)aSender;
+
+
 /*  Layer  */
 - (IBAction)addLayer:(id)aSender;
 - (IBAction)removeLayer:(id)aSender;

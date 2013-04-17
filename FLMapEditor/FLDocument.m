@@ -267,6 +267,28 @@
 #pragma mark Actions
 
 
+- (IBAction)saveButtonClicked:(id)aSender
+{
+    NSLog(@"save button clicked");
+    [self saveDocument:self];
+}
+
+
+- (IBAction)fillButtonClicked:(id)aSender
+{
+    NSLog(@"fill button clicked");
+}
+
+
+- (IBAction)brushButtonClicked:(id)aSender
+{
+    NSLog(@"brush button clicked");
+}
+
+
+#pragma mark -
+
+
 - (IBAction)addLayer:(id)aSender
 {
     FLMapLayer *sLayer = [[[FLMapLayer alloc] initWithType:kFLMapLayerObjectType] autorelease];

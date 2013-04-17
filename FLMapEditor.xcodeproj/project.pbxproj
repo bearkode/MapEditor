@@ -26,6 +26,9 @@
 		2E46380F1712BCA300EA1888 /* FLMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E46380E1712BCA200EA1888 /* FLMapLayer.m */; };
 		2E4638121712C17B00EA1888 /* FLMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E4638111712C17B00EA1888 /* FLMapView.m */; };
 		2E69153B171E637B0085B797 /* FLTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E69153A171E637B0085B797 /* FLTile.m */; };
+		2E69153F171E6A5F0085B797 /* brush-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E69153D171E6A5F0085B797 /* brush-icon.png */; };
+		2E691540171E6A5F0085B797 /* fill-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E69153E171E6A5F0085B797 /* fill-icon.png */; };
+		2E691542171E6C440085B797 /* save-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E691541171E6C440085B797 /* save-icon.png */; };
 		2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */; };
 		2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */; };
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
@@ -80,6 +83,9 @@
 		2E4638111712C17B00EA1888 /* FLMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapView.m; sourceTree = "<group>"; };
 		2E691539171E637B0085B797 /* FLTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTile.h; sourceTree = "<group>"; };
 		2E69153A171E637B0085B797 /* FLTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTile.m; sourceTree = "<group>"; };
+		2E69153D171E6A5F0085B797 /* brush-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brush-icon.png"; sourceTree = "<group>"; };
+		2E69153E171E6A5F0085B797 /* fill-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fill-icon.png"; sourceTree = "<group>"; };
+		2E691541171E6C440085B797 /* save-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "save-icon.png"; sourceTree = "<group>"; };
 		2E7C07E91713ABFB004BA8A0 /* NSTextField+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Additions.h"; sourceTree = "<group>"; };
 		2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Additions.m"; sourceTree = "<group>"; };
 		2E7C07ED1713B300004BA8A0 /* FLMapGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapGridView.h; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				2E4637F01712AA4A00EA1888 /* FLMapEditor */,
+				2E69153C171E6A5F0085B797 /* Resources */,
 				2E4637E91712AA4A00EA1888 /* Frameworks */,
 				2E4637E81712AA4A00EA1888 /* Products */,
 			);
@@ -243,6 +250,16 @@
 			);
 			name = Map;
 			sourceTree = "<group>";
+		};
+		2E69153C171E6A5F0085B797 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2E691541171E6C440085B797 /* save-icon.png */,
+				2E69153D171E6A5F0085B797 /* brush-icon.png */,
+				2E69153E171E6A5F0085B797 /* fill-icon.png */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 		2E7C07E81713ABD6004BA8A0 /* Additions */ = {
 			isa = PBXGroup;
@@ -367,6 +384,9 @@
 				2EA26B7D171BEC15001E9584 /* FLTerrainTilePropertyEditor.xib in Resources */,
 				2EA26B85171CE700001E9584 /* FLTerrainTileItem.xib in Resources */,
 				2EA26B8C171D39D1001E9584 /* FLMapInfoController.xib in Resources */,
+				2E69153F171E6A5F0085B797 /* brush-icon.png in Resources */,
+				2E691540171E6A5F0085B797 /* fill-icon.png in Resources */,
+				2E691542171E6C440085B797 /* save-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
