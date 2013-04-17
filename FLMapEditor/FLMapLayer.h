@@ -15,7 +15,7 @@
 
 typedef enum
 {
-    kFLMapLayerTileType = 0,
+    kFLMapLayerTerrainType = 0,
     kFLMapLayerObjectType,
 } FLMapLayerType;
 

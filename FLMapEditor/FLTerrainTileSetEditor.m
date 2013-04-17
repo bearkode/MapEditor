@@ -8,6 +8,7 @@
  */
 
 #import "FLTerrainTileSetEditor.h"
+#import "FLTileSetManager.h"
 #import "FLTerrainTileSet.h"
 #import "FLTerrainTile.h"
 #import "FLTerrainTileItem.h"
@@ -60,7 +61,7 @@
     
     if (self)
     {
-        mTileSet = [[FLTerrainTileSet alloc] init];
+        mTileSet = (FLTerrainTileSet *)[[[FLTileSetManager sharedManager] terrainTileSet] retain];
     }
     
     return self;

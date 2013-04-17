@@ -8,6 +8,7 @@
  */
 
 #import "FLMapLayer.h"
+#import "FLTileSetManager.h"
 
 
 static NSString *const kTypeKey = @"Type";
@@ -30,6 +31,25 @@ static NSString *const kNameKey = @"Name";
 #pragma mark -
 
 
+- (void)setupTileSet
+{
+    [mTileSet autorelease];
+
+    if (mType == kFLMapLayerTerrainType)
+    {
+        mTileSet = [[[FLTileSetManager sharedManager] terrainTileSet] retain];
+    }
+    else if (mType == kFLMapLayerObjectType)
+    {
+        mTileSet = [[[FLTileSetManager sharedManager] objectTileSet] retain];
+    }
+}
+
+
+
+#pragma mark -
+
+
 - (id)initWithType:(FLMapLayerType)aType
 {
     self = [super init];
@@ -37,6 +57,7 @@ static NSString *const kNameKey = @"Name";
     if (self)
     {
         mType = aType;
+        [self setupTileSet];
     }
     
     return self;
@@ -51,6 +72,8 @@ static NSString *const kNameKey = @"Name";
     {
         mType = (FLMapLayerType)[[aDict objectForKey:kTypeKey] integerValue];
         mName = [[aDict objectForKey:kNameKey] retain];
+        
+        [self setupTileSet];
     }
     
     return self;
@@ -60,6 +83,7 @@ static NSString *const kNameKey = @"Name";
 - (void)dealloc
 {
     [mName release];
+    [mTileSet release];
     
     [super dealloc];
 }

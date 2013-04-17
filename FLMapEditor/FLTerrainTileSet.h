@@ -8,12 +8,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "FLTileSet.h"
 
 
 @class FLTerrainTile;
 
 
-@interface FLTerrainTileSet : NSObject
+@interface FLTerrainTileSet : FLTileSet
 
 
 @property (nonatomic, readonly) NSArrayController *arrayController;
