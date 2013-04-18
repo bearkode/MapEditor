@@ -122,6 +122,17 @@
 }
 
 
+- (void)mouseMoved:(NSEvent *)aEvent
+{
+    NSPoint sLocation = [self convertPoint:[aEvent locationInWindow] fromView:nil];
+    
+    if ([mDelegate respondsToSelector:@selector(mapView:didMouseMoveAtPoint:)])
+    {
+        [mDelegate mapView:self didMouseMoveAtPoint:sLocation];
+    }
+}
+
+
 - (void)updateTrackingAreas
 {
     if (mTrackingArea)
@@ -132,7 +143,7 @@
     
     NSRect sVisibleRect = [self visibleRect];
     mTrackingArea = [[NSTrackingArea alloc] initWithRect:sVisibleRect
-                                                 options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways)
+                                                 options: (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways | NSTrackingMouseMoved)
                                                    owner:self
                                                 userInfo:nil];
     [self addTrackingArea:mTrackingArea];

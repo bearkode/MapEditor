@@ -32,6 +32,7 @@
     /*  Info View  */
     NSTextField         *mMapSizeLabel;
     NSTextField         *mTileSizeLabel;
+    NSTextField         *mGridPositionLabel;
     
     /*  Layers  */
     NSCollectionView    *mLayerView;
@@ -50,18 +51,19 @@
 
 
 /*  Edit View  */
-@synthesize scrollView    = mScrollView;
-@synthesize mapView       = mMapView;
+@synthesize scrollView        = mScrollView;
+@synthesize mapView           = mMapView;
 
 /*  Info View  */
-@synthesize mapSizeLabel  = mMapSizeLabel;
-@synthesize tileSizeLabel = mTileSizeLabel;
+@synthesize mapSizeLabel      = mMapSizeLabel;
+@synthesize tileSizeLabel     = mTileSizeLabel;
+@synthesize gridPositionLabel = mGridPositionLabel;
 
 /*  Layers  */
-@synthesize layerView     = mLayerView;
+@synthesize layerView         = mLayerView;
 
 /*  TileSet  */
-@synthesize tileSetView   = mTileSetView;
+@synthesize tileSetView       = mTileSetView;
 
 
 #pragma mark -
@@ -342,6 +344,14 @@
 {
     NSLog(@"mouse drag - %d, %d", (int)aPoint.x, (int)aPoint.y);
 }
+
+
+- (void)mapView:(FLMapView *)aMapView didMouseMoveAtPoint:(NSPoint)aPoint
+{
+    NSPoint sGridPosition = [mMap gridPositionFromViewPoint:aPoint];
+    [mGridPositionLabel setStringValue:NSStringFromPoint(sGridPosition)];
+}
+
 
 
 #pragma mark -

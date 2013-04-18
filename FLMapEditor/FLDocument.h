@@ -21,6 +21,7 @@
 /*  Info  */
 @property (nonatomic, assign) IBOutlet NSTextField      *mapSizeLabel;
 @property (nonatomic, assign) IBOutlet NSTextField      *tileSizeLabel;
+@property (nonatomic, assign) IBOutlet NSTextField      *gridPositionLabel;
 
 /*  Layer  */
 @property (nonatomic, assign) IBOutlet NSCollectionView *layerView;
