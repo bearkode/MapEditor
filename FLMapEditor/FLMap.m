@@ -72,10 +72,12 @@ static NSInteger const kObjectLayerIndex  = 1;
     
     sMapLayer = [[[FLTerrainLayer alloc] init] autorelease];
     [sMapLayer setName:kTerrainLayerKey];
+    [sMapLayer setMapSize:mMapSize];
     [self insertMapLayerOnTop:sMapLayer];
     
     sMapLayer = [[[FLObjectLayer alloc] init] autorelease];
     [sMapLayer setName:kObjectLayerKey];
+    [sMapLayer setMapSize:mMapSize];
     [self insertMapLayerOnTop:sMapLayer];
 }
 
@@ -135,7 +137,19 @@ static NSInteger const kObjectLayerIndex  = 1;
             
             for (id sLayerDict in sLayers)
             {
-                FLMapLayer *sMapLayer = [[[FLMapLayer alloc] initWithJSONObject:sLayerDict] autorelease];
+                FLMapLayerType sType  = (FLMapLayerType)[[sLayerDict objectForKey:@"Type"] integerValue];
+                Class          sClass = NULL;
+                
+                if (sType == kFLMapLayerTerrainType)
+                {
+                    sClass = [FLTerrainLayer class];
+                }
+                else if (sType == kFLMapLayerObjectType)
+                {
+                    sClass = [FLObjectLayer class];
+                }
+                
+                FLMapLayer *sMapLayer = [[[sClass alloc] initWithJSONObject:sLayerDict] autorelease];
                 [self addMapLayer:sMapLayer];
             }
         }

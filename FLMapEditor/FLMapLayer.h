@@ -34,4 +34,8 @@ typedef enum
 - (NSDictionary *)JSONObject;
 
 
+- (void)setMapSize:(NSSize)aMapSize;
+- (NSSize)mapSize;
+
+
 @end

@@ -13,11 +13,21 @@
 #import "FLMap.h"
 #import "FLUtils.h"
 #import "FLMapLayer.h"
+#import "FLTerrainLayer.h"
+#import "FLObjectLayer.h"
 #import "FLMapLayerItem.h"
 #import "FLMapInfoController.h"
 #import "FLTerrainTileItem.h"
 #import "FLTile.h"
 #import "FLTileSet.h"
+
+
+typedef enum
+{
+    kFLToolUnknownType = 0,
+    kFLToolFillType,
+    kFLToolBrushType,
+} FLToolType;
 
 
 @implementation FLDocument
@@ -44,6 +54,7 @@
     FLMap               *mMap;
     FLMapLayer          *mSelectedLayer;
     FLTile              *mSelectedTile;
+    FLToolType           mSelectedTool;
 }
 
 
@@ -276,18 +287,19 @@
 {
     NSLog(@"save button clicked");
     [self saveDocument:self];
+    NSLog(@"save end");
 }
 
 
 - (IBAction)fillButtonClicked:(id)aSender
 {
-    NSLog(@"fill button clicked");
+    mSelectedTool = kFLToolFillType;
 }
 
 
 - (IBAction)brushButtonClicked:(id)aSender
 {
-    NSLog(@"brush button clicked");
+    mSelectedTool = kFLToolBrushType;
 }
 
 
@@ -327,22 +339,57 @@
 
 - (void)mapView:(FLMapView *)aMapView didMouseDownAtPoint:(NSPoint)aPoint
 {
-    NSLog(@"mouse down - %d, %d", (int)aPoint.x, (int)aPoint.y);
-    
     NSPoint sGridPosition = [mMap gridPositionFromViewPoint:aPoint];
-    NSLog(@"grid position = %@", NSStringFromPoint(sGridPosition));
+    
+    if ([mSelectedLayer type] == kFLMapLayerTerrainType)
+    {
+        FLTerrainLayer *sTerrainLayer = (FLTerrainLayer *)mSelectedLayer;
+        
+        if (mSelectedTile)
+        {
+            if (mSelectedTool == kFLToolFillType)
+            {
+                [sTerrainLayer fillWithTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition];
+            }
+            else if (mSelectedTool == kFLToolBrushType)
+            {
+                [sTerrainLayer setTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition];
+            }
+        }
+    }
+    else
+    {
+    
+    }
 }
 
 
 - (void)mapView:(FLMapView *)aMapView didMouseUpAtPoint:(NSPoint)aPoint
 {
-    NSLog(@"mouse up - %d, %d", (int)aPoint.x, (int)aPoint.y);
+
 }
 
 
 - (void)mapView:(FLMapView *)aMapView didMouseDragAtPoint:(NSPoint)aPoint
 {
-    NSLog(@"mouse drag - %d, %d", (int)aPoint.x, (int)aPoint.y);
+    NSPoint sGridPosition = [mMap gridPositionFromViewPoint:aPoint];
+    
+    if ([mSelectedLayer type] == kFLMapLayerTerrainType)
+    {
+        FLTerrainLayer *sTerrainLayer = (FLTerrainLayer *)mSelectedLayer;
+        
+        if (mSelectedTile)
+        {
+            if (mSelectedTool == kFLToolBrushType)
+            {
+                [sTerrainLayer setTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition];
+            }
+        }
+    }
+    else
+    {
+    
+    }
 }
 
 
