@@ -20,6 +20,7 @@
 - (void)setDataSource:(id<FLMapViewProtocol>)aDataSource;
 
 - (void)reload;
+- (void)setNeedsDisplayAtGridPosition:(NSPoint)aPosition;
 
 
 @end

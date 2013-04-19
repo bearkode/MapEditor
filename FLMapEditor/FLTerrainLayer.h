@@ -17,7 +17,7 @@
 
 
 - (void)fillWithTile:(FLTerrainTile *)aTile atPosition:(NSPoint)aPosition;
-- (void)setTile:(FLTerrainTile *)aTile atPosition:(NSPoint)aGridPosition;
+- (BOOL)setTile:(FLTerrainTile *)aTile atPosition:(NSPoint)aGridPosition;
 - (FLTerrainTile *)tileAtPosition:(NSPoint)aPosition;
 - (NSInteger)tileIndexAtPosition:(NSPoint)aPosition;
 

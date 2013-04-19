@@ -345,11 +345,7 @@ typedef enum
 
 - (void)mapView:(FLMapView *)aMapView didMouseDownAtPoint:(NSPoint)aPoint
 {
-    NSLog(@"mouse down = %@", NSStringFromPoint(aPoint));
-    
     NSPoint sGridPosition = FLGetGridPositionFromScreenPoint(mMap, aPoint);
-    
-    NSLog(@"sGridPosition = %@", NSStringFromPoint(sGridPosition));
     
     if ([mSelectedLayer type] == kFLMapLayerTerrainType)
     {
@@ -363,8 +359,10 @@ typedef enum
             }
             else if (mSelectedTool == kFLToolBrushType)
             {
-                [sTerrainLayer setTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition];
-                [mMapView reload];
+                if ([sTerrainLayer setTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition])
+                {
+                    [mMapView setNeedsDisplayAtGridPosition:sGridPosition];
+                }
             }
         }
     }
@@ -393,8 +391,11 @@ typedef enum
         {
             if (mSelectedTool == kFLToolBrushType)
             {
-                [sTerrainLayer setTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition];
-                [mMapView reload];
+                if ([sTerrainLayer setTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition])
+                {
+//                    [mMapView reload];
+                    [mMapView setNeedsDisplayAtGridPosition:sGridPosition];
+                }
             }
         }
     }
@@ -407,7 +408,7 @@ typedef enum
 
 - (void)mapView:(FLMapView *)aMapView didMouseMoveAtPoint:(NSPoint)aPoint
 {
-    NSLog(@"aPoint = %@", NSStringFromPoint(aPoint));
+//    NSLog(@"aPoint = %@", NSStringFromPoint(aPoint));
     
     NSPoint sGridPosition = FLGetGridPositionFromScreenPoint(mMap, aPoint);
     [mGridPositionLabel setStringValue:NSStringFromPoint(sGridPosition)];

@@ -237,7 +237,6 @@
 
 - (void)drawRect:(NSRect)aRect
 {
-    PBBeginTimeCheck();
     [self drawBackgroundWithDirtyRect:aRect];
     
     NSArray *sLayers = [[[mDelegate layersForMapView:self] reverseObjectEnumerator] allObjects];
@@ -245,14 +244,15 @@
     {
         if ([sLayer isKindOfClass:[FLTerrainLayer class]])
         {
+            PBBeginTimeCheck();
             [self drawTerrainLayer:(FLTerrainLayer *)sLayer dirtyRect:aRect];
+            PBEndTimeCheck();
         }
         else
         {
             [self drawObjectLayer:(FLObjectLayer *)sLayer];
         }
     }
-    PBEndTimeCheck();
 }
 
 
@@ -282,6 +282,15 @@
     [self setFrame:NSMakeRect(0, 0, sPixelSize.width, sPixelSize.height)];
     [self setNeedsDisplay:YES];
     [mGridView setMapSize:mMapSize tileSize:mTileSize];
+}
+
+
+- (void)setNeedsDisplayAtGridPosition:(NSPoint)aPosition
+{
+    NSPoint sPoint          = FLGetCenterPointOfGrid(mMapSize, mTileSize, aPosition);
+    NSRect  sInvalidateRect = NSMakeRect(sPoint.x - 50, sPoint.y - 50, 100, 100);
+    
+    [self setNeedsDisplayInRect:sInvalidateRect];
 }
 
 

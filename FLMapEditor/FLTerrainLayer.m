@@ -108,13 +108,15 @@ static NSString *const kTilesKey = @"Tiles";
 }
 
 
-- (void)setTile:(FLTerrainTile *)aTile atPosition:(NSPoint)aGridPosition
+- (BOOL)setTile:(FLTerrainTile *)aTile atPosition:(NSPoint)aGridPosition
 {
     if (aGridPosition.x >= 0 && aGridPosition.x < [self mapSize].width &&
         aGridPosition.y >= 0 && aGridPosition.y < [self mapSize].height)
     {
-        [self setTileIndex:[aTile index] atPosition:aGridPosition];
+        return [self setTileIndex:[aTile index] atPosition:aGridPosition];
     }
+    
+    return NO;
 }
 
 
@@ -136,12 +138,20 @@ static NSString *const kTilesKey = @"Tiles";
 }
 
 
-- (void)setTileIndex:(NSInteger)aIndex atPosition:(NSPoint)aPosition
+- (BOOL)setTileIndex:(NSInteger)aIndex atPosition:(NSPoint)aPosition
 {
     NSInteger sIndex  = [self mapSize].width * aPosition.y + aPosition.x;
-    NSNumber *sNumber = [NSNumber numberWithInteger:aIndex];
+
+    if ([self tileIndexAtPosition:aPosition] != aIndex)
+    {
+        NSNumber *sNumber = [NSNumber numberWithInteger:aIndex];
+        
+        [mTiles replaceObjectAtIndex:sIndex withObject:sNumber];
+        
+        return YES;
+    }
     
-    [mTiles replaceObjectAtIndex:sIndex withObject:sNumber];
+    return NO;
 }
 
 
