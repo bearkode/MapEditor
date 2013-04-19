@@ -8,6 +8,8 @@
  */
 
 #import "FLTerrainLayer.h"
+#import "FLTerrainTile.h"
+#import "FLTileSet.h"
 
 
 static NSString *const kTilesKey = @"Tiles";
@@ -108,9 +110,38 @@ static NSString *const kTilesKey = @"Tiles";
 
 - (void)setTile:(FLTerrainTile *)aTile atPosition:(NSPoint)aGridPosition
 {
-    NSLog(@"setTile:atPosition");
-    NSLog(@"aTile = %@", aTile);
-    NSLog(@"aPosition = %@", NSStringFromPoint(aGridPosition));
+    if (aGridPosition.x >= 0 && aGridPosition.x < [self mapSize].width &&
+        aGridPosition.y >= 0 && aGridPosition.y < [self mapSize].height)
+    {
+        [self setTileIndex:[aTile index] atPosition:aGridPosition];
+    }
+}
+
+
+- (FLTerrainTile *)tileAtPosition:(NSPoint)aPosition
+{
+    NSInteger      sTileIndex = [self tileIndexAtPosition:aPosition];
+    FLTerrainTile *sTile      = (FLTerrainTile *)[[self tileSet] tileForTileIndex:sTileIndex];
+    
+    return sTile;
+}
+
+
+- (NSInteger)tileIndexAtPosition:(NSPoint)aPosition
+{
+    NSInteger sIndex  = [self mapSize].width * aPosition.y + aPosition.x;
+    NSNumber *sNumber = [mTiles objectAtIndex:sIndex];
+    
+    return [sNumber integerValue];
+}
+
+
+- (void)setTileIndex:(NSInteger)aIndex atPosition:(NSPoint)aPosition
+{
+    NSInteger sIndex  = [self mapSize].width * aPosition.y + aPosition.x;
+    NSNumber *sNumber = [NSNumber numberWithInteger:aIndex];
+    
+    [mTiles replaceObjectAtIndex:sIndex withObject:sNumber];
 }
 
 

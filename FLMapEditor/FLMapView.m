@@ -8,15 +8,26 @@
  */
 
 #import "FLMapView.h"
+#import <QuartzCore/QuartzCore.h>
 #import "FLUtils.h"
 #import "FLMapGridView.h"
+#import "FLMapLayer.h"
+#import "FLTerrainLayer.h"
+#import "FLObjectLayer.h"
+#import "FLTerrainTile.h"
+#import "FLUtils.h"
 
+
+#define PBBeginTimeCheck()           double __sCurrentTime = CACurrentMediaTime()
+#define PBEndTimeCheck()             NSLog(@"time = %f", CACurrentMediaTime() - __sCurrentTime)
 
 @implementation FLMapView
 {
     FLMapGridView  *mGridView;
     NSTrackingArea *mTrackingArea;
     BOOL            mMouseTracking;
+    NSSize          mMapSize;
+    NSSize          mTileSize;
     
     id              mDelegate;
     id              mDataSource;
@@ -63,6 +74,15 @@
     [mTrackingArea release];
     
     [super dealloc];
+}
+
+
+#pragma mark -
+
+
+- (BOOL)isFlipped
+{
+    return YES;
 }
 
 
@@ -150,7 +170,7 @@
 }
 
 
-- (void)drawRect:(NSRect)aRect
+- (void)drawBackgroundWithDirtyRect:(NSRect)aDirtyRect
 {
     NSRect sBounds   = [self bounds];
     NSSize sGridSize = NSMakeSize(15, 15);
@@ -163,19 +183,76 @@
         for (NSInteger x = 0; x < sBounds.size.width; x += sGridSize.width)
         {
             sIsDark = (sIsDark) ? NO : YES;
-            
-            if (sIsDark)
+
+            NSRect sRect = NSMakeRect(x, y, sGridSize.width, sGridSize.height);            
+            if (NSIntersectsRect(aDirtyRect, sRect))
             {
-                [[NSColor colorWithCalibratedRed:(214.0 / 255.0) green:(214.0 / 255.0) blue:(214.0 / 255.0) alpha:(214.0 / 255.0)] set];
+                if (sIsDark)
+                {
+                    [[NSColor colorWithCalibratedRed:(214.0 / 255.0) green:(214.0 / 255.0) blue:(214.0 / 255.0) alpha:(214.0 / 255.0)] set];
+                }
+                else
+                {
+                    [[NSColor whiteColor] set];
+                }
+                
+                [NSBezierPath fillRect:sRect];
             }
-            else
-            {
-                [[NSColor whiteColor] set];
-            }
-            
-            [NSBezierPath fillRect:NSMakeRect(x, y, sGridSize.width, sGridSize.height)];
         }
     }
+}
+
+
+- (void)drawTerrainLayer:(FLTerrainLayer *)aTerrainLayer dirtyRect:(NSRect)aDirtyRect
+{
+    for (NSInteger y = 0; y < mMapSize.height; y++)
+    {
+        for (NSInteger x = 0; x < mMapSize.width; x++)
+        {
+            NSPoint        sGridPosition = NSMakePoint(x, y);
+            FLTerrainTile *sTile         = [aTerrainLayer tileAtPosition:sGridPosition];
+
+            if (sTile)
+            {
+                NSPoint  sPoint     = FLGetCenterPointOfGrid(mMapSize, mTileSize, NSMakePoint(x, y));
+                NSImage *sTileImage = [sTile image];
+                NSRect   sInRect    = NSMakeRect(sPoint.x - mTileSize.width / 2, sPoint.y - mTileSize.height / 2, mTileSize.width, mTileSize.height);
+                NSRect   sFromRect  = NSMakeRect(0, 0, [sTileImage size].width, [sTileImage size].height);
+
+                if (NSIntersectsRect(aDirtyRect, sInRect))
+                {
+                    [sTileImage drawAtPoint:sInRect.origin fromRect:sFromRect operation:NSCompositeSourceAtop fraction:1.0];
+                }
+            }
+        }
+    }
+}
+
+
+- (void)drawObjectLayer:(FLObjectLayer *)aObjectLayer
+{
+
+}
+
+
+- (void)drawRect:(NSRect)aRect
+{
+    PBBeginTimeCheck();
+    [self drawBackgroundWithDirtyRect:aRect];
+    
+    NSArray *sLayers = [[[mDelegate layersForMapView:self] reverseObjectEnumerator] allObjects];
+    for (FLMapLayer *sLayer in sLayers)
+    {
+        if ([sLayer isKindOfClass:[FLTerrainLayer class]])
+        {
+            [self drawTerrainLayer:(FLTerrainLayer *)sLayer dirtyRect:aRect];
+        }
+        else
+        {
+            [self drawObjectLayer:(FLObjectLayer *)sLayer];
+        }
+    }
+    PBEndTimeCheck();
 }
 
 
@@ -196,12 +273,15 @@
 
 - (void)reload
 {
-    NSSize sMapSize   = [mDataSource mapSizeOfMapView:self];
-    NSSize sTileSize  = [mDataSource tileSizeOfMapView:self];
-    NSSize sPixelSize = FLGetPixelSizeFromMapInfo(sMapSize, sTileSize);
+    NSSize sPixelSize = NSZeroSize;
+    
+    mMapSize   = [mDataSource mapSizeOfMapView:self];
+    mTileSize  = [mDataSource tileSizeOfMapView:self];
+    sPixelSize = FLGetPixelSizeFromMapInfo(mMapSize, mTileSize);
     
     [self setFrame:NSMakeRect(0, 0, sPixelSize.width, sPixelSize.height)];
-    [mGridView setMapSize:sMapSize tileSize:sTileSize];    
+    [self setNeedsDisplay:YES];
+    [mGridView setMapSize:mMapSize tileSize:mTileSize];
 }
 
 

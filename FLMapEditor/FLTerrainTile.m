@@ -11,11 +11,43 @@
 
 
 @implementation FLTerrainTile
+{
+    NSImage *mImage;
+}
 
 
 @dynamic index;
 @dynamic passable;
 @dynamic imageData;
+
+
+- (void)dealloc
+{
+    [mImage release];
+    
+    [super dealloc];
+}
+
+
+- (NSImage *)image
+{
+    if (!mImage)
+    {
+        NSImage *sImage     = [[[NSImage alloc] initWithData:[self imageData]] autorelease];
+        NSSize   sImageSize = NSMakeSize([sImage size].width / 2, [sImage size].height / 2);
+        
+        mImage = [[NSImage alloc] initWithSize:sImageSize];
+        [mImage lockFocus];
+        [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
+        [sImage drawInRect:NSMakeRect(0, 0, sImageSize.width, sImageSize.height)
+                  fromRect:NSMakeRect(0, 0, [sImage size].width, [sImage size].height)
+                 operation:NSCompositeCopy
+                  fraction:1.0];
+        [mImage unlockFocus];
+    }
+    
+    return mImage;
+}
 
 
 @end

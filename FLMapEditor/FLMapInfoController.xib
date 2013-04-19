@@ -38,6 +38,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSWindowTemplate" id="1005">
+				<int key="NSWindowStyleMask">65</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{196, 240}, {419, 182}}</string>
 				<int key="NSWTFlags">544735232</int>
@@ -143,7 +144,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="750409462">
 								<int key="NSCellFlags">-1804599231</int>
-								<int key="NSCellFlags2">272630784</int>
+								<int key="NSCellFlags2">272630848</int>
 								<reference key="NSSupport" ref="397429908"/>
 								<object class="NSNumberFormatter" key="NSFormatter" id="694018599">
 									<dictionary class="NSMutableDictionary" key="NS.attributes">
@@ -219,7 +220,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="545756467">
 								<int key="NSCellFlags">-1804599231</int>
-								<int key="NSCellFlags2">272630784</int>
+								<int key="NSCellFlags2">272630848</int>
 								<reference key="NSSupport" ref="397429908"/>
 								<object class="NSNumberFormatter" key="NSFormatter" id="461004733">
 									<dictionary class="NSMutableDictionary" key="NS.attributes">
@@ -341,7 +342,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="12554005">
 								<int key="NSCellFlags">-1804599231</int>
-								<int key="NSCellFlags2">272630784</int>
+								<int key="NSCellFlags2">272630848</int>
 								<reference key="NSSupport" ref="397429908"/>
 								<object class="NSNumberFormatter" key="NSFormatter" id="184906911">
 									<dictionary class="NSMutableDictionary" key="NS.attributes">
@@ -402,7 +403,7 @@
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="514714559">
 								<int key="NSCellFlags">-1804599231</int>
-								<int key="NSCellFlags2">272630784</int>
+								<int key="NSCellFlags2">272630848</int>
 								<reference key="NSSupport" ref="397429908"/>
 								<object class="NSNumberFormatter" key="NSFormatter" id="90339142">
 									<dictionary class="NSMutableDictionary" key="NS.attributes">
@@ -579,6 +580,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">initialFirstResponder</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="649366408"/>
+					</object>
+					<int key="connectionID">78</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">nextKeyView</string>
 						<reference key="source" ref="649366408"/>
 						<reference key="destination" ref="574594761"/>
@@ -750,6 +759,7 @@
 							<reference ref="861220826"/>
 						</array>
 						<reference key="parent" ref="1006"/>
+						<string key="objectName">Push Button - OK Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">16</int>
@@ -758,6 +768,7 @@
 							<reference ref="512110499"/>
 						</array>
 						<reference key="parent" ref="1006"/>
+						<string key="objectName">Push Button - Cancel Button</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
@@ -865,6 +876,7 @@
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<dictionary class="NSMutableDictionary" key="15.IBAttributePlaceholdersKey"/>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -902,7 +914,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">77</int>
+			<int key="maxID">78</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

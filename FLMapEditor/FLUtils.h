@@ -16,4 +16,5 @@
 NSSize FLGetPixelSizeFromMap(FLMap *aMap);
 NSSize FLGetPixelSizeFromMapInfo(NSSize aMapSize, NSSize aTileSize);
 
+NSPoint FLGetGridPositionFromScreenPoint(FLMap *aMap, NSPoint aPoint);
 NSPoint FLGetCenterPointOfGrid(NSSize aMapSize, NSSize aTileSize, NSPoint aGridPosition);

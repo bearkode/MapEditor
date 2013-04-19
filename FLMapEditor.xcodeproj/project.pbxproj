@@ -31,6 +31,7 @@
 		2E691542171E6C440085B797 /* save-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E691541171E6C440085B797 /* save-icon.png */; };
 		2E691545171E6F3F0085B797 /* FLTerrainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E691544171E6F3F0085B797 /* FLTerrainLayer.m */; };
 		2E691548171E6F9A0085B797 /* FLObjectLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E691547171E6F9A0085B797 /* FLObjectLayer.m */; };
+		2E6E9ABA17210A1F00A9BB7F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E6E9AB917210A1F00A9BB7F /* QuartzCore.framework */; };
 		2E7C07EB1713ABFB004BA8A0 /* NSTextField+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */; };
 		2E7C07EF1713B300004BA8A0 /* FLMapGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07EE1713B300004BA8A0 /* FLMapGridView.m */; };
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
@@ -92,6 +93,7 @@
 		2E691544171E6F3F0085B797 /* FLTerrainLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrainLayer.m; sourceTree = "<group>"; };
 		2E691546171E6F9A0085B797 /* FLObjectLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectLayer.h; sourceTree = "<group>"; };
 		2E691547171E6F9A0085B797 /* FLObjectLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectLayer.m; sourceTree = "<group>"; };
+		2E6E9AB917210A1F00A9BB7F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2E7C07E91713ABFB004BA8A0 /* NSTextField+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Additions.h"; sourceTree = "<group>"; };
 		2E7C07EA1713ABFB004BA8A0 /* NSTextField+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Additions.m"; sourceTree = "<group>"; };
 		2E7C07ED1713B300004BA8A0 /* FLMapGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapGridView.h; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6E9ABA17210A1F00A9BB7F /* QuartzCore.framework in Frameworks */,
 				2E4637EB1712AA4A00EA1888 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				2E4637EA1712AA4A00EA1888 /* Cocoa.framework */,
+				2E6E9AB917210A1F00A9BB7F /* QuartzCore.framework */,
 				2E4637EC1712AA4A00EA1888 /* Other Frameworks */,
 			);
 			name = Frameworks;

@@ -31,6 +31,7 @@
 @required
 - (NSSize)mapSizeOfMapView:(FLMapView *)aMapView;
 - (NSSize)tileSizeOfMapView:(FLMapView *)aMapView;
+- (NSArray *)layersForMapView:(FLMapView *)aMapView;
 
 - (void)mapView:(FLMapView *)aMapView didMouseDownAtPoint:(NSPoint)aPoint;
 - (void)mapView:(FLMapView *)aMapView didMouseUpAtPoint:(NSPoint)aPoint;

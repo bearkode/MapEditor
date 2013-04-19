@@ -19,6 +19,7 @@
 
 @property (nonatomic, readonly) NSSize             mapSize;
 @property (nonatomic, readonly) NSSize             tileSize;
+@property (nonatomic, readonly) CGAffineTransform  transform;
 @property (nonatomic, readonly) NSArrayController *arrayController;
 
 
@@ -31,7 +32,7 @@
 - (void)addMapLayer:(FLMapLayer *)aMapLayer;
 - (void)insertMapLayerOnTop:(FLMapLayer *)aMapLayer;
 - (void)removeMapLayer:(FLMapLayer *)aMapLayer;
+- (NSArray *)layers;
 
-- (NSPoint)gridPositionFromViewPoint:(NSPoint)aPoint;
 
 @end

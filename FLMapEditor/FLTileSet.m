@@ -51,4 +51,22 @@
 }
 
 
+- (FLTile *)tileForTileIndex:(NSInteger)aIndex
+{
+    FLTile  *sResult = nil;
+    NSArray *sArray  = [mArrayController arrangedObjects];
+    
+    for (FLTile *sTile in sArray)
+    {
+        if ([sTile index] == aIndex)
+        {
+            sResult = sTile;
+            break;
+        }
+    }
+    
+    return sResult;
+}
+
+
 @end

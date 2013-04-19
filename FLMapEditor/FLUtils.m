@@ -28,6 +28,21 @@ NSSize FLGetPixelSizeFromMapInfo(NSSize aMapSize, NSSize aTileSize)
 }
 
 
+NSPoint FLGetGridPositionFromScreenPoint(FLMap *aMap, NSPoint aPoint)
+{
+    NSSize            sSize    = FLGetPixelSizeFromMap(aMap);
+    CGAffineTransform sFromIso = [aMap transform];
+    CGPoint           sResult;
+    
+    aPoint.y  = sSize.height - aPoint.y;
+    sResult   = CGPointApplyAffineTransform(aPoint, sFromIso);
+    sResult.x = [aMap mapSize].width  - floor(sResult.x) - 1;
+    sResult.y = [aMap mapSize].height - floor(sResult.y) - 1;
+    
+    return sResult;
+}
+
+
 NSPoint FLGetCenterPointOfGrid(NSSize aMapSize, NSSize aTileSize, NSPoint aGridPosition)
 {
     CGFloat sXBase = aMapSize.height * aTileSize.width / 2;

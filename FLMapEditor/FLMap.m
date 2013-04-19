@@ -37,8 +37,9 @@ static NSInteger const kObjectLayerIndex  = 1;
 }
 
 
-@synthesize mapSize  = mMapSize;
-@synthesize tileSize = mTileSize;
+@synthesize mapSize   = mMapSize;
+@synthesize tileSize  = mTileSize;
+@synthesize transform = mTransform;
 @dynamic    arrayController;
 
 
@@ -84,11 +85,16 @@ static NSInteger const kObjectLayerIndex  = 1;
 
 - (void)setupTransform
 {
-    NSSize            sSize    = FLGetPixelSizeFromMap(self);
-    CGFloat           sOffsetX = 0;
-    CGFloat           sOffsetY = -sSize.height / 2;
-    CGAffineTransform sToIso   = CGAffineTransformMake(-(mTileSize.width / 2), (mTileSize.height / 2), (mTileSize.width / 2), (mTileSize.height / 2), sOffsetX, sOffsetY);
-
+    NSSize            sSize       = FLGetPixelSizeFromMapInfo(mMapSize, mTileSize);
+    CGFloat           sHalfWidth  = mTileSize.width / 2;
+    CGFloat           sHalfHeight = mTileSize.height / 2;
+    CGPoint           sConerPoint = FLGetCenterPointOfGrid(mMapSize, mTileSize, NSMakePoint(mMapSize.width - 1, mMapSize.height - 1));
+    CGAffineTransform sToIso;
+    
+    sConerPoint.y = sSize.height - sConerPoint.y;
+    sConerPoint.y -= sHalfHeight;
+    
+    sToIso     = CGAffineTransformMake(-sHalfWidth, sHalfHeight, sHalfWidth, sHalfHeight, sConerPoint.x, sConerPoint.y);
     mTransform = CGAffineTransformInvert(sToIso);
 }
 
@@ -218,14 +224,9 @@ static NSInteger const kObjectLayerIndex  = 1;
 }
 
 
-- (NSPoint)gridPositionFromViewPoint:(NSPoint)aPoint
+- (NSArray *)layers
 {
-    CGPoint sResult = CGPointApplyAffineTransform(aPoint, mTransform);
-    
-    sResult.x = mMapSize.width  - (NSInteger)ceilf(sResult.x);
-    sResult.y = mMapSize.height * 2 - (NSInteger)ceilf(sResult.y);
-    
-    return NSPointFromCGPoint(sResult);
+    return [mMapLayersController arrangedObjects];
 }
 
 

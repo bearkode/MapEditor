@@ -79,8 +79,11 @@
         {
             NSPoint       sPoint = FLGetCenterPointOfGrid(mMapSize, mTileSize, NSMakePoint(x, y));
             NSBezierPath *sPath  = [self bezierPathForGrid:sPoint];
-            
+
             [sPath stroke];
+            
+//            NSString *sPosition = [NSString stringWithFormat:@"%d, %d", (int)x, (int)y];
+//            [sPosition drawAtPoint:NSMakePoint(sPoint.x - 10, sPoint.y - 10) withAttributes:nil];
         }
     }
 }

@@ -19,4 +19,7 @@
 @property (nonatomic, retain) NSData   *imageData;
 
 
+- (NSImage *)image;
+
+
 @end

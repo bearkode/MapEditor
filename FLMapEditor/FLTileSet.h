@@ -23,6 +23,7 @@
 
 
 - (FLTile *)tileAtIndex:(NSInteger)aIndex;
+- (FLTile *)tileForTileIndex:(NSInteger)aIndex;
 
 
 @end
