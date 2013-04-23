@@ -11,6 +11,19 @@
 
 
 @implementation FLObjectTileSetEditor
+{
+    NSCollectionView *mTileView;
+    NSButton         *mEditButton;
+    NSButton         *mDeleteButton;
+}
+
+
+@synthesize tileView     = mTileView;
+@synthesize editButton   = mEditButton;
+@synthesize deleteButton = mDeleteButton;
+
+
+#pragma mark -
 
 
 - (id)initWithWindow:(NSWindow *)aWindow
@@ -26,9 +39,39 @@
 }
 
 
+- (void)dealloc
+{
+    [super dealloc];
+}
+
+
+#pragma mark -
+
+
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+}
+
+
+#pragma mark -
+
+
+- (IBAction)addButtonClicked:(id)aSender
+{
+    NSLog(@"addButtonClicked:");
+}
+
+
+- (IBAction)deleteButtonClicked:(id)aSender
+{
+    NSLog(@"deleteButtonClicked:");
+}
+
+
+- (IBAction)editButtonClicked:(id)aSender
+{
+    NSLog(@"editButtonClicked:");
 }
 
 
