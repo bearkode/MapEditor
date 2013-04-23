@@ -39,15 +39,11 @@
 
 - (void)setupTileView
 {
-    [mTileView setContent:[[mTileSet arrayController] arrangedObjects]];
-#if (1)
     [mTileView setItemPrototype:[[[FLTerrainTileItem alloc] initWithNibName:@"FLTerrainTileItem" bundle:nil] autorelease]];
-#else
-    [mTileView setItemPrototype:[[[FLTerrainTileItem alloc] init] autorelease]];
-#endif
+    [mTileView setContent:[mTileSet tiles]];
     [mTileView setMinItemSize:NSMakeSize(120, 120)];
     [mTileView setMaxItemSize:NSMakeSize(120, 120)];
-    [mTileView bind:NSContentBinding toObject:mTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
+    [mTileView bind:NSContentBinding toObject:mTileSet withKeyPath:@"tiles" options:NULL];
     [mTileView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
 }
 
@@ -112,7 +108,7 @@
 
 - (IBAction)addButtonClicked:(id)aSender
 {
-    FLTerrainTile *sTerrainTile = [mTileSet insertNewTerrainTile];
+    FLTerrainTile *sTerrainTile = (FLTerrainTile *)[mTileSet insertNewTile];
     [self showPropertyEditorWithTerrainTile:sTerrainTile collectionItem:nil];
 }
 
@@ -121,7 +117,7 @@
 {
     NSInteger sIndex = [[mTileView selectionIndexes] firstIndex];
     
-    [mTileSet deleteTerrainTileAtIndex:sIndex];
+    [mTileSet deleteTileAtIndex:sIndex];
     [mTileSet save];
 }
 
@@ -157,11 +153,11 @@
 
 - (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)aObject change:(NSDictionary *)aChange context:(void *)aContext
 {
-    NSLog(@"observeValueForKeyPath:ofObject:change:context");
-    NSLog(@"aKeyPath = %@", aKeyPath);
-    NSLog(@"aObject  = %@", aObject);
-    NSLog(@"aChange  = %@", aChange);
-    NSLog(@"aContext = %p", aContext);
+//    NSLog(@"observeValueForKeyPath:ofObject:change:context");
+//    NSLog(@"aKeyPath = %@", aKeyPath);
+//    NSLog(@"aObject  = %@", aObject);
+//    NSLog(@"aChange  = %@", aChange);
+//    NSLog(@"aContext = %p", aContext);
     
     if (aObject == mTileView)
     {

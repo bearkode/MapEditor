@@ -37,6 +37,8 @@
 		2E7C07F21713B509004BA8A0 /* FLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C07F11713B509004BA8A0 /* FLUtils.m */; };
 		2E7C082D17154F66004BA8A0 /* FLMapLayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */; };
 		2E7C082E17154F66004BA8A0 /* FLMapLayerItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */; };
+		2E97438317261FE400573AE8 /* FLObjectTileSetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E97438117261FE400573AE8 /* FLObjectTileSetModel.xcdatamodeld */; };
+		2E974386172620CB00573AE8 /* FLObjectTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E974385172620CB00573AE8 /* FLObjectTile.m */; };
 		2EA26B7C171BEC15001E9584 /* FLTerrainTilePropertyEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B7A171BEC14001E9584 /* FLTerrainTilePropertyEditor.m */; };
 		2EA26B7D171BEC15001E9584 /* FLTerrainTilePropertyEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA26B7B171BEC14001E9584 /* FLTerrainTilePropertyEditor.xib */; };
 		2EA26B84171CE700001E9584 /* FLTerrainTileItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B82171CE6FF001E9584 /* FLTerrainTileItem.m */; };
@@ -103,6 +105,9 @@
 		2E7C082A17154F66004BA8A0 /* FLMapLayerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLMapLayerItem.h; sourceTree = "<group>"; };
 		2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLMapLayerItem.m; sourceTree = "<group>"; };
 		2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLMapLayerItem.xib; sourceTree = "<group>"; };
+		2E97438217261FE400573AE8 /* FLObjectTileSetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FLObjectTileSetModel.xcdatamodel; sourceTree = "<group>"; };
+		2E974384172620CB00573AE8 /* FLObjectTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectTile.h; sourceTree = "<group>"; };
+		2E974385172620CB00573AE8 /* FLObjectTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectTile.m; sourceTree = "<group>"; };
 		2EA26B79171BEC14001E9584 /* FLTerrainTilePropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTerrainTilePropertyEditor.h; sourceTree = "<group>"; };
 		2EA26B7A171BEC14001E9584 /* FLTerrainTilePropertyEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTerrainTilePropertyEditor.m; sourceTree = "<group>"; };
 		2EA26B7B171BEC14001E9584 /* FLTerrainTilePropertyEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLTerrainTilePropertyEditor.xib; sourceTree = "<group>"; };
@@ -161,6 +166,8 @@
 		2E37E6091717A86E0033982C /* FLObjectTileSet */ = {
 			isa = PBXGroup;
 			children = (
+				2E974384172620CB00573AE8 /* FLObjectTile.h */,
+				2E974385172620CB00573AE8 /* FLObjectTile.m */,
 				2EA26B93171E3BE7001E9584 /* FLObjectTileSet.h */,
 				2EA26B94171E3BE7001E9584 /* FLObjectTileSet.m */,
 				2E37E60A1717A89A0033982C /* FLObjectTileSetEditor.h */,
@@ -174,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				2E37E6161717B4E50033982C /* FLTerrianTileSetModel.xcdatamodeld */,
+				2E97438117261FE400573AE8 /* FLObjectTileSetModel.xcdatamodeld */,
 			);
 			name = CoreDataModel;
 			sourceTree = "<group>";
@@ -437,6 +445,8 @@
 				2E69153B171E637B0085B797 /* FLTile.m in Sources */,
 				2E691545171E6F3F0085B797 /* FLTerrainLayer.m in Sources */,
 				2E691548171E6F9A0085B797 /* FLObjectLayer.m in Sources */,
+				2E97438317261FE400573AE8 /* FLObjectTileSetModel.xcdatamodeld in Sources */,
+				2E974386172620CB00573AE8 /* FLObjectTile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +600,16 @@
 			);
 			currentVersion = 2E37E6171717B4E50033982C /* FLTerrianTileSetModel.xcdatamodel */;
 			path = FLTerrianTileSetModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		2E97438117261FE400573AE8 /* FLObjectTileSetModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2E97438217261FE400573AE8 /* FLObjectTileSetModel.xcdatamodel */,
+			);
+			currentVersion = 2E97438217261FE400573AE8 /* FLObjectTileSetModel.xcdatamodel */;
+			path = FLObjectTileSetModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

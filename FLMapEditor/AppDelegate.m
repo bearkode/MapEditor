@@ -14,8 +14,8 @@
 
 @implementation AppDelegate
 {
-    FLTerrainTileSetEditor *mTerrainTileSetEditorWindowController;
-    FLObjectTileSetEditor  *mObjectTileSetEditorWindowController;
+    FLTerrainTileSetEditor *mTerrainTileSetEditor;
+    FLObjectTileSetEditor  *mObjectTileSetEditor;
 }
 
 - (void)dealloc
@@ -29,6 +29,7 @@
     NSLog(@"applicationDidFinishLaunching");
     
     [self terrainTileSetEditorSelected:self];
+//    [self objectTileSetEditorSelected:self];
 }
 
 
@@ -38,23 +39,23 @@
 
 - (IBAction)terrainTileSetEditorSelected:(id)aSender
 {
-    if (!mTerrainTileSetEditorWindowController)
+    if (!mTerrainTileSetEditor)
     {
-        mTerrainTileSetEditorWindowController = [[FLTerrainTileSetEditor alloc] initWithWindowNibName:@"FLTerrainTileSetEditor"];
+        mTerrainTileSetEditor = [[FLTerrainTileSetEditor alloc] initWithWindowNibName:@"FLTerrainTileSetEditor"];
     }
     
-    [mTerrainTileSetEditorWindowController showWindow:self];
+    [mTerrainTileSetEditor showWindow:self];
 }
 
 
 - (IBAction)objectTileSetEditorSelected:(id)aSender
 {
-    if (!mObjectTileSetEditorWindowController)
+    if (!mObjectTileSetEditor)
     {
-        mObjectTileSetEditorWindowController = [[FLObjectTileSetEditor alloc] initWithWindowNibName:@"FLObjectTileSetEditor"];
+        mObjectTileSetEditor = [[FLObjectTileSetEditor alloc] initWithWindowNibName:@"FLObjectTileSetEditor"];
     }
     
-    [mObjectTileSetEditorWindowController showWindow:self];
+    [mObjectTileSetEditor showWindow:self];
 }
 
 

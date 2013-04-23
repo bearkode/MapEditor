@@ -11,17 +11,35 @@
 #import "FLTerrainTile.h"
 
 
-NSString *const kEntityName = @"FLTerrainTile";
-
-
 @implementation FLTerrainTileSet
+
+
+- (id)init
 {
-    NSManagedObjectContext *mMOContext;
+    self = [super init];
+    
+    if (self)
+    {
+        [self fetch];
+    }
+    
+    return self;
+}
+
+
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 
 #pragma mark -
-#pragma mark Privates
+
+
+- (NSString *)entityName
+{
+    return @"FLTerrainTile";
+}
 
 
 - (NSURL *)storeURL
@@ -31,139 +49,6 @@ NSString *const kEntityName = @"FLTerrainTile";
     NSURL    *sStoreURL = [NSURL fileURLWithPath:[sDocPath stringByAppendingPathComponent:@"TerrainTileSet.sqlite"]];
     
     return sStoreURL;
-}
-
-
-- (NSDictionary *)storeOptions
-{
-    NSDictionary *sPragmaOpts = [NSDictionary dictionaryWithObjectsAndKeys:@"MEMORY", @"journal_mode", nil];
-    NSDictionary *sOptions    = [NSDictionary dictionaryWithObject:sPragmaOpts forKey:NSSQLitePragmasOption];
-    
-    return sOptions;
-}
-
-
-#pragma mark -
-
-
-- (id)init
-{
-    self = [super init];
-    
-    if (self)
-    {
-        NSError                      *sError       = [NSError errorWithDomain:@"DummyError" code:0 userInfo:nil];
-        NSManagedObjectModel         *sMOModel     = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];
-        NSPersistentStoreCoordinator *sCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:sMOModel];
-
-#if (0)
-        [sCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[self storeURL] options:[self storeOptions] error:&sError];
-#else
-        while (sError)
-        {
-            sError = nil;
-            [sCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[self storeURL] options:[self storeOptions] error:&sError];
-            if (sError)
-            {
-                NSLog(@"sError = %@", sError);
-                [[NSFileManager defaultManager] removeItemAtURL:[self storeURL] error:nil];
-            }
-        }
-#endif
-        
-        if (sCoordinator)
-        {
-            mMOContext = [[NSManagedObjectContext alloc] init];
-            [mMOContext setPersistentStoreCoordinator:sCoordinator];
-        }
-        
-        NSLog(@"context ready");
-        
-        [sMOModel release];
-        [sCoordinator release];
-        
-        mArrayController = [[NSArrayController alloc] init];
-        [mArrayController setManagedObjectContext:mMOContext];
-        [mArrayController setEntityName:@"FLTerrainTile"];
-        [mArrayController setAutomaticallyPreparesContent:YES];
-        [mArrayController setAvoidsEmptySelection:YES];
-        [mArrayController setPreservesSelection:YES];
-        [mArrayController setSelectsInsertedObjects:YES];
-        [mArrayController setClearsFilterPredicateOnInsertion:YES];
-        [mArrayController setEditable:YES];
-        [mArrayController fetch:self];
-    }
-    
-    return self;
-}
-
-
-- (void)dealloc
-{
-    [mMOContext release];
-    
-    [super dealloc];
-}
-
-
-#pragma mark -
-
-
-- (NSUInteger)count
-{
-    NSEntityDescription *sEntity       = [NSEntityDescription entityForName:kEntityName inManagedObjectContext:mMOContext];
-    NSFetchRequest      *sFetchRequest = [[[NSFetchRequest alloc] init] autorelease];
-    
-    [sFetchRequest setEntity:sEntity];
-    
-    NSError   *sError = nil;
-    NSUInteger sCount = [mMOContext countForFetchRequest:sFetchRequest error:&sError];
-    
-    return sCount;
-}
-
-
-//- (FLTerrainTile *)terrainTileAtIndex:(NSInteger)aIndex
-//{
-//    FLTerrainTile *sTerrainTile = [[mArrayController arrangedObjects] objectAtIndex:aIndex];
-//    
-//    return sTerrainTile;
-//}
-
-
-- (FLTerrainTile *)insertNewTerrainTile
-{
-    NSUInteger     sIndex  = [self count];
-    FLTerrainTile *sResult = (FLTerrainTile *)[NSEntityDescription insertNewObjectForEntityForName:kEntityName inManagedObjectContext:mMOContext];
-
-    [sResult setIndex:(int)(sIndex + 1)];
-    
-    return sResult;
-}
-
-
-- (void)deleteTerrainTile:(FLTerrainTile *)aTerrainTile
-{
-    [mMOContext deleteObject:aTerrainTile];
-}
-
-
-- (void)deleteTerrainTileAtIndex:(NSInteger)aIndex
-{
-    FLTerrainTile *sTerrainTile = [[mArrayController arrangedObjects] objectAtIndex:aIndex];
-    [mMOContext deleteObject:sTerrainTile];
-}
-
-
-- (void)save
-{
-    [mMOContext save:nil];
-}
-
-
-- (void)rollback
-{
-    [mMOContext rollback];
 }
 
 

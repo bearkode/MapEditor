@@ -45,7 +45,7 @@
 
     [mSaveButton setEnabled:(sImage != nil)];
     [mImageView setImage:sImage];
-    [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrainTile index]]];
+    [mIndexField setStringValue:[NSString stringWithFormat:@"%d", (int)[mTerrainTile objectId]]];
     [mPassableButton setState:([mTerrainTile passable]) ? NSOnState : NSOffState];
 }
 

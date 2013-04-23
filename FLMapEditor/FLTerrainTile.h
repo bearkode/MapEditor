@@ -14,7 +14,6 @@
 @interface FLTerrainTile : FLTile
 
 
-@property (nonatomic, assign) NSInteger index;
 @property (nonatomic, assign) BOOL      passable;
 @property (nonatomic, retain) NSData   *imageData;
 

@@ -211,7 +211,7 @@
         {
             NSPoint        sGridPosition = NSMakePoint(x, y);
             FLTerrainTile *sTile         = [aTerrainLayer tileAtPosition:sGridPosition];
-
+            
             if (sTile)
             {
                 NSPoint  sPoint     = FLGetCenterPointOfGrid(mMapSize, mTileSize, NSMakePoint(x, y));

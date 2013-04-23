@@ -158,10 +158,9 @@ typedef enum
     
     mSelectedLayer = [[[mMap arrayController] arrangedObjects] objectAtIndex:sIndex];
     
-    FLTileSet *sTileSet         = [mSelectedLayer tileSet];
-    NSArray   *sArrangedObjects = [[sTileSet arrayController] arrangedObjects];
-    [mTileSetView setContent:sArrangedObjects];
-    [mTileSetView bind:NSContentBinding toObject:sTileSet withKeyPath:@"arrayController.arrangedObjects" options:NULL];
+    FLTileSet *sTileSet = [mSelectedLayer tileSet];
+    [mTileSetView setContent:[sTileSet tiles]];
+    [mTileSetView bind:NSContentBinding toObject:sTileSet withKeyPath:@"tiles" options:NULL];
     [mTileSetView setSelectionIndexes:[NSIndexSet indexSet]];
 }
 

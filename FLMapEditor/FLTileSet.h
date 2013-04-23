@@ -14,16 +14,32 @@
 
 
 @interface FLTileSet : NSObject
-{
-    NSArrayController *mArrayController;
-}
 
 
-@property (nonatomic, readonly) NSArrayController *arrayController;
+@property (nonatomic, readonly) NSManagedObjectContext *context;
+@property (nonatomic, readonly) NSArray                *tiles;
+
+
+/*  Attributes  */
+- (NSString *)entityName;
+- (NSURL *)storeURL;
+- (NSDictionary *)storeOptions;
+
+
+//- (void)setTilesFromArray:(NSArray *)aTiles;
+
+
+- (FLTile *)insertNewTile;
+- (void)deleteTileAtIndex:(NSInteger)aIndex;
 
 
 - (FLTile *)tileAtIndex:(NSInteger)aIndex;
-- (FLTile *)tileForTileIndex:(NSInteger)aIndex;
+- (FLTile *)tileForObjectId:(NSInteger)aObjectId;
+
+
+- (void)fetch;
+- (void)save;
+- (void)rollback;
 
 
 @end

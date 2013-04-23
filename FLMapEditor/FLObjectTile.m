@@ -1,23 +1,29 @@
 /*
- *  FLTerrainTile.m
+ *  FLObjectTile.m
  *  FLMapEditor
  *
- *  Created by cgkim on 13. 4. 12..
+ *  Created by cgkim on 13. 4. 23..
  *  Copyright (c) 2013 cgkim. All rights reserved.
  *
  */
 
-#import "FLTerrainTile.h"
+#import "FLObjectTile.h"
 
 
-@implementation FLTerrainTile
+@implementation FLObjectTile
 {
     NSImage *mImage;
 }
 
 
+@dynamic objectId;
 @dynamic passable;
 @dynamic imageData;
+@dynamic width;
+@dynamic height;
+
+
+#pragma mark -
 
 
 - (void)dealloc
@@ -26,6 +32,9 @@
     
     [super dealloc];
 }
+
+
+#pragma mark -
 
 
 - (NSImage *)image

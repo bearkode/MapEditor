@@ -110,7 +110,7 @@
         NSImage *sImage = [[[NSImage alloc] initWithData:[sTile imageData]] autorelease];
         
         [mTileImageView setImage:sImage];
-        [mIndexLabel setStringValue:[NSString stringWithFormat:@"Index : %d", (int)[sTile index]]];
+        [mIndexLabel setStringValue:[NSString stringWithFormat:@"ObjectID : %d", (int)[sTile objectId]]];
         [mPassableButton setState:[sTile passable]];
     }
 }

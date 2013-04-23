@@ -13,4 +13,20 @@
 @implementation FLObjectTileSet
 
 
+- (NSString *)entityName
+{
+    return @"FLObjectTile";
+}
+
+
+- (NSURL *)storeURL
+{
+    NSArray  *sDocPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *sDocPath  = ([sDocPaths count] > 0) ? [sDocPaths objectAtIndex:0] : nil;
+    NSURL    *sStoreURL = [NSURL fileURLWithPath:[sDocPath stringByAppendingPathComponent:@"ObjectTileSet.sqlite"]];
+    
+    return sStoreURL;
+}
+
+
 @end

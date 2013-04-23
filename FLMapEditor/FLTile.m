@@ -13,4 +13,7 @@
 @implementation FLTile
 
 
+@dynamic objectId;
+
+
 @end

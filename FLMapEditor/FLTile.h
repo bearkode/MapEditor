@@ -13,4 +13,7 @@
 @interface FLTile : NSManagedObject
 
 
+@property (nonatomic, assign) NSInteger objectId;
+
+
 @end

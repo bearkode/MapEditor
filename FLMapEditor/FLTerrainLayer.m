@@ -63,6 +63,8 @@ static NSString *const kTilesKey = @"Tiles";
     {
         mTiles = [[NSMutableArray alloc] init];
         [mTiles addObjectsFromArray:[aDict objectForKey:kTilesKey]];
+        
+//        NSLog(@"mTiles = %@", mTiles);
     }
     
     return self;
@@ -113,7 +115,7 @@ static NSString *const kTilesKey = @"Tiles";
     if (aGridPosition.x >= 0 && aGridPosition.x < [self mapSize].width &&
         aGridPosition.y >= 0 && aGridPosition.y < [self mapSize].height)
     {
-        return [self setTileIndex:[aTile index] atPosition:aGridPosition];
+        return [self setTileObjectId:[aTile objectId] atPosition:aGridPosition];
     }
     
     return NO;
@@ -122,14 +124,14 @@ static NSString *const kTilesKey = @"Tiles";
 
 - (FLTerrainTile *)tileAtPosition:(NSPoint)aPosition
 {
-    NSInteger      sTileIndex = [self tileIndexAtPosition:aPosition];
-    FLTerrainTile *sTile      = (FLTerrainTile *)[[self tileSet] tileForTileIndex:sTileIndex];
+    NSInteger      sObjectId = [self tileObjectIdAtPosition:aPosition];
+    FLTerrainTile *sTile     = (FLTerrainTile *)[[self tileSet] tileForObjectId:sObjectId];
     
     return sTile;
 }
 
 
-- (NSInteger)tileIndexAtPosition:(NSPoint)aPosition
+- (NSInteger)tileObjectIdAtPosition:(NSPoint)aPosition
 {
     NSInteger sIndex  = [self mapSize].width * aPosition.y + aPosition.x;
     NSNumber *sNumber = [mTiles objectAtIndex:sIndex];
@@ -138,11 +140,11 @@ static NSString *const kTilesKey = @"Tiles";
 }
 
 
-- (BOOL)setTileIndex:(NSInteger)aIndex atPosition:(NSPoint)aPosition
+- (BOOL)setTileObjectId:(NSInteger)aIndex atPosition:(NSPoint)aPosition
 {
     NSInteger sIndex  = [self mapSize].width * aPosition.y + aPosition.x;
 
-    if ([self tileIndexAtPosition:aPosition] != aIndex)
+    if ([self tileObjectIdAtPosition:aPosition] != aIndex)
     {
         NSNumber *sNumber = [NSNumber numberWithInteger:aIndex];
         

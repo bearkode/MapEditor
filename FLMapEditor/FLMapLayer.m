@@ -19,11 +19,11 @@ static NSString *const kMapSizeKey = @"MapSize";
 
 @implementation FLMapLayer
 {
-    FLMapLayerType  mType;
-    NSString       *mName;
-    NSSize          mMapSize;
+    FLMapLayerType mType;
+    NSString      *mName;
+    NSSize         mMapSize;
     
-    FLTileSet      *mTileSet;
+    FLTileSet     *mTileSet;
 }
 
 
@@ -83,10 +83,8 @@ static NSString *const kMapSizeKey = @"MapSize";
     
     if (self)
     {
-        NSLog(@"FLMapLayer initWithObject");
-        
-        mType    = (FLMapLayerType)[[aDict objectForKey:kTypeKey] integerValue];
-        mName    = [[aDict objectForKey:kNameKey] retain];
+        mType = (FLMapLayerType)[[aDict objectForKey:kTypeKey] integerValue];
+        mName = [[aDict objectForKey:kNameKey] retain];
 
         [self setMapSize:[[aDict objectForKey:kMapSizeKey] sizeValue]];
         [self setupTileSet];
@@ -110,7 +108,6 @@ static NSString *const kMapSizeKey = @"MapSize";
 
 - (NSDictionary *)JSONObject
 {
-    NSLog(@"JSONObject - %@", self);
     NSMutableDictionary *sResult = [NSMutableDictionary dictionary];
     
     [sResult setObject:[NSNumber numberWithInteger:mType] forKey:kTypeKey];
