@@ -48,6 +48,23 @@
 }
 
 
+- (void)showPropertyEditorWithTerrainTile:(FLTerrainTile *)aTerrainTile collectionItem:(FLTerrainTileItem *)aItem
+{
+    if (!mPropertyEditor)
+    {
+        mPropertyEditor = [[FLTerrainTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrainTilePropertyEditor"];
+    }
+    
+    [mPropertyEditor setTerrainTile:aTerrainTile];
+    [mPropertyEditor showWindowWithDoneBlock:^void (id aObject) {
+        [mTileSet save];
+        [aItem update];
+    } cancelBlock:^void (id aObject) {
+        [mTileSet rollback];
+    }];
+}
+
+
 #pragma mark -
 
 
@@ -68,6 +85,7 @@
 {
     [mTileSet release];
     [mTileView removeObserver:self forKeyPath:@"selectionIndexes"];
+    [mPropertyEditor release];
     
     [super dealloc];
 }
@@ -87,23 +105,6 @@
 
 #pragma mark -
 #pragma mark Actions
-
-
-- (void)showPropertyEditorWithTerrainTile:(FLTerrainTile *)aTerrainTile collectionItem:(FLTerrainTileItem *)aItem
-{
-    if (!mPropertyEditor)
-    {
-        mPropertyEditor = [[FLTerrainTilePropertyEditor alloc] initWithWindowNibName:@"FLTerrainTilePropertyEditor"];
-    }
-    
-    [mPropertyEditor setTerrainTile:aTerrainTile];
-    [mPropertyEditor showWindowWithDoneBlock:^void (id aObject) {
-        [mTileSet save];
-        [aItem update];
-    } cancelBlock:^void (id aObject) {
-        [mTileSet rollback];
-    }];
-}
 
 
 - (IBAction)addButtonClicked:(id)aSender

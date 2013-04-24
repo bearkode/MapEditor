@@ -83,7 +83,7 @@
 						<object class="NSTextField" id="273472595">
 							<reference key="NSNextResponder" ref="1006"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{17, 185}, {48, 17}}</string>
+							<string key="NSFrame">{{17, 185}, {66, 17}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="32422806"/>
@@ -92,7 +92,7 @@
 							<object class="NSTextFieldCell" key="NSCell" id="1064458044">
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
-								<string key="NSContents">Index :</string>
+								<string key="NSContents">ObjectId: </string>
 								<object class="NSFont" key="NSSupport" id="937563947">
 									<string key="NSName">LucidaGrande</string>
 									<double key="NSSize">13</double>
@@ -124,7 +124,7 @@
 						<object class="NSTextField" id="32422806">
 							<reference key="NSNextResponder" ref="1006"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{70, 183}, {96, 22}}</string>
+							<string key="NSFrame">{{88, 183}, {78, 22}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="700012315"/>
@@ -244,7 +244,6 @@
 							<string key="NSFrame">{{255, 13}, {69, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="118992217">
@@ -524,25 +523,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">FLTerrainTilePropertyEditor</string>
 					<string key="superclassName">NSWindowController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="cancelButtonClicked:">id</string>
-						<string key="loadImageButtonClicked:">id</string>
-						<string key="saveButtonClicked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="cancelButtonClicked:">
-							<string key="name">cancelButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="loadImageButtonClicked:">
-							<string key="name">loadImageButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saveButtonClicked:">
-							<string key="name">saveButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="imageView">NSImageView</string>
 						<string key="indexField">NSTextField</string>

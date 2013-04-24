@@ -8,13 +8,21 @@
  */
 
 #import "FLObjectTileSetEditor.h"
+#import "FLObjectTilePropertyEditor.h"
+#import "FLObjectTile.h"
+#import "FLObjectTileSet.h"
+#import "FLTileSetManager.h"
 
 
 @implementation FLObjectTileSetEditor
 {
-    NSCollectionView *mTileView;
-    NSButton         *mEditButton;
-    NSButton         *mDeleteButton;
+    NSCollectionView           *mTileView;
+    NSButton                   *mEditButton;
+    NSButton                   *mDeleteButton;
+    
+    FLObjectTilePropertyEditor *mPropertyEditor;
+    
+    FLObjectTileSet            *mTileSet;
 }
 
 
@@ -26,13 +34,33 @@
 #pragma mark -
 
 
+- (void)showPropertyEditorWithTile:(FLObjectTile *)aTile //collectionItem:(FLObjectTileItem *)aItem
+{
+    if (!mPropertyEditor)
+    {
+        mPropertyEditor = [[FLObjectTilePropertyEditor alloc] initWithWindowNibName:@"FLObjectTilePropertyEditor"];
+    }
+    
+    [mPropertyEditor setObjectTile:aTile];
+    [mPropertyEditor showWindowWithDoneBlock:^void (id aObject) {
+//        [mTileSet save];
+//        [aItem update];
+    } cancelBlock:^void (id aObject) {
+//        [mTileSet rollback];
+    }];
+}
+
+
+#pragma mark -
+
+
 - (id)initWithWindow:(NSWindow *)aWindow
 {
     self = [super initWithWindow:aWindow];
     
     if (self)
     {
-
+        mTileSet = (FLObjectTileSet *)[[[FLTileSetManager sharedManager] objectTileSet] retain];
     }
     
     return self;
@@ -41,6 +69,8 @@
 
 - (void)dealloc
 {
+    [mTileSet release];
+    
     [super dealloc];
 }
 
@@ -60,6 +90,9 @@
 - (IBAction)addButtonClicked:(id)aSender
 {
     NSLog(@"addButtonClicked:");
+
+    FLObjectTile *sTile = (FLObjectTile *)[mTileSet insertNewTile];
+    [self showPropertyEditorWithTile:sTile];// collectionItem:nil];
 }
 
 

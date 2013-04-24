@@ -48,6 +48,8 @@
 		2EA26B92171E3B7B001E9584 /* FLTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B91171E3B7B001E9584 /* FLTileSet.m */; };
 		2EA26B95171E3BE7001E9584 /* FLObjectTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B94171E3BE7001E9584 /* FLObjectTileSet.m */; };
 		2EA26B98171E3CDD001E9584 /* FLTileSetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EA26B97171E3CDD001E9584 /* FLTileSetManager.m */; };
+		2ED10C081726825200AAF5AF /* FLObjectTilePropertyEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED10C061726825200AAF5AF /* FLObjectTilePropertyEditor.m */; };
+		2ED10C091726825200AAF5AF /* FLObjectTilePropertyEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED10C071726825200AAF5AF /* FLObjectTilePropertyEditor.xib */; };
 		2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */; };
 		2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */; };
 /* End PBXBuildFile section */
@@ -124,6 +126,9 @@
 		2EA26B96171E3CDD001E9584 /* FLTileSetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLTileSetManager.h; sourceTree = "<group>"; };
 		2EA26B97171E3CDD001E9584 /* FLTileSetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLTileSetManager.m; sourceTree = "<group>"; };
 		2EA26B99171E3D3F001E9584 /* FLObjCUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLObjCUtil.h; sourceTree = "<group>"; };
+		2ED10C051726825200AAF5AF /* FLObjectTilePropertyEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObjectTilePropertyEditor.h; sourceTree = "<group>"; };
+		2ED10C061726825200AAF5AF /* FLObjectTilePropertyEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObjectTilePropertyEditor.m; sourceTree = "<group>"; };
+		2ED10C071726825200AAF5AF /* FLObjectTilePropertyEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLObjectTilePropertyEditor.xib; sourceTree = "<group>"; };
 		2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScrollView+Additions.h"; sourceTree = "<group>"; };
 		2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScrollView+Additions.m"; sourceTree = "<group>"; };
 		2EFB43CF1716A77A00CC376E /* NSDictionary+JSONAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONAddition.h"; sourceTree = "<group>"; };
@@ -173,6 +178,9 @@
 				2E37E60A1717A89A0033982C /* FLObjectTileSetEditor.h */,
 				2E37E60B1717A89A0033982C /* FLObjectTileSetEditor.m */,
 				2E37E60C1717A89A0033982C /* FLObjectTileSetEditor.xib */,
+				2ED10C051726825200AAF5AF /* FLObjectTilePropertyEditor.h */,
+				2ED10C061726825200AAF5AF /* FLObjectTilePropertyEditor.m */,
+				2ED10C071726825200AAF5AF /* FLObjectTilePropertyEditor.xib */,
 			);
 			name = FLObjectTileSet;
 			sourceTree = "<group>";
@@ -409,6 +417,7 @@
 				2E69153F171E6A5F0085B797 /* brush-icon.png in Resources */,
 				2E691540171E6A5F0085B797 /* fill-icon.png in Resources */,
 				2E691542171E6C440085B797 /* save-icon.png in Resources */,
+				2ED10C091726825200AAF5AF /* FLObjectTilePropertyEditor.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +456,7 @@
 				2E691548171E6F9A0085B797 /* FLObjectLayer.m in Sources */,
 				2E97438317261FE400573AE8 /* FLObjectTileSetModel.xcdatamodeld in Sources */,
 				2E974386172620CB00573AE8 /* FLObjectTile.m in Sources */,
+				2ED10C081726825200AAF5AF /* FLObjectTilePropertyEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
