@@ -10,6 +10,7 @@
 #import "FLObjectTileSetEditor.h"
 #import "FLObjectTilePropertyEditor.h"
 #import "FLObjectTile.h"
+#import "FLObjectTileItem.h"
 #import "FLObjectTileSet.h"
 #import "FLTileSetManager.h"
 
@@ -34,7 +35,27 @@
 #pragma mark -
 
 
-- (void)showPropertyEditorWithTile:(FLObjectTile *)aTile //collectionItem:(FLObjectTileItem *)aItem
+- (void)setupTileView
+{
+    [mTileView setItemPrototype:[[[FLObjectTileItem alloc] initWithNibName:@"FLTerrainTileItem" bundle:nil] autorelease]];
+    [mTileView setContent:[mTileSet tiles]];
+    [mTileView setMinItemSize:NSMakeSize(120, 120)];
+    [mTileView setMaxItemSize:NSMakeSize(120, 120)];
+    [mTileView bind:NSContentBinding toObject:mTileSet withKeyPath:@"tiles" options:NULL];
+    [mTileView addObserver:self forKeyPath:@"selectionIndexes" options:0 context:NULL];
+}
+
+
+- (void)tileViewSelectionDidChange
+{
+    NSIndexSet *sIndexSet = [mTileView selectionIndexes];
+    
+    [mDeleteButton setEnabled:([sIndexSet count] > 0)];
+    [mEditButton setEnabled:([sIndexSet count] > 0)];
+}
+
+
+- (void)showPropertyEditorWithTile:(FLObjectTile *)aTile collectionItem:(FLObjectTileItem *)aItem
 {
     if (!mPropertyEditor)
     {
@@ -43,10 +64,10 @@
     
     [mPropertyEditor setObjectTile:aTile];
     [mPropertyEditor showWindowWithDoneBlock:^void (id aObject) {
-//        [mTileSet save];
-//        [aItem update];
+        [mTileSet save];
+        [aItem update];
     } cancelBlock:^void (id aObject) {
-//        [mTileSet rollback];
+        [mTileSet rollback];
     }];
 }
 
@@ -81,6 +102,9 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    
+    [self setupTileView];
+    [self tileViewSelectionDidChange];
 }
 
 
@@ -92,7 +116,7 @@
     NSLog(@"addButtonClicked:");
 
     FLObjectTile *sTile = (FLObjectTile *)[mTileSet insertNewTile];
-    [self showPropertyEditorWithTile:sTile];// collectionItem:nil];
+    [self showPropertyEditorWithTile:sTile collectionItem:nil];
 }
 
 

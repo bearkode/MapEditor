@@ -70,6 +70,9 @@
 {
     [mTerrainTile release];
     
+    [mDoneBlock release];
+    [mCancelBlock release];
+    
     [super dealloc];
 }
 
@@ -149,7 +152,6 @@
             [self update];
         }
     }];
-    
 }
 
 

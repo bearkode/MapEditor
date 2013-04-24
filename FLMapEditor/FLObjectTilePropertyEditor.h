@@ -21,8 +21,11 @@ typedef void (^FLPropertyEditorCallbackBlock)(id aObject);
 
 @property (nonatomic, assign) IBOutlet NSTextField *objectIDField;
 @property (nonatomic, assign) IBOutlet NSTextField *widthField;
+@property (nonatomic, assign) IBOutlet NSStepper   *widthStepper;
 @property (nonatomic, assign) IBOutlet NSTextField *heightField;
+@property (nonatomic, assign) IBOutlet NSStepper   *heightStepper;
 @property (nonatomic, assign) IBOutlet NSButton    *passableButton;
+@property (nonatomic, assign) IBOutlet NSImageView *imageView;
 @property (nonatomic, assign) IBOutlet NSButton    *saveButton;
 
 

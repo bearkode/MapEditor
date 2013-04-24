@@ -21,4 +21,12 @@
 }
 
 
+- (NSInteger)integer
+{
+    NSString *sValueStr = ([[self stringValue] length] != 0)  ? [self stringValue]  : [[self cell] placeholderString];
+    
+    return [sValueStr integerValue];
+}
+
+
 @end

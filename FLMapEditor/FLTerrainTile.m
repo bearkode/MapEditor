@@ -30,7 +30,7 @@
 
 - (NSImage *)image
 {
-    if (!mImage)
+    if (!mImage && [self imageData])
     {
         NSImage *sImage     = [[[NSImage alloc] initWithData:[self imageData]] autorelease];
         NSSize   sImageSize = NSMakeSize([sImage size].width / 2, [sImage size].height / 2);

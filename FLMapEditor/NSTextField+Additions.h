@@ -14,6 +14,7 @@
 
 
 - (CGFloat)floatValue;
+- (NSInteger)integer;
 
 
 @end

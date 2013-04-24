@@ -48,6 +48,15 @@
 }
 
 
+- (void)tileViewSelectionDidChange
+{
+    NSIndexSet *sIndexSet = [mTileView selectionIndexes];
+    
+    [mDeleteButton setEnabled:([sIndexSet count] > 0)];
+    [mEditButton setEnabled:([sIndexSet count] > 0)];
+}
+
+
 - (void)showPropertyEditorWithTerrainTile:(FLTerrainTile *)aTerrainTile collectionItem:(FLTerrainTileItem *)aItem
 {
     if (!mPropertyEditor)
@@ -141,15 +150,6 @@
 
 
 #pragma mark -
-
-
-- (void)tileViewSelectionDidChange
-{
-    NSIndexSet *sIndexSet = [mTileView selectionIndexes];
-    
-    [mDeleteButton setEnabled:([sIndexSet count] > 0)];
-    [mEditButton setEnabled:([sIndexSet count] > 0)];
-}
 
 
 - (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)aObject change:(NSDictionary *)aChange context:(void *)aContext
