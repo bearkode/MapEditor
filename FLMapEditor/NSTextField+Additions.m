@@ -3,7 +3,7 @@
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 9..
- *  Copyright (c) 2013년 cgkim. All rights reserved.
+ *  Copyright (c) 2013 cgkim. All rights reserved.
  *
  */
 

@@ -3,7 +3,7 @@
  *  FLMapEditor
  *
  *  Created by cgkim on 13. 4. 23..
- *  Copyright (c) 2013년 cgkim. All rights reserved.
+ *  Copyright (c) 2013 cgkim. All rights reserved.
  *
  */
 
@@ -201,7 +201,7 @@
 - (BOOL)control:(NSControl *)aControl textShouldEndEditing:(NSText *)aFieldEditor
 {
     NSInteger sValue = [(NSTextField *)aControl integer];
-    
+
     if (aControl == mObjectIDField)
     {
         [mObjectTile setObjectId:sValue];

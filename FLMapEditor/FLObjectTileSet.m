@@ -13,6 +13,31 @@
 @implementation FLObjectTileSet
 
 
+#pragma mark -
+
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        [self fetch];
+    }
+    
+    return self;
+}
+
+
+- (void)dealloc
+{
+    [super dealloc];
+}
+
+
+#pragma mark -
+
+
 - (NSString *)entityName
 {
     return @"FLObjectTile";

@@ -91,6 +91,8 @@
 - (void)dealloc
 {
     [mTileSet release];
+    [mTileView removeObserver:self forKeyPath:@"selectionIndexes"];
+    [mPropertyEditor release];
     
     [super dealloc];
 }
@@ -129,6 +131,30 @@
 - (IBAction)editButtonClicked:(id)aSender
 {
     NSLog(@"editButtonClicked:");
+}
+
+
+#pragma mark -
+
+
+#pragma mark -
+
+
+- (void)observeValueForKeyPath:(NSString *)aKeyPath ofObject:(id)aObject change:(NSDictionary *)aChange context:(void *)aContext
+{
+    NSLog(@"observeValueForKeyPath:ofObject:change:context");
+    NSLog(@"aKeyPath = %@", aKeyPath);
+    NSLog(@"aObject  = %@", aObject);
+    NSLog(@"aChange  = %@", aChange);
+    NSLog(@"aContext = %p", aContext);
+    
+    if (aObject == mTileView)
+    {
+        if ([aKeyPath isEqualToString:@"selectionIndexes"])
+        {
+            [self tileViewSelectionDidChange];
+        }
+    }
 }
 
 

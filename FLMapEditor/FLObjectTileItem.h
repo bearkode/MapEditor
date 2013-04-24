@@ -13,7 +13,10 @@
 @interface FLObjectTileItem : NSCollectionViewItem
 
 
+@property (nonatomic, assign) IBOutlet NSBox       *box;
+@property (nonatomic, assign) IBOutlet NSImageView *tileImageView;
 @property (nonatomic, assign) IBOutlet NSTextField *objectIdLabel;
+@property (nonatomic, assign) IBOutlet NSTextField *sizeLabel;
 
 
 - (void)update;

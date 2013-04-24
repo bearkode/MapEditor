@@ -121,23 +121,6 @@
 #pragma mark -
 
 
-//- (void)setTilesFromArray:(NSArray *)aTiles
-//{
-//}
-//
-//
-//- (void)addTile:(FLTile *)aTile
-//{
-//    [mTiles addObject:aTile];
-//}
-//
-//
-//- (void)removeTile:(FLTile *)aTile
-//{
-//    [mTiles removeObject:aTile];
-//}
-
-
 - (NSUInteger)count
 {
     NSEntityDescription *sEntity       = [NSEntityDescription entityForName:[self entityName] inManagedObjectContext:mMOContext];
@@ -162,13 +145,6 @@
     
     return sResult;
 }
-
-
-//- (void)deleteTile:(FLTile *)aTile
-//{
-//    [mMOContext deleteObject:aTile];
-//    [mRemovedTiles addObject:aTile];
-//}
 
 
 - (void)deleteTileAtIndex:(NSInteger)aIndex
