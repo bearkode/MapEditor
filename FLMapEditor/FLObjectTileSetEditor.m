@@ -115,8 +115,6 @@
 
 - (IBAction)addButtonClicked:(id)aSender
 {
-    NSLog(@"addButtonClicked:");
-
     FLObjectTile *sTile = (FLObjectTile *)[mTileSet insertNewTile];
     [self showPropertyEditorWithTile:sTile collectionItem:nil];
 }
@@ -124,13 +122,20 @@
 
 - (IBAction)deleteButtonClicked:(id)aSender
 {
-    NSLog(@"deleteButtonClicked:");
+    NSInteger sIndex = [[mTileView selectionIndexes] firstIndex];
+
+    [mTileSet deleteTileAtIndex:sIndex];
+    [mTileSet save];
 }
 
 
 - (IBAction)editButtonClicked:(id)aSender
 {
-    NSLog(@"editButtonClicked:");
+    NSInteger         sIndex          = [[mTileView selectionIndexes] firstIndex];
+    FLObjectTile     *sObjectTile     = (FLObjectTile *)[mTileSet tileAtIndex:sIndex];
+    FLObjectTileItem *sObjectTileItem = (FLObjectTileItem *)[mTileView itemAtIndex:sIndex];
+    
+    [self showPropertyEditorWithTile:sObjectTile collectionItem:sObjectTileItem];
 }
 
 

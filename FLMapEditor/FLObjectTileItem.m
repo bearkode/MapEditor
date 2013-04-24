@@ -109,6 +109,7 @@
     {
         [mTileImageView setImage:[sTile image]];
         [mObjectIdLabel setStringValue:[NSString stringWithFormat:@"ObjectID : %d", (int)[sTile objectId]]];
+        [mSizeLabel setStringValue:[NSString stringWithFormat:@"Size : %d, %d", (int)[sTile width], (int)[sTile height]]];
 //        [mPassableButton setState:[sTile passable]];
     }
 }

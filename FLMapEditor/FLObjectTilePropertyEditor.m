@@ -100,11 +100,11 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
+
     [mWidthStepper setIntegerValue:1];
     [mHeightStepper setIntegerValue:1];
-    
     [mSaveButton setEnabled:NO];
+    [self update];
 }
 
 
@@ -163,6 +163,11 @@
 {
     [NSApp abortModal];
     [[self window] orderOut:aSender];
+    
+    [mObjectTile setObjectId:[mObjectIDField integer]];
+    [mObjectTile setWidth:[mWidthField integer]];
+    [mObjectTile setHeight:[mHeightField integer]];
+    [mObjectTile setPassable:([mPassableButton state] == NSOnState)];
 
     if (mDoneBlock)
     {
