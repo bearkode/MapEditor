@@ -59,3 +59,9 @@ NSPoint FLGetCenterPointOfGrid(NSSize aMapSize, NSSize aTileSize, NSPoint aGridP
     
     return sPoint;
 }
+
+
+NSPoint FLGetCenterPointOfGridWithMap(FLMap *aMap, NSPoint aGridPosition)
+{
+    return FLGetCenterPointOfGrid([aMap mapSize], [aMap tileSize], aGridPosition);
+}

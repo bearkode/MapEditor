@@ -157,4 +157,31 @@ static NSString *const kTilesKey = @"Tiles";
 }
 
 
+- (BOOL)canObjectPlaceAtGridPosition:(NSPoint)aGridPositoin size:(NSSize)aSize
+{
+    BOOL sResult = YES;
+    
+    for (NSInteger x = aGridPositoin.x; x < aGridPositoin.x + aSize.width; x++)
+    {
+        for (NSInteger y = aGridPositoin.y; y < aGridPositoin.y + aSize.height; y++)
+        {
+            if (x < 0 || x >= 50 || y < 0 || y >= 50)
+            {
+                return NO;
+            }
+            
+            FLTerrainTile *sTile = [self tileAtPosition:NSMakePoint(x, y)];
+            sResult = [sTile passable];
+            
+            if (!sResult)
+            {
+                return NO;
+            }
+        }
+    }
+    
+    return YES;
+}
+
+
 @end

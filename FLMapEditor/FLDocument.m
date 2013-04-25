@@ -20,6 +20,8 @@
 #import "FLMapInfoController.h"
 #import "FLTerrainTileItem.h"
 #import "FLTile.h"
+#import "FLTerrainTile.h"
+#import "FLObjectTile.h"
 #import "FLTileSet.h"
 #import "FLLayerView.h"
 
@@ -208,9 +210,41 @@ typedef enum
 
 - (void)setTileLayerAtPosition:(NSPoint)aPosition
 {
+    NSPoint sGridPositoin = FLGetGridPositionFromScreenPoint(mMap, aPosition);
+    NSPoint sPoint        = FLGetCenterPointOfGridWithMap(mMap, sGridPositoin);
+    
+    if ([mSelectedTile isKindOfClass:[FLObjectTile class]])
+    {
+        FLObjectTile *sObjectTile = (FLObjectTile *)mSelectedTile;
+        NSInteger     sWidth      = [sObjectTile width];
+        NSInteger     sHeight     = [sObjectTile height];
+        NSImage      *sImage      = [sObjectTile image];
+        NSSize        sImageSize  = [sImage size];
+        
+        sPoint.y -= (sImageSize.height / 2);
+        sPoint.y += ([mMap tileSize].height * sWidth);
+        sPoint.y -= ([mMap tileSize].height / 2);
+    
+        if ([mMap canObjectPlaceAtGridPosition:sGridPositoin size:NSMakeSize(sWidth, sHeight)])
+        {
+            [mTileLayer setFilters:nil];
+        }
+        else
+        {
+            if ([[mTileLayer filters] count] == 0)
+            {
+                CIFilter *sFilter = [CIFilter filterWithName:@"CIColorMonochrome"];
+                [sFilter setDefaults];
+                [sFilter setValue:[CIColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0] forKey:@"inputColor"];
+                
+                [mTileLayer setFilters:[NSArray arrayWithObject:sFilter]];
+            }
+        }
+    }
+
     [CATransaction begin];
     [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-    [mTileLayer setPosition:aPosition];
+    [mTileLayer setPosition:sPoint];
     [CATransaction commit];
 }
 

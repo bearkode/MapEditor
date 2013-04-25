@@ -35,4 +35,7 @@
 - (NSArray *)layers;
 
 
+- (BOOL)canObjectPlaceAtGridPosition:(NSPoint)aGridPositoin size:(NSSize)aSize;
+
+
 @end

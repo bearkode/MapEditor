@@ -130,4 +130,10 @@ static NSString *const kMapSizeKey = @"MapSize";
 }
 
 
+- (BOOL)canObjectPlaceAtGridPosition:(NSPoint)aGridPositoin size:(NSSize)aSize
+{
+    return NO;
+}
+
+
 @end

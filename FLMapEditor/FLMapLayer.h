@@ -38,4 +38,7 @@ typedef enum
 - (NSSize)mapSize;
 
 
+- (BOOL)canObjectPlaceAtGridPosition:(NSPoint)aGridPositoin size:(NSSize)aSize;
+
+
 @end
