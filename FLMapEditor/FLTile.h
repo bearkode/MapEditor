@@ -16,4 +16,7 @@
 @property (nonatomic, assign) NSInteger objectId;
 
 
+- (NSImage *)image;
+
+
 @end

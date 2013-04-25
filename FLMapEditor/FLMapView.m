@@ -10,6 +10,7 @@
 #import "FLMapView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "FLUtils.h"
+#import "FLLayerView.h"
 #import "FLMapGridView.h"
 #import "FLMapLayer.h"
 #import "FLTerrainLayer.h"
@@ -21,9 +22,12 @@
 #define PBBeginTimeCheck()           double __sCurrentTime = CACurrentMediaTime()
 #define PBEndTimeCheck()             NSLog(@"time = %f", CACurrentMediaTime() - __sCurrentTime)
 
+
 @implementation FLMapView
 {
+    FLLayerView    *mLayerView;
     FLMapGridView  *mGridView;
+    
     NSTrackingArea *mTrackingArea;
     BOOL            mMouseTracking;
     NSSize          mMapSize;
@@ -32,6 +36,10 @@
     id              mDelegate;
     id              mDataSource;
 }
+
+
+@synthesize layerView     = mLayerView;
+@synthesize mouseTracking = mMouseTracking;
 
 
 #pragma mark -
@@ -43,6 +51,11 @@
 
     if (self)
     {
+        mLayerView = [[[FLLayerView alloc] initWithFrame:NSMakeRect(0, 0, aFrame.size.width, aFrame.size.height)] autorelease];
+        [mLayerView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+        [mLayerView setWantsLayer:YES];
+        [self addSubview:mLayerView];
+        
         mGridView = [[[FLMapGridView alloc] initWithFrame:NSMakeRect(0, 0, aFrame.size.width, aFrame.size.height)] autorelease];
         [mGridView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
         [self addSubview:mGridView];
@@ -59,6 +72,11 @@
     if (self)
     {
         NSRect sFrame = [self frame];
+        
+        mLayerView = [[[FLLayerView alloc] initWithFrame:NSMakeRect(0, 0, sFrame.size.width, sFrame.size.height)] autorelease];
+        [mLayerView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
+        [mLayerView setWantsLayer:YES];        
+        [self addSubview:mLayerView];
         
         mGridView = [[[FLMapGridView alloc] initWithFrame:NSMakeRect(0, 0, sFrame.size.width, sFrame.size.height)] autorelease];
         [mGridView setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
@@ -132,13 +150,25 @@
 
 - (void)mouseEntered:(NSEvent *)aEvent
 {
+    NSPoint sLocation = [self convertPoint:[aEvent locationInWindow] fromView:nil];
+    
     mMouseTracking = YES;
+    
+    if ([mDelegate respondsToSelector:@selector(mapView:didMouseEnterAtPoint:)])
+    {
+        [mDelegate mapView:self didMouseEnterAtPoint:sLocation];
+    }
 }
 
 
 - (void)mouseExited:(NSEvent *)aEvent
 {
     mMouseTracking = NO;
+    
+    if ([mDelegate respondsToSelector:@selector(mapViewDidMouseExit:)])
+    {
+        [mDelegate mapViewDidMouseExit:self];
+    }
 }
 
 

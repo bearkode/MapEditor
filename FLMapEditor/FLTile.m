@@ -16,4 +16,10 @@
 @dynamic objectId;
 
 
+- (NSImage *)image
+{
+    return nil;
+}
+
+
 @end

@@ -29,7 +29,7 @@
     NSLog(@"applicationDidFinishLaunching");
     
 //    [self terrainTileSetEditorSelected:self];
-    [self objectTileSetEditorSelected:self];
+//    [self objectTileSetEditorSelected:self];
 }
 
 

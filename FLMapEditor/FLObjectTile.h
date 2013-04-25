@@ -20,7 +20,4 @@
 @property (nonatomic, assign) NSInteger height;
 
 
-- (NSImage *)image;
-
-
 @end

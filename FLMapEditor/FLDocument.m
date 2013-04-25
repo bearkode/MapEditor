@@ -8,6 +8,7 @@
  */
 
 #import "FLDocument.h"
+#import <QuartzCore/QuartzCore.h>
 #import "NSScrollView+Additions.h"
 #import "FLMapView.h"
 #import "FLMap.h"
@@ -20,6 +21,7 @@
 #import "FLTerrainTileItem.h"
 #import "FLTile.h"
 #import "FLTileSet.h"
+#import "FLLayerView.h"
 
 
 typedef enum
@@ -32,6 +34,8 @@ typedef enum
 
 @implementation FLDocument
 {
+    NSWindow            *mWindow;
+    
     /*  MapInfo  */
     FLMapInfoController *mMapInfoController;
     
@@ -55,6 +59,8 @@ typedef enum
     FLMapLayer          *mSelectedLayer;
     FLTile              *mSelectedTile;
     FLToolType           mSelectedTool;
+    
+    CALayer             *mTileLayer;
 }
 
 
@@ -162,6 +168,9 @@ typedef enum
     [mTileSetView setContent:[sTileSet tiles]];
     [mTileSetView bind:NSContentBinding toObject:sTileSet withKeyPath:@"tiles" options:NULL];
     [mTileSetView setSelectionIndexes:[NSIndexSet indexSet]];
+    
+    mSelectedTile = nil;
+    [self setTileLayerContents:nil];
 }
 
 
@@ -178,6 +187,31 @@ typedef enum
     {
         mSelectedTile = nil;
     }
+
+    if (mSelectedTile && [mMapView isMouseTracking])
+    {
+        [self setTileLayerContents:[mSelectedTile image]];
+    }
+}
+
+
+- (void)setTileLayerContents:(NSImage *)aImage
+{
+    CGSize sImageSize = [aImage size];
+    
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+    [mTileLayer setContents:aImage];
+    [mTileLayer setFrame:CGRectMake(0, 0, sImageSize.width, sImageSize.height)];
+    [CATransaction commit];
+}
+
+- (void)setTileLayerAtPosition:(NSPoint)aPosition
+{
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+    [mTileLayer setPosition:aPosition];
+    [CATransaction commit];
 }
 
 
@@ -200,6 +234,8 @@ typedef enum
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self forKeyPath:NSViewBoundsDidChangeNotification];
+    
     [mLayerView removeObserver:self forKeyPath:@"selectionIndexes"];
     [mTileSetView removeObserver:self forKeyPath:@"selectionIndexes"];
 
@@ -231,6 +267,13 @@ typedef enum
 
     [mMapView setDataSource:self];
     [mMapView setDelegate:self];
+
+    [[mScrollView contentView] setPostsBoundsChangedNotifications:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewBoundsDidChange:) name:NSViewBoundsDidChangeNotification object:[mScrollView contentView]];
+
+    mTileLayer = [CATiledLayer layer];
+    [mTileLayer setOpacity:0.7];
+    [[[mMapView layerView] layer] addSublayer:mTileLayer];
 
     [mLayerView setItemPrototype:[[[FLMapLayerItem alloc] initWithNibName:@"FLMapLayerItem" bundle:nil] autorelease]];
     [mLayerView setMinItemSize:NSMakeSize(330, 50)];
@@ -346,6 +389,8 @@ typedef enum
 {
     NSPoint sGridPosition = FLGetGridPositionFromScreenPoint(mMap, aPoint);
     
+    [self setTileLayerAtPosition:aPoint];
+    
     if ([mSelectedLayer type] == kFLMapLayerTerrainType)
     {
         FLTerrainLayer *sTerrainLayer = (FLTerrainLayer *)mSelectedLayer;
@@ -382,6 +427,8 @@ typedef enum
 {
     NSPoint sGridPosition = FLGetGridPositionFromScreenPoint(mMap, aPoint);
     
+    [self setTileLayerAtPosition:aPoint];
+    
     if ([mSelectedLayer type] == kFLMapLayerTerrainType)
     {
         FLTerrainLayer *sTerrainLayer = (FLTerrainLayer *)mSelectedLayer;
@@ -392,7 +439,6 @@ typedef enum
             {
                 if ([sTerrainLayer setTile:(FLTerrainTile *)mSelectedTile atPosition:sGridPosition])
                 {
-//                    [mMapView reload];
                     [mMapView setNeedsDisplayAtGridPosition:sGridPosition];
                 }
             }
@@ -411,8 +457,37 @@ typedef enum
     
     NSPoint sGridPosition = FLGetGridPositionFromScreenPoint(mMap, aPoint);
     [mGridPositionLabel setStringValue:NSStringFromPoint(sGridPosition)];
+    
+    [self setTileLayerAtPosition:aPoint];
 }
 
+
+- (void)mapView:(FLMapView *)aMapView didMouseEnterAtPoint:(NSPoint)aPoint
+{
+    [self setTileLayerContents:[mSelectedTile image]];
+    [self setTileLayerAtPosition:aPoint];
+}
+
+
+- (void)mapViewDidMouseExit:(FLMapView *)aMapView
+{
+    [self setTileLayerContents:nil];
+}
+
+
+#pragma mark -
+
+
+- (void)viewBoundsDidChange:(NSNotification *)aNotification
+{
+    NSWindow *sWindow = [[[self windowControllers] objectAtIndex:0] window];
+    NSPoint   sPoint  = [NSEvent mouseLocation];
+    
+    sPoint = [sWindow convertScreenToBase:sPoint];
+    sPoint = [mMapView convertPoint:sPoint fromView:nil];
+
+    [self setTileLayerAtPosition:sPoint];
+}
 
 
 #pragma mark -

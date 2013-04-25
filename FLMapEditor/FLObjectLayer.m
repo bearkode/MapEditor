@@ -28,7 +28,6 @@
 
 - (id)initWithJSONObject:(NSDictionary *)aDict
 {
-    NSLog(@"FLObjectLayer initWithJSONObject");
     self = [super initWithJSONObject:aDict];
     
     if (self)

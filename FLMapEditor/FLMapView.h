@@ -16,6 +16,10 @@
 @interface FLMapView : NSView
 
 
+@property (nonatomic, readonly)                           NSView *layerView;
+@property (nonatomic, readonly, getter = isMouseTracking) BOOL    mouseTracking;
+
+
 - (void)setDelegate:(id<FLMapViewProtocol>)aDelegate;
 - (void)setDataSource:(id<FLMapViewProtocol>)aDataSource;
 
@@ -38,6 +42,8 @@
 - (void)mapView:(FLMapView *)aMapView didMouseUpAtPoint:(NSPoint)aPoint;
 - (void)mapView:(FLMapView *)aMapView didMouseDragAtPoint:(NSPoint)aPoint;
 - (void)mapView:(FLMapView *)aMapView didMouseMoveAtPoint:(NSPoint)aPoint;
+- (void)mapView:(FLMapView *)aMapView didMouseEnterAtPoint:(NSPoint)aPoint;
+- (void)mapViewDidMouseExit:(FLMapView *)aMapView;
 
 
 @end
