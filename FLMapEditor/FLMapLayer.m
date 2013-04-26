@@ -12,9 +12,10 @@
 #import "FLTileSetManager.h"
 
 
-static NSString *const kTypeKey    = @"Type";
-static NSString *const kNameKey    = @"Name";
-static NSString *const kMapSizeKey = @"MapSize";
+static NSString *const kTypeKey     = @"Type";
+static NSString *const kNameKey     = @"Name";
+static NSString *const kMapSizeKey  = @"MapSize";
+static NSString *const kTileSizeKey = @"TileSize";
 
 
 @implementation FLMapLayer
@@ -22,6 +23,7 @@ static NSString *const kMapSizeKey = @"MapSize";
     FLMapLayerType mType;
     NSString      *mName;
     NSSize         mMapSize;
+    NSSize         mTileSize;
     
     FLTileSet     *mTileSet;
 }
@@ -87,6 +89,7 @@ static NSString *const kMapSizeKey = @"MapSize";
         mName = [[aDict objectForKey:kNameKey] retain];
 
         [self setMapSize:[[aDict objectForKey:kMapSizeKey] sizeValue]];
+        [self setTileSize:[[aDict objectForKey:kTileSizeKey] sizeValue]];
         [self setupTileSet];
     }
     
@@ -113,6 +116,7 @@ static NSString *const kMapSizeKey = @"MapSize";
     [sResult setObject:[NSNumber numberWithInteger:mType] forKey:kTypeKey];
     [sResult setObject:mName forKey:kNameKey];
     [sResult setObject:[NSDictionary dictionaryWithSize:mMapSize] forKey:kMapSizeKey];
+    [sResult setObject:[NSDictionary dictionaryWithSize:mTileSize] forKey:kTileSizeKey];
     
     return sResult;
 }
@@ -127,6 +131,18 @@ static NSString *const kMapSizeKey = @"MapSize";
 - (NSSize)mapSize
 {
     return mMapSize;
+}
+
+
+- (void)setTileSize:(NSSize)aTileSize
+{
+    mTileSize = aTileSize;
+}
+
+
+- (NSSize)tileSize
+{
+    return mTileSize;
 }
 
 

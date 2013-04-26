@@ -10,7 +10,15 @@
 #import "FLMapLayer.h"
 
 
+@class FLObject;
+
+
 @interface FLObjectLayer : FLMapLayer
+
+
+- (BOOL)addObject:(FLObject *)aObject;
+
+- (void)drawObjects;
 
 
 @end

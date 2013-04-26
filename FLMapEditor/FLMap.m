@@ -250,12 +250,34 @@ static NSInteger const kObjectLayerIndex  = 1;
 }
 
 
+- (FLObjectLayer *)objectLayer
+{
+    FLObjectLayer *sObjectLayer = nil;
+    
+    for (FLMapLayer *sMapLayer in [mMapLayersController arrangedObjects])
+    {
+        if ([sMapLayer isKindOfClass:[FLObjectLayer class]])
+        {
+            sObjectLayer = (FLObjectLayer *)sMapLayer;
+            break;
+        }
+    }
+    
+    return sObjectLayer;
+}
+
+
 - (BOOL)canObjectPlaceAtGridPosition:(NSPoint)aGridPositoin size:(NSSize)aSize
 {
     BOOL            sResult       = NO;
     FLTerrainLayer *sTerrainLayer = [self terrainLayer];
     
     sResult = [sTerrainLayer canObjectPlaceAtGridPosition:aGridPositoin size:aSize];
+    if (sResult)
+    {
+        FLObjectLayer *sObjectLayer = [self objectLayer];
+        sResult = [sObjectLayer canObjectPlaceAtGridPosition:aGridPositoin size:aSize];
+    }
     
     return sResult;
 }

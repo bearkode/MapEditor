@@ -22,6 +22,7 @@
 #import "FLTile.h"
 #import "FLTerrainTile.h"
 #import "FLObjectTile.h"
+#import "FLObject.h"
 #import "FLTileSet.h"
 #import "FLLayerView.h"
 
@@ -207,6 +208,7 @@ typedef enum
     [mTileLayer setFrame:CGRectMake(0, 0, sImageSize.width, sImageSize.height)];
     [CATransaction commit];
 }
+
 
 - (void)setTileLayerAtPosition:(NSPoint)aPosition
 {
@@ -429,7 +431,7 @@ typedef enum
     {
         FLTerrainLayer *sTerrainLayer = (FLTerrainLayer *)mSelectedLayer;
         
-        if (mSelectedTile)
+        if ([mSelectedTile isKindOfClass:[FLTerrainTile class]])
         {
             if (mSelectedTool == kFLToolFillType)
             {
@@ -446,7 +448,14 @@ typedef enum
     }
     else
     {
-    
+        if ([mSelectedTile isKindOfClass:[FLObjectTile class]])
+        {
+            FLObjectLayer *sObjectLayer = (FLObjectLayer *)mSelectedLayer;
+            FLObject      *sObject      = [[[FLObject alloc] initWithObjectTile:(FLObjectTile *)mSelectedTile position:sGridPosition] autorelease];
+            
+            [sObjectLayer addObject:sObject];
+            [mMapView setNeedsDisplayAtGridPosition:sGridPosition];
+        }
     }
 }
 

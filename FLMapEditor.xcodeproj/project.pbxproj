@@ -53,6 +53,7 @@
 		2ED10C0D1727AC1900AAF5AF /* FLObjectTileItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED10C0B1727AC1800AAF5AF /* FLObjectTileItem.m */; };
 		2ED10C0E1727AC1900AAF5AF /* FLObjectTileItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED10C0C1727AC1900AAF5AF /* FLObjectTileItem.xib */; };
 		2ED10C121727E32500AAF5AF /* FLLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED10C111727E32500AAF5AF /* FLLayerView.m */; };
+		2ED10C1517292B2D00AAF5AF /* FLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED10C1417292B2D00AAF5AF /* FLObject.m */; };
 		2EFB43CE1716A65500CC376E /* NSScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */; };
 		2EFB43D11716A77A00CC376E /* NSDictionary+JSONAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFB43D01716A77A00CC376E /* NSDictionary+JSONAddition.m */; };
 /* End PBXBuildFile section */
@@ -137,6 +138,8 @@
 		2ED10C0C1727AC1900AAF5AF /* FLObjectTileItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLObjectTileItem.xib; sourceTree = "<group>"; };
 		2ED10C101727E32500AAF5AF /* FLLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLayerView.h; sourceTree = "<group>"; };
 		2ED10C111727E32500AAF5AF /* FLLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLLayerView.m; sourceTree = "<group>"; };
+		2ED10C1317292B2D00AAF5AF /* FLObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLObject.h; sourceTree = "<group>"; };
+		2ED10C1417292B2D00AAF5AF /* FLObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLObject.m; sourceTree = "<group>"; };
 		2EFB43CC1716A65500CC376E /* NSScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSScrollView+Additions.h"; sourceTree = "<group>"; };
 		2EFB43CD1716A65500CC376E /* NSScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSScrollView+Additions.m"; sourceTree = "<group>"; };
 		2EFB43CF1716A77A00CC376E /* NSDictionary+JSONAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONAddition.h"; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 				2E7C082A17154F66004BA8A0 /* FLMapLayerItem.h */,
 				2E7C082B17154F66004BA8A0 /* FLMapLayerItem.m */,
 				2E7C082C17154F66004BA8A0 /* FLMapLayerItem.xib */,
+				2ED10C1317292B2D00AAF5AF /* FLObject.h */,
+				2ED10C1417292B2D00AAF5AF /* FLObject.m */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				2ED10C081726825200AAF5AF /* FLObjectTilePropertyEditor.m in Sources */,
 				2ED10C0D1727AC1900AAF5AF /* FLObjectTileItem.m in Sources */,
 				2ED10C121727E32500AAF5AF /* FLLayerView.m in Sources */,
+				2ED10C1517292B2D00AAF5AF /* FLObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

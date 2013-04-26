@@ -251,17 +251,11 @@
 
                 if (NSIntersectsRect(aDirtyRect, sInRect))
                 {
-                    [sTileImage drawAtPoint:sInRect.origin fromRect:sFromRect operation:NSCompositeSourceAtop fraction:1.0];
+                    [sTileImage drawInRect:sInRect fromRect:sFromRect operation:NSCompositeSourceAtop fraction:1.0 respectFlipped:YES hints:nil];
                 }
             }
         }
     }
-}
-
-
-- (void)drawObjectLayer:(FLObjectLayer *)aObjectLayer
-{
-
 }
 
 
@@ -280,7 +274,7 @@
         }
         else
         {
-            [self drawObjectLayer:(FLObjectLayer *)sLayer];
+            [(FLObjectLayer *)sLayer drawObjects];
         }
     }
 }
@@ -318,7 +312,7 @@
 - (void)setNeedsDisplayAtGridPosition:(NSPoint)aPosition
 {
     NSPoint sPoint          = FLGetCenterPointOfGrid(mMapSize, mTileSize, aPosition);
-    NSRect  sInvalidateRect = NSMakeRect(sPoint.x - 50, sPoint.y - 50, 100, 100);
+    NSRect  sInvalidateRect = NSMakeRect(sPoint.x - 100, sPoint.y - 100, 200, 200);
     
     [self setNeedsDisplayInRect:sInvalidateRect];
 }
