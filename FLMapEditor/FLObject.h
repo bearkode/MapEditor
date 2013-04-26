@@ -21,9 +21,11 @@
 
 
 - (id)initWithObjectTile:(FLObjectTile *)aObjectTile position:(NSPoint)aPosition;
+- (id)initWithJSONObject:(NSDictionary *)aJSONObject;
 
 
 - (NSComparisonResult)compare:(id)aObject;
 
+- (NSMutableDictionary *)JSONObject;
 
 @end

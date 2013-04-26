@@ -13,6 +13,9 @@
 #import "FLUtils.h"
 
 
+NSString const *kJSONObjectsKey = @"Objects";
+
+
 @implementation FLObjectLayer
 {
     NSMutableArray *mObjects;
@@ -39,6 +42,13 @@
     if (self)
     {
         mObjects = [[NSMutableArray alloc] init];
+        
+        NSArray *sObjectInfos = [aDict objectForKey:kJSONObjectsKey];
+        for (NSDictionary *sObjectInfo in sObjectInfos)
+        {
+            FLObject *sObject = [[[FLObject alloc] initWithJSONObject:sObjectInfo] autorelease];
+            [mObjects addObject:sObject];
+        }
     }
     
     return self;
@@ -50,6 +60,23 @@
     [mObjects release];
     
     [super dealloc];
+}
+
+
+- (NSMutableDictionary *)JSONObject
+{
+    NSMutableDictionary *sJSONObject = [super JSONObject];
+    NSMutableArray      *sObjects    = [NSMutableArray array];
+    
+    for (FLObject *sObject in mObjects)
+    {
+        NSDictionary *sObjectInfo = [sObject JSONObject];
+        [sObjects addObject:sObjectInfo];
+    }
+    
+    [sJSONObject setObject:sObjects forKey:kJSONObjectsKey];
+    
+    return sJSONObject;
 }
 
 

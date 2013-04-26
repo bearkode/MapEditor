@@ -15,9 +15,11 @@
 
 + (NSDictionary *)dictionaryWithSize:(NSSize)aSize;
 + (NSDictionary *)dictionaryWithPoint:(NSPoint)aPoint;
++ (NSDictionary *)dictionaryWithRect:(NSRect)aRect;
 
 - (NSSize)sizeValue;
 - (NSPoint)pointValue;
+- (NSRect)rectValue;
 
 
 @end

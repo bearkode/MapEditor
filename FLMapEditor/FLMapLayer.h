@@ -31,7 +31,7 @@ typedef enum
 - (id)initWithType:(FLMapLayerType)aType;
 - (id)initWithJSONObject:(NSDictionary *)aDict;
 
-- (NSDictionary *)JSONObject;
+- (NSMutableDictionary *)JSONObject;
 
 
 - (void)setMapSize:(NSSize)aMapSize;

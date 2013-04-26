@@ -8,7 +8,14 @@
  */
 
 #import "FLObject.h"
+#import "NSDictionary+JSONAddition.h"
 #import "FLObjectTile.h"
+#import "FLTileSetManager.h"
+#import "FLObjectTileSet.h"
+
+
+NSString const *kJSONObjectIDKey = @"ObjectId";
+NSString const *kJSONFrameKey    = @"Frame";
 
 
 @implementation FLObject
@@ -40,6 +47,24 @@
 }
 
 
+- (id)initWithJSONObject:(NSDictionary *)aJSONObject
+{
+    self = [super init];
+    
+    if (self)
+    {
+        FLObjectTileSet *sObjectTileSet = (FLObjectTileSet *)[[FLTileSetManager sharedManager] objectTileSet];
+        
+        NSInteger sObjectId = [[aJSONObject objectForKey:kJSONObjectIDKey] integerValue];
+        
+        mObjectTile = (FLObjectTile *)[[sObjectTileSet tileForObjectId:sObjectId] retain];
+        mFrame      = [[aJSONObject objectForKey:kJSONFrameKey] rectValue];
+    }
+    
+    return self;
+}
+
+
 - (void)dealloc
 {
     [mObjectTile release];
@@ -49,6 +74,17 @@
 
 
 #pragma mark -
+
+
+- (NSMutableDictionary *)JSONObject
+{
+    NSMutableDictionary *sJSONObject = [NSMutableDictionary dictionary];
+    
+    [sJSONObject setObject:[NSNumber numberWithInteger:[mObjectTile objectId]] forKey:kJSONObjectIDKey];
+    [sJSONObject setObject:[NSDictionary dictionaryWithRect:mFrame] forKey:kJSONFrameKey];
+    
+    return sJSONObject;
+}
 
 
 - (NSInteger)zorder

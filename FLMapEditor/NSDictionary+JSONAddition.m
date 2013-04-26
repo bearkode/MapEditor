@@ -39,6 +39,15 @@ NSString *const kJSONYKey      = @"y";
 }
 
 
++ (NSDictionary *)dictionaryWithRect:(NSRect)aRect
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:aRect.origin.x], kJSONXKey,
+                                                      [NSNumber numberWithFloat:aRect.origin.y], kJSONYKey,
+                                                      [NSNumber numberWithFloat:aRect.size.width], kJSONWidthKey,
+                                                      [NSNumber numberWithFloat:aRect.size.height], kJSONHeightKey, nil];
+}
+
+
 - (NSSize)sizeValue
 {
     NSSize sResult = NSMakeSize(NAN, NAN);
@@ -56,6 +65,19 @@ NSString *const kJSONYKey      = @"y";
     
     sResult.x = [[self objectForKey:kJSONXKey] floatValue];
     sResult.y = [[self objectForKey:kJSONYKey] floatValue];
+    
+    return sResult;
+}
+
+
+- (NSRect)rectValue
+{
+    NSRect sResult = NSZeroRect;
+    
+    sResult.origin.x    = [[self objectForKey:kJSONXKey] floatValue];
+    sResult.origin.y    = [[self objectForKey:kJSONYKey] floatValue];
+    sResult.size.width  = [[self objectForKey:kJSONWidthKey] floatValue];
+    sResult.size.height = [[self objectForKey:kJSONHeightKey] floatValue];
     
     return sResult;
 }
