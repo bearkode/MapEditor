@@ -446,15 +446,31 @@ typedef enum
             }
         }
     }
-    else
+    else if ([mSelectedLayer type] == kFLMapLayerObjectType)
     {
+        FLObjectLayer *sObjectLayer = (FLObjectLayer *)mSelectedLayer;
+        
         if ([mSelectedTile isKindOfClass:[FLObjectTile class]])
         {
-            FLObjectLayer *sObjectLayer = (FLObjectLayer *)mSelectedLayer;
-            FLObject      *sObject      = [[[FLObject alloc] initWithObjectTile:(FLObjectTile *)mSelectedTile position:sGridPosition] autorelease];
+
+            FLObject *sObject = [[[FLObject alloc] initWithObjectTile:(FLObjectTile *)mSelectedTile position:sGridPosition] autorelease];
             
             [sObjectLayer addObject:sObject];
             [mMapView setNeedsDisplayAtGridPosition:sGridPosition];
+        }
+        else if (!mSelectedTile)
+        {
+            FLObject     *sObject     = [sObjectLayer objectAtGridPosition:sGridPosition];
+            FLObjectTile *sObjectTile = [sObject objectTile];
+            NSUInteger    sIndex      = [[sObjectLayer tileSet] indexOfTile:sObjectTile];
+
+            if (sIndex != NSNotFound)
+            {
+                [sObjectLayer removeObject:sObject];
+                [mTileSetView setSelectionIndexes:[NSIndexSet indexSetWithIndex:sIndex]];
+                [self setTileLayerAtPosition:aPoint];
+                [mMapView setNeedsDisplayAtGridPosition:sGridPosition];
+            }
         }
     }
 }

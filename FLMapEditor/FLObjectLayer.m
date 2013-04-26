@@ -103,10 +103,31 @@
 }
 
 
+- (void)removeObject:(FLObject *)aObject
+{
+    [mObjects removeObject:aObject];
+}
+
+
+- (FLObject *)objectAtGridPosition:(NSPoint)aPosition
+{
+    FLObject *sResult = nil;
+    
+    for (FLObject *sObject in mObjects)
+    {
+        if (NSPointInRect(aPosition, [sObject frame]))
+        {
+            sResult = sObject;
+            break;
+        }
+    }
+    
+    return sResult;
+}
+
+
 - (void)drawObjects
 {
-    NSLog(@"drawObjects - %@", mObjects);
-    
     for (FLObject *sObject in mObjects)
     {
         NSRect   sFrame = [sObject frame];

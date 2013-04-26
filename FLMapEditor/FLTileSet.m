@@ -156,6 +156,23 @@
 }
 
 
+- (NSUInteger)indexOfTile:(FLTile *)aTile
+{
+    NSUInteger sResult = NSNotFound;
+    
+    for (FLTile *sTile in mTiles)
+    {
+        if (sTile == aTile)
+        {
+            sResult = [mTiles indexOfObject:sTile];
+            break;
+        }
+    }
+    
+    return sResult;
+}
+
+
 - (FLTile *)tileAtIndex:(NSInteger)aIndex
 {
     FLTile *sTile = [mTiles objectAtIndex:aIndex];

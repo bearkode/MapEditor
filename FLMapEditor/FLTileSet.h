@@ -33,6 +33,7 @@
 - (void)deleteTileAtIndex:(NSInteger)aIndex;
 
 
+- (NSUInteger)indexOfTile:(FLTile *)aTile;
 - (FLTile *)tileAtIndex:(NSInteger)aIndex;
 - (FLTile *)tileForObjectId:(NSInteger)aObjectId;
 

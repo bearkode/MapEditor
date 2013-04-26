@@ -17,6 +17,8 @@
 
 
 - (BOOL)addObject:(FLObject *)aObject;
+- (void)removeObject:(FLObject *)aObject;
+- (FLObject *)objectAtGridPosition:(NSPoint)aPosition;
 
 - (void)drawObjects;
 
