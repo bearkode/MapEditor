@@ -74,11 +74,13 @@ static NSInteger const kObjectLayerIndex  = 1;
     sMapLayer = [[[FLTerrainLayer alloc] init] autorelease];
     [sMapLayer setName:kTerrainLayerKey];
     [sMapLayer setMapSize:mMapSize];
+    [sMapLayer setTileSize:mTileSize];
     [self insertMapLayerOnTop:sMapLayer];
     
     sMapLayer = [[[FLObjectLayer alloc] init] autorelease];
     [sMapLayer setName:kObjectLayerKey];
     [sMapLayer setMapSize:mMapSize];
+    [sMapLayer setTileSize:mTileSize];
     [self insertMapLayerOnTop:sMapLayer];
 }
 
