@@ -44,7 +44,7 @@
 {
     id sResult = [super copyWithZone:aZone];
     
-    [NSBundle loadNibNamed:@"FLMapLayerItem" owner:sResult];
+    [[NSBundle mainBundle] loadNibNamed:@"FLMapLayerItem" owner:self topLevelObjects:nil];
     
     NSColor *sFillColor   = [NSColor controlBackgroundColor];
     NSColor *sBorderColor = [NSColor controlBackgroundColor];

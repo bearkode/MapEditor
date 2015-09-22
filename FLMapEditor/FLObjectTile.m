@@ -26,11 +26,11 @@
 #pragma mark -
 
 
-- (void)dealloc
+- (void)didTurnIntoFault
 {
     [mImage release];
     
-    [super dealloc];
+    [super didTurnIntoFault];
 }
 
 

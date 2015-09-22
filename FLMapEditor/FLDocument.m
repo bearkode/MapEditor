@@ -542,7 +542,7 @@ typedef enum
     NSWindow *sWindow = [[[self windowControllers] objectAtIndex:0] window];
     NSPoint   sPoint  = [NSEvent mouseLocation];
     
-    sPoint = [sWindow convertScreenToBase:sPoint];
+    sPoint = [sWindow convertRectFromScreen:NSMakeRect(sPoint.x, sPoint.y, 0, 0)].origin;
     sPoint = [mMapView convertPoint:sPoint fromView:nil];
 
     [self setTileLayerAtPosition:sPoint];

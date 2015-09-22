@@ -23,8 +23,8 @@ NSString *const kTerrainLayerKey = @"TerrainLayer";
 NSString *const kObjectLayerKey  = @"ObjectLayer";
 
 
-static NSInteger const kTerrainLayerIndex = 0;
-static NSInteger const kObjectLayerIndex  = 1;
+//static NSInteger const kTerrainLayerIndex = 0;
+//static NSInteger const kObjectLayerIndex  = 1;
 
 
 @implementation FLMap

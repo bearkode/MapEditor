@@ -46,7 +46,7 @@
 {
     id sResult = [super copyWithZone:aZone];
     
-    [NSBundle loadNibNamed:@"FLObjectTileItem" owner:sResult];
+    [[NSBundle mainBundle] loadNibNamed:@"FLObjectTileItem" owner:self topLevelObjects:nil];
     
     return sResult;
 }

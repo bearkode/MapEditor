@@ -46,7 +46,7 @@
 {
     id sResult = [super copyWithZone:aZone];
     
-    [NSBundle loadNibNamed:@"FLTerrainTileItem" owner:sResult];
+    [[NSBundle mainBundle] loadNibNamed:@"FLTerrainTileItem" owner:self topLevelObjects:nil];
     
     return sResult;
 }
